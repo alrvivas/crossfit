@@ -16,8 +16,8 @@ class Migration(migrations.Migration):
             fields=[
                 ('id', models.AutoField(verbose_name='ID', serialize=False, auto_created=True, primary_key=True)),
                 ('nombre', models.CharField(max_length=50, null=True)),
-                ('tiempo', models.TimeField(null=True)),
-                ('tiempo_pr', models.TimeField(null=True)),
+                ('tiempo', models.PositiveIntegerField(null=True)),
+                ('tiempo_pr', models.PositiveIntegerField(null=True)),
                 ('repeticiones_pr', models.PositiveIntegerField(null=True)),
             ],
         ),
