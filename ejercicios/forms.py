@@ -6,7 +6,7 @@ from django.core.files.images import get_image_dimensions
 from PIL import Image
 from .models import Ejercicio
 
-class clienteForm(ModelForm):
+class ejercicioForm(ModelForm):
 	class Meta:
 		model = Ejercicio
 		fields = '__all__'
