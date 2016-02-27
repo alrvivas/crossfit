@@ -7,3 +7,8 @@ class Ejercicio(models.Model):
 
 	def __unicode__(self):
 		return unicode(self.nombre)
+
+	@models.permalink
+	def get_absolute_url(self):
+		return('ejercicio', (), { 'ejercicio_id': self.id })
+
