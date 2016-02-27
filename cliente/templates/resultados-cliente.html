@@ -42,12 +42,11 @@
 		    		<table class="mdl-data-table mdl-js-data-table mdl-data-table--selectable mdl-fullwidth">
 					  <thead>
 					    <tr>
-					      	<th class="mdl-data-table__cell--non-numeric mdl-fullwidth ">Nombre Comercial</th>
-					      	<th>Nombre Fiscal</th>
-					      	<th>Dirección</th>
-					      	<th>RFC</th>
+					      	<th class="mdl-data-table__cell--non-numeric mdl-fullwidth ">Nombre</th>
+					      	<th>Apellidos</th>
 					      	<th>Celular</th>
 					      	<th>Telefono</th>
+					      	<th>Días de Credito</th>
 					      	<th>Fecha Registro</th>
 					    </tr>
 					  	</thead>
@@ -58,15 +57,12 @@
 					    	<tr>
 					      		<td class="mdl-data-table__cell--non-numeric">
 					      			<a href="{{ c.get_absolute_url }}">
-					      				{{c.nombre_comercial}}
+					      				{{c.nombre}}
 					      			</a>
-					      		</td>
-					      		<td>{{c.nombre_fiscal}}</td>
-					      		<td>{{c.direccion}}</td>
-					      		<td>{{c.rfc}}</td>
-					      		<td>{{c.dias_credito}}</td>
+					      		</td>					      		
 					      		<td>{{c.celular}}</td>
 					      		<td>{{c.telefono}}</td>
+					      		<td>{{c.dias_credito}}</td>
 					      		<td>{{c.fecha_registro}}</td>
 					    	</tr>
 					    	{% endfor %}
