@@ -94,7 +94,7 @@ def cliente(request,cliente_id):
     user = request.user
     cliente = get_object_or_404(Cliente, id=cliente_id)
     ejercicio = Ejercicio.objects.all()
-    pr = Personal_Record.objects.filter(cliente=cliente).order_by('fecha')[:4]   
+    pr = Personal_Record.objects.filter(cliente=cliente).order_by('-fecha')[:4]   
     page_title = cliente.nombre     
     template_name ="cliente.html" 
     return render_to_response(template_name, locals(),context_instance=RequestContext(request))
