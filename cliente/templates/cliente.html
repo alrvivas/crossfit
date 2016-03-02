@@ -120,8 +120,7 @@
 			</div>
 			<div id="map" class=""></div>
 	  	</div>
-	  	<div class="mdl-grid demo-content mdl-layout__tab-panel " id="pr">
-	  		<div class="mdl-grid">
+	  	<div class="mdl-grid demo-content mdl-layout__tab-panel " id="pr">	  		
 	  			<div class="demo-cards mdl-cell mdl-cell--4-col mdl-grid mdl-grid--no-spacing">	
 
 			  		<div class="demo-card-image mdl-card mdl-shadow--2dp " style="background-image: url('{{cliente.imagen.url}}');background-repeat: no-repeat;background-size: cover;background-position: center;">
@@ -151,9 +150,17 @@
 		    		<div class="mdl-card__actions">
 		                <a href="#" class="mdl-button">Ver mas records personales</a>
 	              	</div>
+	              	<button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon" id="btn2">
+		              	<i class="material-icons">more_vert</i>
+		            </button>
+		            <ul class="mdl-menu mdl-js-menu mdl-menu--bottom-right" for="btn2">
+		              	<li class="mdl-menu__item">Lorem</li>
+		              	<li class="mdl-menu__item" disabled>Ipsum</li>
+		              	<li class="mdl-menu__item">Dolor</li>
+		            </ul>
 		    	</section>
 		    	{% endfor %}
-		    </div>
+		    
 	  	</div>	
 		    
 			
