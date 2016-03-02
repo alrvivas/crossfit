@@ -133,18 +133,19 @@
 				</div>
 
 		    	<div class="mdl-color--white mdl-shadow--2dp mdl-cell mdl-cell--8-col mdl-grid ">
-
-		    		<h2 class="mdl-cell mdl-cell--12-col">Records Personales</h2>
-		    		{% for e in ejercicio %}
-		    			<h4>{{e.nombre}}</h4>
-		    			{% for pr in pr %}
-		    				{% ifequal e.id pr.ejercicio.id  %}
-		    					<p>{{pr.pr}} - {{pr.fhecha}}</p>
-		    				{% endifequal %}
-		    			{% empty %}
-		    				<p>No hay record personal para {{e.nombre}}</p>
-		    			{% endfor %}
-		    		{% endfor %}
+		    		<div class="mdl-card__supporting-text mdl-grid mdl-grid--no-spacing">
+			    		<h2 class="mdl-cell mdl-cell--12-col">Records Personales</h2>
+			    		{% for e in ejercicio %}
+			    			<h4>{{e.nombre}}</h4>
+			    			{% for pr in pr %}
+			    				{% ifequal e.id pr.ejercicio.id  %}
+			    					<p>{{pr.pr}} - {{pr.fhecha}}</p>
+			    				{% endifequal %}
+			    			{% empty %}
+			    				<p>No hay record personal para {{e.nombre}}</p>
+			    			{% endfor %}
+			    		{% endfor %}
+			    	</div>
 		    		<div class="mdl-card__actions">
 		                <a href="#" class="mdl-button">Ver mas records personales</a>
 	              	</div>
