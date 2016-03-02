@@ -138,7 +138,8 @@
 			    		<div class="section__text mdl-cell mdl-cell--12-col-desktop mdl-cell--12-col-tablet mdl-cell--12-col-phone">
 			    		{% for pr in pr %}
 		                  	{% ifequal e.id pr.ejercicio.id  %}
-			    					{{pr.pr}} - {{pr.fhecha}}
+			    					<p>{{pr.pr}} - {{pr.fhecha}} <a href="">modificar</a></p>
+
 			    				{% endifequal %}
 			    		{% empty %}
 
@@ -150,14 +151,7 @@
 		    		<div class="mdl-card__actions">
 		                <a href="#" class="mdl-button">Ver mas records personales</a>
 	              	</div>
-	              	<button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon" id="btn2">
-		              	<i class="material-icons">more_vert</i>
-		            </button>
-		            <ul class="mdl-menu mdl-js-menu mdl-menu--bottom-right" for="btn2">
-		              	<li class="mdl-menu__item">Lorem</li>
-		              	<li class="mdl-menu__item" disabled>Ipsum</li>
-		              	<li class="mdl-menu__item">Dolor</li>
-		            </ul>
+	              	
 		    	</section>
 		    	{% endfor %}
 		    

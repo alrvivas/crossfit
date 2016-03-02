@@ -6,7 +6,7 @@ from ejercicios.models import *
 class Personal_Record(models.Model):
 	cliente = models.ForeignKey(Cliente,null=True)
 	ejercicio = models.ForeignKey(Ejercicio,null=True)
-	fhecha = models.DateField(null=True)
+	fecha = models.DateField(null=True)
 	pr = models.CharField(max_length=20,null=True)
 
 	def __unicode__(self):
