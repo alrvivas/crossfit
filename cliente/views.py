@@ -10,6 +10,8 @@ from django.contrib.auth import logout as auth_logout
 from django.db.models import Count, Avg,Sum
 from django.views.generic.base import View
 from models import *
+from personalrecords.models import *
+from ejercicios.models import
 from forms import *
 import datetime
 from django.contrib.auth.models import User
@@ -91,6 +93,8 @@ def clientes(request):
 def cliente(request,cliente_id):
     user = request.user
     cliente = get_object_or_404(Cliente, id=cliente_id)
+    ejercicio = Ejercicio.objects.all()
+    pr = Personal_Record.objects.filter(cliente=cliente)
     page_title = cliente.nombre     
     template_name ="cliente.html" 
     return render_to_response(template_name, locals(),context_instance=RequestContext(request))
