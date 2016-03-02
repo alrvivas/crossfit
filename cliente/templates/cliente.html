@@ -120,17 +120,17 @@
 			</div>
 			<div id="map" class=""></div>
 	  	</div>
-	  	<div class="mdl-grid demo-content mdl-layout__tab-panel " id="pr">
-	  		<section class="section--center mdl-grid mdl-grid--no-spacing mdl-shadow--2dp">	  		
-	  			<div class="demo-cards mdl-grid mdl-grid--no-spacing">
-			  		<div class="demo-card-image mdl-cell mdl-cell--12-col-desktop mdl-cell--12-col-tablet mdl-cell--12-col-phone  " style="background-image: url('{{cliente.imagen.url}}');background-repeat: no-repeat;background-size: cover;background-position: center;">
+	  	<div class="mdl-grid demo-content mdl-layout__tab-panel " id="pr">	  		
+	  			<div class="demo-cards mdl-cell mdl-cell--4-col mdl-grid mdl-grid--no-spacing">	
+
+			  		<div class="demo-card-image mdl-card mdl-shadow--2dp " style="background-image: url('{{cliente.imagen.url}}');background-repeat: no-repeat;background-size: cover;background-position: center;">
 						<div class="mdl-card__title mdl-card--expand"></div>
 						<div class="mdl-card__actions">
 							<span class="demo-card-image__filename">{{cliente.nombre}}</span>
 						</div>
 					</div>
 				</div>
-			</section>
+				<div class="demo-cards mdl-cell mdl-cell--12-col mdl-grid mdl-grid--no-spacing">	
 				{% for e in ejercicio %}
 		    	<section class="section--center mdl-grid mdl-grid--no-spacing mdl-shadow--2dp">
 		    		<div class="mdl-card__supporting-text mdl-grid mdl-grid--no-spacing">
@@ -155,7 +155,7 @@
 	              	
 		    	</section>
 		    	{% endfor %}
-		    
+		    	</div>
 	  	</div>	
 		    
 			
