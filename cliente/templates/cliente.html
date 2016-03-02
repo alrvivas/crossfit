@@ -139,12 +139,15 @@
 		    			<h4>{{e.nombre}}</h4>
 		    			{% for pr in pr %}
 		    				{% ifequal e.id pr.ejercicio.id  %}
-		    					{{pr.ejercicio.pr}} - {{pr.fhecha}}
+		    					<p>{{pr.pr}} - {{pr.fhecha}}</p>
 		    				{% endifequal %}
 		    			{% empty %}
 		    				<p>No hay record personal para {{e.nombre}}</p>
 		    			{% endfor %}
 		    		{% endfor %}
+		    		<div class="mdl-card__actions">
+		                <a href="#" class="mdl-button">Ver mas records personales</a>
+	              	</div>
 		    	</div>
 		    	
 		    </div>
