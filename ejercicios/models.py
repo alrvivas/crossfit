@@ -13,6 +13,6 @@ class Ejercicio(models.Model):
 		return('ejercicio', (), { 'ejercicio_id': self.id })
 
 	@models.permalink
-	def get_absolute_url_e(self):
+	def get_absolute_url_edit_e(self):
 		return('editar-ejercicio', (), { 'ejercicio_id': self.id })
 
