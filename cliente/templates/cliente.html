@@ -140,12 +140,12 @@
 			    		<div class="section__text mdl-cell mdl-cell--12-col-desktop mdl-cell--12-col-tablet mdl-cell--12-col-phone">
 			    		{% for pr in pr %}
 		                  	{% ifequal e.id pr.ejercicio.id  %}
-			    					<p>{{pr.pr}} - {{pr.fecha}} <a href="">modificar</a></p>
-
-			    				{% endifequal %}
+		    					<p>{{pr.pr}} - {{pr.fecha}} <a href="">modificar</a></p>
+		    				{% else %}
+		    					xD
+		    				{% endifequal %}
 			    		{% empty %}
-
-		    				No hay record personal para {{e.nombre}}
+		    				<p>No hay record personal para {{e.nombre}}</p>
 		    			{% endfor %}
 		                </div>
 			    		
