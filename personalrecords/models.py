@@ -19,4 +19,4 @@ class Personal_Record(models.Model):
 
 	@models.permalink
 	def get_absolute_url_edit_pr(self):
-		return('editar-recor-personal', (), { 'recordpersona_id': self.id })
+		return('editar-record-personal', (), { 'recordpersona_id': self.id })
