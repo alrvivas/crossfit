@@ -138,7 +138,7 @@
 			    		<h4>{{e.nombre}}</h4>
 			    		
 			    		<div class="section__text mdl-cell mdl-cell--12-col-desktop mdl-cell--12-col-tablet mdl-cell--12-col-phone">
-			    		{% for pr in pr|slice:":4" %}
+			    		{% for pr in pr %}
 		                  	{% ifequal e.id pr.ejercicio.id  %}
 		    					<p>{{pr.pr}} - {{pr.fecha}} <a href="{{pr.get_absolute_url_edit_pr}}">modificar</a></p>
 		    				{% endifequal %}
