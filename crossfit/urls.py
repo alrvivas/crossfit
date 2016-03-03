@@ -10,7 +10,7 @@ urlpatterns = patterns('',
     url(r'^logout/$', 'cliente.views.LogoutView', name='logout'), 
     url(r'^clientes/', include('cliente.urls')),
     url(r'^ejercicios/', include('ejercicios.urls')),
-    url(r'^records-personales/', include('personalrecors.urls')),
+    url(r'^records-personales/', include('personalrecords.urls')),
     #url(r'^ingresos/', include('ingresos.urls')),    
 )   
 
