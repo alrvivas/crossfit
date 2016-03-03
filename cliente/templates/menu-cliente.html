@@ -6,9 +6,13 @@
 		</a>
 			
 	</li>
-			  	
 	<li class="mdl-menu__item-padding">
-		<a href="{{cliente.get_absolute_url_edit_e}}" class="mdl-button mdl-js-button mdl-button--fab mdl-button--mini-fab mdl-js-ripple-effect mdl-color--red-500 mdl-shadow--4dp" id="empresariales">
+		<a href="{% url 'add-record-persoal' %}" class="mdl-button mdl-js-button mdl-button--fab mdl-button--mini-fab mdl-js-ripple-effect mdl-color--red-500 mdl-shadow--4dp" id="pr">
+		<i class="material-icons mdl-color-text--white" role="presentation">time</i>            
+		</a>
+	</li>		  	
+	<li class="mdl-menu__item-padding">
+		<a href="{{cliente.get_absolute_url_edit_e}}" class="mdl-button mdl-js-button mdl-button--fab mdl-button--mini-fab mdl-js-ripple-effect mdl-color--blue-500 mdl-shadow--4dp" id="empresariales">
 		<i class="material-icons mdl-color-text--white" role="presentation">face</i>            
 		</a>
 	</li>
@@ -17,8 +21,11 @@
 <div class="mdl-tooltip mdl-tooltip--left" for="pago">
 	Editar Datos<br />De pago
 </div>
+<div class="mdl-tooltip mdl-tooltip--left" for="pr">
+	Añadir <br />Record Personal
+</div>
 <div class="mdl-tooltip mdl-tooltip--left" for="empresariales">
-	Editar Datos<br />Empresariales
+	Editar Datos<br />Cliente
 </div>
 <div class="mdl-tooltip mdl-tooltip--left" for="add">
 	Editar

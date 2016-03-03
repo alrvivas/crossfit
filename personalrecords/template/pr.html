@@ -48,7 +48,7 @@
 			<a href="#" class="mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect mdl-color--amber-500 mdl-shadow--4dp" id="add">
 	            <i class="material-icons mdl-color-text--white" role="presentation">mode_edit</i>	            
 	      	</a>	      	
-			{% include "menu-cliente.html" %}
+			{% include "menu-pr.html" %}
 			    
 		</div>
 		
@@ -64,99 +64,27 @@
 	  		<div class="mdl-grid">
 	  			<div class="demo-cards mdl-cell mdl-cell--4-col mdl-grid mdl-grid--no-spacing">	
 
-			  		<div class="demo-card-image mdl-card mdl-shadow--2dp " style="background-image: url('{{cliente.imagen.url}}');background-repeat: no-repeat;background-size: cover;background-position: center;">
+			  		<div class="demo-card-image mdl-card mdl-shadow--2dp " style="background-image: url(''">
 						<div class="mdl-card__title mdl-card--expand"></div>
 						<div class="mdl-card__actions">
-							<span class="demo-card-image__filename">{{cliente.nombre}}</span>
+							<span class="demo-card-image__filename">{{pr.cliente}}</span>
 						</div>
 					</div>
 				</div>	  		
 		    	<div class="mdl-color--white mdl-shadow--2dp mdl-cell mdl-cell--8-col mdl-grid ">
 
-		    		<h2 class="mdl-cell mdl-cell--12-col">Datos Cliente</h2>
+		    		<h2 class="mdl-cell mdl-cell--12-col">Record Personal</h2>
 		    		<ul>
-		    			<li><strong>Nombre : </strong>{{cliente.nombre}}</li>
-		    			<li><strong>Apellidos: </strong>{{cliente.apellidos}}</li>
-		    			<li id="antiguedad"><strong>Fecha de Registro</strong>{{cliente.fecha_registro|timesince}}</li>
-		    			<li><strong>Vive en: </strong>{{cliente.direccion}}</li>
-		    			<li><strong>Telefono: </strong>{{cliente.telefono}}</li>
-		    			<li><strong>Celular: </strong>{{cliente.celular}}</li>
-		    			<li><strong>Días de Credito: </strong>{{cliente.dias_credito}}</li>
+		    			<li><strong>Cliente : </strong>{{pr.cliente}}</li>
+		    			<li><strong>Ejercicio: </strong>{{pr.ejercicio}}</li>
+		    			<li><strong>Record Personal: </strong>{{pr.pr}}</li>
+		    			<li><strong>Fecha: </strong>{{pr.fecha}}</li>
 		    		</ul>
 		    	</div>
-		    	<div class="mdl-tooltip mdl-tooltip--left" for="antiguedad">
-					{{cliente.fecha_registro}}
-				</div>
+		    	
 		    </div>
-		    <div class="mdl-grid">
-		    	<div class="demo-cards mdl-cell mdl-cell--4-col mdl-grid mdl-grid--no-spacing">	
-			  		
-				</div>
-		    	<div class="mdl-color--white mdl-shadow--2dp mdl-cell mdl-cell--8-col mdl-grid ">
-
-		    		<h2 class="mdl-cell mdl-cell--12-col">Proximo Pago</h2>
-		    		
-		    	</div>
-		    		
-	  		</div>
 	  		
-	  	</div>	  	
-	  	<div class="mdl-grid demo-content mdl-layout__tab-panel " id="mapa">
-	  		<div class="mdl-grid">
-	  			<div class="mdl-color--white mdl-shadow--2dp mdl-cell mdl-cell--12-col mdl-grid ">
-			  		<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell--7-col">
-						<input id="address" class="mdl-textfield__input" type="text" value="{{cliente.direccion}}">
-
-						<button id="submit" type="button"  class="mdl-button mdl-js-button mdl-button--icon mdl-color--red-500" style="right: 0;">
-							<i class="material-icons mdl-color-text--white">place</i>
-						</button>
-					</div>
-					<div class="mdl-tooltip" for="submit">
-						Lozalizar Dimicilio
-					</div>
-					
-				</div>
-
-			</div>
-			<div id="map" class=""></div>
 	  	</div>
-	  	<div class="mdl-grid demo-content mdl-layout__tab-panel " id="pr">
-	  		<div class="mdl-grid">	  		
-	  			<div class="demo-cards mdl-cell mdl-cell--3-col mdl-grid mdl-grid--no-spacing">	
-	  				
-		  			<div class="demo-card-image mdl-card mdl-cell mdl-cell--12-col mdl-shadow--2dp" style="background-image: url('{{cliente.imagen.url}}');background-repeat: no-repeat;background-size: cover;background-position: center;">
-						<div class="mdl-card__title mdl-card--expand"></div>
-						<div class="mdl-card__actions">
-							<span class="demo-card-image__filename">{{cliente.nombre}}</span>
-						</div>
-					</div>
-				</div>
-				<div class="demo-cards mdl-cell mdl-cell--9-col mdl-grid mdl-grid--no-spacing">	
-				{% for e in ejercicio %}
-		    	<section class="section--center mdl-grid mdl-grid--no-spacing mdl-cell--10-col mdl-shadow--2dp">
-		    		<div class="mdl-card__supporting-text mdl-grid mdl-grid--no-spacing">
-			    		<h4>{{e.nombre}}</h4>
-			    		
-			    		<div class="section__text mdl-cell mdl-cell--12-col-desktop mdl-cell--12-col-tablet mdl-cell--12-col-phone">
-			    		{% for pr in pr %}
-		                  	{% ifequal e.id pr.ejercicio.id  %}
-		    					<p>{{pr.pr}} - {{pr.fecha}} <a href="{{pr.get_absolute_url_edit_pr}}">modificar</a></p>
-		    				{% endifequal %}
-			    		{% empty %}
-		    				<p>No hay record personal para {{e.nombre}}</p>
-		    			{% endfor %}
-		                </div>
-			    		
-			    	</div>
-		    		<div class="mdl-card__actions">
-		                <a href="#" class="mdl-button">Ver mas records personales</a>
-	              	</div>
-	              	
-		    	</section>
-		    	{% endfor %}
-		    	</div>
-	    	</div>
-	  	</div>	
 		    
 			
    	</main>

@@ -11,3 +11,12 @@ class Personal_Record(models.Model):
 
 	def __unicode__(self):
 		return unicode(self.id)
+
+
+	@models.permalink
+	def get_absolute_url(self):
+		return('recor-personal', (), { 'recordpersona_id': self.id })
+
+	@models.permalink
+	def get_absolute_url_edit_pr(self):
+		return('editar-recor-personal', (), { 'recordpersona_id': self.id })
