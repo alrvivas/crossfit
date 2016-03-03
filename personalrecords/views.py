@@ -77,7 +77,7 @@ def edit_personal_record(request,recordpersona_id):
         if form_ejercicio.is_valid():
             pr = form_ejercicio.save(commit = False)
             pr.save()            
-            return redirect(pr.get_absolute_url())
+            return redirect(pr.cliente.get_absolute_url())
     else:
         form_ejercicio = prForm()
     args = {}
