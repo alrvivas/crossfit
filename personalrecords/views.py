@@ -32,7 +32,7 @@ def add_personal_record(request):
         if form_pr.is_valid():
             pr = form_pr.save(commit = False)
             pr.save()            
-            return redirect(pr.get_absolute_url())
+            return redirect(pr.cliente.get_absolute_url())
     else:
         form_pr = prForm()
     args = {}
@@ -62,7 +62,7 @@ def personalrecords(request):
 def personal_record(request,recordpersona_id):
     user = request.user
     pr = get_object_or_404(Personal_Record, id=recordpersona_id)
-    page_title = pr.nombre     
+    page_title = pr.cliente     
     template_name ="pr.html" 
     return render_to_response(template_name, locals(),context_instance=RequestContext(request))
 
