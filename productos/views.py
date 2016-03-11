@@ -27,7 +27,7 @@ def catalogo(request):
 
 @login_required(login_url='/login/')
 def ver_categoria(request, categoria_slug):
-    c = get_object_or_404(Categoria, slug=categoria_slug)
+    categoria = get_object_or_404(Categoria, slug=categoria_slug)
     user        = request.user
     producto = c.producto_set.all()     
     page_title = c.nombre
