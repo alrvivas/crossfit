@@ -13,7 +13,8 @@
   	</head>
   	<body class="mdl-demo mdl-color--grey-100 mdl-color-text--grey-700 mdl-base">
   		<div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
-	  	 	{% block header %}{% endblock %}    
+	  	 	{% block header %}{% endblock %} 
+	  	 	{% include "menu.html" %}  
 	    	{% block contedor %}{% endblock %}
 	    	{% block contedor_par_iframe %}{% endblock %}
 	    	{% block footer %}{% endblock %}
