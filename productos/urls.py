@@ -1,8 +1,7 @@
 from django.conf.urls import patterns, include, url
 
 urlpatterns = patterns('',
-	url(r'^$','productos.views.categorias', name='categorias'),
-	url(r'^categorias/$', 'productos.views.ver_categoria', name='categorias'),
+	url(r'^$','productos.views.catalogo', name='categorias'),
 	url(r'^add-categoria/$', 'productos.views.add_categoria', name='add-categoria'),
 	url(r'^categoria/(?P<categoria_slug>[-\w]+)/$','productos.views.ver_categoria', name='categoria'), 
 	url(r'^producto/(?P<producto_slug>[-\w]+)/$','productos.views.producto', name='producto'),
