@@ -65,7 +65,16 @@
 						Subir Foto
 					</div>
 		    	</div>
-		    	<div class=" mdl-cell mdl-cell--6-col  mdl-grid">		    			
+		    	<div class=" mdl-cell mdl-cell--6-col  mdl-grid">
+		    			<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell--12-col">
+					  		<select class="mdl-textfield__input" type="text" name="categoria" id="categoria" required>
+					  			<option value="" selected>Seleccia una...</option>
+					  			{% for c in categoria %}
+					  				<option value="{{c.id}}">{{c.nombre}}</option>
+					  			{% endfor %}				  			
+					  		</select>      
+						    <label class="mdl-textfield__label" for="categoria">Tipo Contrato</label>
+					  	</div>		    			
 		    			<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell--12-col">
 						    <input class="mdl-textfield__input" type="text" name="nombre" id="nombre" value="" required/>
 						    <label class="mdl-textfield__label" for="nombre">Nombre</label>
