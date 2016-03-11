@@ -52,11 +52,9 @@
 
 {% block contedor %}
   	<main class="mdl-layout__content mdl-color--grey-100">
-	  	
-	  	<div class="mdl-grid demo-content mdl-layout__tab-panel is-active" id="datos">
+	  	<div class="mdl-grid demo-content mdl-layout__tab-panel is-active"  id="datos">
 	  		<div class="mdl-grid">	  		
-	  			<div class="demo-cards mdl-cell mdl-cell--3-col mdl-grid mdl-grid--no-spacing">	
-	  				
+	  			<div class="demo-cards mdl-cell mdl-cell--3-col mdl-grid mdl-grid--no-spacing">	 				
 		  			<div class="demo-card-image mdl-card mdl-cell mdl-cell--12-col mdl-shadow--2dp" style="background-image: url('{{producto.imagen.url}}');background-repeat: no-repeat;background-size: cover;background-position: center;">
 						<div class="mdl-card__title mdl-card--expand"></div>
 						<div class="mdl-card__actions">
@@ -66,34 +64,34 @@
 				</div>
 				<div class="demo-cards mdl-cell mdl-cell--9-col mdl-grid mdl-grid--no-spacing">	
 				
-		    	<section class="section--center mdl-grid mdl-grid--no-spacing mdl-cell--10-col mdl-shadow--2dp">
-		    		<div class="mdl-card__supporting-text mdl-grid mdl-grid--no-spacing">
-			    		<h4>{{producto.nombre}}</h4>
-			    		
-			    		<div class="section__text mdl-cell mdl-cell--12-col-desktop mdl-cell--12-col-tablet mdl-cell--12-col-phone">			    		
-	    					<p>Categoria - {{producto.categoria.nombre}} </p>
-							<p>Activo {% if producto.activo == True %}
-										<i class="material-icons mdl-color-text--red-500">verified_user</i>
-									{% else %}
-										<i class="material-icons mdl-color-text--green-500">block</i></p>
-									{% endif %}
-							<p>Codigo de Barras - {{producto.codigo_barras}}</p>
-							<p>Vida de Anaquel - {{producto.vida_anaquel}}</p>
-							<p>Registrado desde - {{producto.fecha_registro}}</p>
-							<p>Ultima Modificación - {{producto.fehca_modificacion}}</p>
-							<p>Stock - {{producto.stock}} </p>
-							<p>Precio - {{producto.precio_unitario}}</p>
-							<p>Presentación - {{producto.presentacion}}</p>
-							<p>Unida - {{producto.unidad}}</p>
-							<p>Peso - {{producto.peso}}</p>		    				
-		                </div>
-			    		
-			    	</div>
-		    		<div class="mdl-card__actions">
-		                <a href="#" class="mdl-button">Ver mas records personales</a>
-	              	</div>
-	              	
-		    	</section>
+			    	<section class="section--center mdl-grid mdl-grid--no-spacing mdl-cell--10-col mdl-shadow--2dp">
+			    		<div class="mdl-card__supporting-text mdl-grid mdl-grid--no-spacing">
+				    		<h4>{{producto.nombre}}</h4>
+				    		
+				    		<div class="section__text mdl-cell mdl-cell--12-col-desktop mdl-cell--12-col-tablet mdl-cell--12-col-phone">			    		
+		    					<p>Categoria - {{producto.categoria.nombre}} </p>
+								<p>Activo {% if producto.activo == True %}
+											<i class="material-icons mdl-color-text--red-500">verified_user</i>
+										{% else %}
+											<i class="material-icons mdl-color-text--green-500">block</i></p>
+										{% endif %}
+								<p>Codigo de Barras - {{producto.codigo_barras}}</p>
+								<p>Vida de Anaquel - {{producto.vida_anaquel}}</p>
+								<p>Registrado desde - {{producto.fecha_registro}}</p>
+								<p>Ultima Modificación - {{producto.fehca_modificacion}}</p>
+								<p>Stock - {{producto.stock}} </p>
+								<p>Precio - {{producto.precio_unitario}}</p>
+								<p>Presentación - {{producto.presentacion}}</p>
+								<p>Unida - {{producto.unidad}}</p>
+								<p>Peso - {{producto.peso}}</p>		    				
+			                </div>
+				    		
+				    	</div>
+			    		<div class="mdl-card__actions">
+			                <a href="#" class="mdl-button">Ver mas records personales</a>
+		              	</div>
+		              	
+			    	</section>
 		    	</div>
 	    	</div>
 	  	</div>	
