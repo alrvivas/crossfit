@@ -29,8 +29,8 @@ def catalogo(request):
 def ver_categoria(request, categoria_slug):
     categoria = get_object_or_404(Categoria, slug=categoria_slug)
     user = request.user
-    productos = c.producto_set.all()     
-    page_title = c.nombre
+    productos = categoria.producto_set.all()     
+    page_title = categoria.nombre
     template_name = "categoria.html"
     return render_to_response(template_name, locals(),context_instance=RequestContext(request))
 
@@ -59,4 +59,23 @@ def add_categoria(request):
     args = {}
     args.update(csrf(request))
     template_name ="add-categoria.html"
+    return render_to_response(template_name, locals(), context_instance=RequestContext(request))
+
+@login_required(login_url='/login/')
+def add_producto(request):
+    page_title = "Añadir Categoria"
+    user = request.user
+    categoria = Categoria.objects.all()
+    producto = Producto.objects.all()
+    if request.method == 'POST':
+        form_producto = productoForm(request.POST,request.FILES)
+        if form_producto.is_valid():
+            producto = form_producto.save(commit = False)
+            producto.save()            
+            return redirect(producto.get_absolute_url())
+    else:
+        form_producto = productoForm()
+    args = {}
+    args.update(csrf(request))
+    template_name ="add-producto.html"
     return render_to_response(template_name, locals(), context_instance=RequestContext(request))
