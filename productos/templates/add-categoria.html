@@ -152,8 +152,8 @@
 	<script type="text/javascript">
 		$(document).ready(function(){
 		    $("#nombre").keyup(function(){
-		    	convertToSlug($("#nombre").val());
-		        $("#slug").val($("#nombre").val());
+		    	
+		        $("#slug").val(convertToSlug($("#nombre").val()));
 		    });
 
 		    function convertToSlug(Text)
