@@ -11,7 +11,8 @@ urlpatterns = patterns('',
     url(r'^clientes/', include('cliente.urls')),
     url(r'^ejercicios/', include('ejercicios.urls')),
     url(r'^records-personales/', include('personalrecords.urls')),
-    url(r'^productos/', include('productos.urls')),    
+    url(r'^productos/', include('productos.urls')),
+    url(r'^ventas/', include('ventas.urls')),      
 )   
 
  
