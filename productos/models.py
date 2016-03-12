@@ -47,14 +47,14 @@ class Producto(models.Model):
 		verbose_name_plural = ('Productos')
 
 	def __unicode__(self):
-	    return self.name
+	    return self.nombre
 
 	@models.permalink
 	def get_absolute_url(self):
 		return ('producto', (), { 'producto_slug': self.slug })
 
 	def get_price(self):
-	    return self.unit_price
+	    return self.precio_unitario
 
 	def get_peso_total(self):
 	    return self.peso*self.stock
