@@ -1,0 +1,92 @@
+{% extends "base.html" %} 
+{% block header %}
+	<header class="mdl-layout__header mdl-layout__header--scroll mdl-color--deep-orange-500">	  			
+    	<div class="mdl-layout--large-screen-only mdl-layout__header-row">	    		
+	    	<div class=" mdl-layout-spacer"></div>
+	    	<div class="mdl-textfield mdl-js-textfield mdl-textfield--expandable mdl-textfield--floating-label mdl-textfield--align-right mdl-textfield--full-width">
+    			<form>
+		            <label class="mdl-button mdl-js-button mdl-button--icon" for="search-field">
+		              	<i class="material-icons">search</i>
+		            </label>
+		            <div class="mdl-textfield__expandable-holder">
+		              	<input class="mdl-textfield__input" type="text" id="search-field">
+		            </div>
+	            </form>
+          	</div>
+		</div>
+    	<div class="mdl-typography--text-center ">
+    		<div class="mdl-layout-title">
+    			<h1 >{{page_title}}</h1>
+    		</div>
+
+    		
+    	</div>
+    	<div class="mdl-layout--large-screen-only mdl-layout__header-row">
+    		<!---->
+    	</div>	
+    	<div class="mdl-layout__tab-bar mdl-js-ripple-effect mdl-color--deep-orange-A400"> 		
+    		
+    	</div>	
+    </header>
+{% endblock %}
+
+{% block contedor %}	
+  	<main class="mdl-layout__content mdl-color--grey-100">
+	  	<div class="mdl-grid demo-content mdl-layout__tab-panel is-active" id="orden">
+	  		<div class="mdl-grid">	  		
+	  			<div class="demo-cards mdl-cell mdl-cell--3-col mdl-grid mdl-grid--no-spacing">	
+	  				
+		  			
+				</div>
+				<div class="demo-cards mdl-cell mdl-cell--9-col mdl-grid mdl-grid--no-spacing">	
+					<table class="mdl-data-table mdl-js-data-table mdl-data-table--selectable mdl-shadow--2dp">
+						<thead>
+							<tr>
+							  <th class="mdl-data-table__cell--non-numeric">Material</th>
+							  <th>Quantity</th>
+							  <th>Unit price</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+							  <td class="mdl-data-table__cell--non-numeric">Acrylic (Transparent)</td>
+							  <td>25</td>
+							  <td>$2.90</td>
+							</tr>
+							<tr>
+							  <td class="mdl-data-table__cell--non-numeric">Plywood (Birch)</td>
+							  <td>50</td>
+							  <td>$1.25</td>
+							</tr>
+							<tr>
+							  <td class="mdl-data-table__cell--non-numeric">Laminate (Gold on Blue)</td>
+							  <td>10</td>
+							  <td>$2.35</td>
+							</tr>
+						</tbody>
+					</table>			    	
+		    	</div>
+	    	</div>
+	  	</div>
+   	</main>
+   	<footer class="mdl-mega-footer">	    
+	  	<div class="mdl-mega-footer__bottom-section">
+	  		<div class="mdl-mega-footer__left-section">
+	    		<div class="mdl-textfield mdl-js-textfield">
+	    			<input class="mdl-textfield__input" type="text" id="producto">
+    				<label class="mdl-textfield__label" for="producto">Añadir Producto...</label>
+				    <input class="mdl-textfield__input" type="text" pattern="-?[0-9]*(\.[0-9]+)?" id="categoria">
+				    <label class="mdl-textfield__label" for="categoria">Cantidad</label>
+				    <span class="mdl-textfield__error">¡No es número!</span>
+			  	</div>
+	    	</div>
+		    <div class="mdl-mega-footer__right-section">
+		    	<div>Total: $</div>
+		    </div>
+	  	</div>
+	</footer>
+    
+{% endblock %}
+{% block adicional-scripts %}
+
+{% endblock %}
