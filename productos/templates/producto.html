@@ -71,9 +71,9 @@
 				    		<div class="section__text mdl-cell mdl-cell--12-col-desktop mdl-cell--12-col-tablet mdl-cell--12-col-phone">			    		
 		    					<p>Categoria - {{producto.categoria.nombre}} </p>
 								<p>Activo {% if producto.activo == True %}
-											<i class="material-icons mdl-color-text--red-500">verified_user</i>
+											<i class="material-icons mdl-color-text--green-500">verified_user</i>
 										{% else %}
-											<i class="material-icons mdl-color-text--green-500">block</i></p>
+											<i class="material-icons mdl-color-text--red-500">block</i></p>
 										{% endif %}
 								<p>Codigo de Barras - {{producto.codigo_barras}}</p>
 								<p>Vida de Anaquel - {{producto.vida_anaquel}}</p>
@@ -88,7 +88,7 @@
 				    		
 				    	</div>
 			    		<div class="mdl-card__actions">
-			                <a href="#" class="mdl-button">Ver mas records personales</a>
+			                <a href="{{producto.categoria.get_absolute_url}}" class="mdl-button">Ver mas productos de la categoría</a>
 		              	</div>
 		              	
 			    	</section>

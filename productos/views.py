@@ -45,7 +45,7 @@ def producto(request, producto_slug):
 
 @login_required(login_url='/login/')
 def add_categoria(request):
-    page_title = "Añadir Categoria"
+    page_title = "Añadir Categoría"
     user = request.user
     categoria = Categoria.objects.all()
     if request.method == 'POST':
@@ -63,7 +63,7 @@ def add_categoria(request):
 
 @login_required(login_url='/login/')
 def add_producto(request):
-    page_title = "Añadir Categoria"
+    page_title = "Añadir Categoría"
     user = request.user
     categoria = Categoria.objects.all()
     producto = Producto.objects.all()
