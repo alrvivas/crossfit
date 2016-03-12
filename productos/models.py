@@ -27,6 +27,7 @@ class Producto(models.Model):
 	categoria = models.ForeignKey(Categoria)
 	nombre = models.CharField(max_length=255, verbose_name=('Nombre'))
 	slug = models.SlugField(verbose_name=('Slug'), unique=True,null=True, blank=True)
+	sku = models.CharField(max_length=20,null=True, blank=True)
 	activo = models.BooleanField(default=False, verbose_name=('Activo'))
 	codigo_barras = models.CharField(max_length=20, unique=True,null=True, blank=True)	
 	vida_anaquel = models.IntegerField(blank=True)
