@@ -25,8 +25,8 @@
     		<!---->
     	</div>	
     	<div class="mdl-layout__tab-bar mdl-js-ripple-effect mdl-color--deep-orange-A400"> 		
-    		<a href="#orden" class="mdl-layout__tab">Venta</a>
-    		<a href="#productos" class="mdl-layout__tab is-active">Productos</a>
+    		<a href="#orden" class="mdl-layout__tab is-active">Venta</a>
+    		<a href="#productos" class="mdl-layout__tab">Productos</a>
           	
     	</div>	
     </header>
@@ -106,6 +106,7 @@
 							<thead>
 								<tr>
 								  <th class="mdl-data-table__cell--non-numeric">Producto</th>
+								  <th>SKU</th>
 								  <th>Existencia</th>
 								</tr>
 							</thead>
@@ -113,6 +114,7 @@
 								{% for p in productos %}
 								<tr>
 								  <td class="mdl-data-table__cell--non-numeric">{{p.nombre}}</td>
+								  <td>{{p.sku}}</td>
 								  <td>{{p.stock}}</td>								  
 								</tr>								
 								{% endfor %}
@@ -146,5 +148,36 @@
     
 {% endblock %}
 {% block adicional-scripts %}
+<script type="text/javascript">
+	var topics= [
+	{% for p in productos %}
 
+    {
+        value: "p.sku",
+        label: "p.nombre",
+        id: "{{p.id}}"
+    },
+    {% endfor %}
+    
+];
+
+$(document).ready(function() {
+    $( "#producto" ).autocomplete({
+        minLength: 0,
+        source: topics,
+        focus: function( event, ui ) {
+            $( "#producto" ).val( ui.item.label );
+            return false;
+        },
+        select: function( event, ui ) {
+            $( "#producto" ).val( ui.item.label );
+            $("#topicID").val(ui.item.id);
+            $( "#results").text($("#topicID").val());    
+            return false;
+    }
+})
+
+});
+
+</script>
 {% endblock %}
