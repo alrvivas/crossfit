@@ -138,6 +138,7 @@
 			  		<input class="mdl-textfield__input" type="text" id="producto">
     				<label class="mdl-textfield__label" for="producto">Añadir Producto...</label>
     			</div>
+    			<input type="hidden" id="topicID" />
 	    	</div>
 		    <div class="mdl-mega-footer__right-section">
 		    	<div>Total: $</div>
@@ -174,8 +175,8 @@ $(document).ready(function() {
         },
         select: function( event, ui ) {
             $( "#producto" ).val( ui.item.label );
-            /*$("#topicID").val(ui.item.id);
-            $( "#results").text($("#topicID").val());    */
+            $("#topicID").val(ui.item.id);
+            /*$( "#results").text($("#topicID").val());    */
             return false;
     }
 })
