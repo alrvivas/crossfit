@@ -74,24 +74,7 @@
 								</tr>
 							</thead>
 							<tbody class="venta">
-								<tr>
-								  <td class="mdl-data-table__cell--non-numeric">Acrylic (Transparent)</td>
-								  <td>25</td>
-								  <td>$2.90</td>
-								  <td>$2.90</td>
-								</tr>
-								<tr>
-								  <td class="mdl-data-table__cell--non-numeric">Plywood (Birch)</td>
-								  <td>50</td>
-								  <td>$1.25</td>
-								  <td>$2.90</td>
-								</tr>
-								<tr>
-								  <td class="mdl-data-table__cell--non-numeric">Laminate (Gold on Blue)</td>
-								  <td>10</td>
-								  <td>$2.35</td>
-								  <td>$2.90</td>
-								</tr>
+								
 							</tbody>
 						</table>
 					</div>			    	
@@ -128,19 +111,22 @@
    	</main>
    	<footer class="mdl-mega-footer">	    
 	  	<div class="mdl-mega-footer__bottom-section">
-	  		<div class="mdl-mega-footer__left-section">
+	  		<div class="mdl-mega-footer__left-section mdl-cell--8-col">
 	  			<div class="mdl-textfield mdl-js-textfield ui-widget">
-			  		<input class="mdl-textfield__input" type="text" id="producto">
+			  		<input class="mdl-textfield__input" type="text" id="producto_p">
     				<label class="mdl-textfield__label" for="producto">Añadir Producto...</label>
     			</div>
+    			<input type="hidden" id="topicID">
+    			<input type="hidden" id="topicID">
 	    		<div class="mdl-textfield mdl-js-textfield">	    			
-				    <input class="mdl-textfield__input" type="text" pattern="-?[0-9]*(\.[0-9]+)?" id="cantidad">
-				    <label class="mdl-textfield__label" for="cantidad">Cantidad</label>
+				    <input class="mdl-textfield__input" type="text" pattern="-?[0-9]*(\.[0-9]+)?" id="cantidad_p">
+				    <label class="mdl-textfield__label" for="cantidad_p">Cantidad</label>
 				    <span class="mdl-textfield__error">¡No es número!</span>
 			  	</div>
 			  	<button class="mdl-button mdl-js-button mdl-button--primary mdl-js-ripple-effect" id="add">
 				  Añadir
 				</button>
+				
 			  	
 	    	</div>
 		    <div class="mdl-mega-footer__right-section">
@@ -158,29 +144,30 @@
 	    {
 	        value: "{{p.sku}}",
 	        label: "{{p.nombre}}",
+	        precio: "{{p.precio_unitario}}"
 	        id: "{{p.id}}"
 	    },
-    {% endfor %}
-    
+    {% endfor %}    
 ];
 
 $(document).ready(function() {
-    $( "#producto" ).autocomplete({
+    $( "#producto_p" ).autocomplete({
         minLength: 0,
         source: productos,
         focus: function( event, ui ) {
-            $( "#producto" ).val( ui.item.label );
+            $( "#producto_p" ).val( ui.item.label );
             return false;
         },
         select: function( event, ui ) {
-            $("#producto").val( ui.item.label );
+            $("#producto_p").val( ui.item.label );
             $("#topicID").val(ui.item.id);
+            $("#precio_p").val(ui.item.precio_unitario);
             /*$( "#results").text($("#topicID").val());    */
             return false;
     	}
 	})
 	$("#add").click(function() {
-		input = $("<tr><td class='mdl-data-table__cell--non-numeric'>"+ $("#producto").val() +"</td>								  <td>" + $('#cantidad').val() + "</td><td>$1.25</td><td>$2.90</td></tr><input type=\"hidden\" id=\"" + producto + "\" name=\"" + producto + "\" value=\"" + $('#topicID').val() + "\"/>");
+		input = $("<tr><td class='mdl-data-table__cell--non-numeric'>"+ $("#producto_p").val() +"</td><td>" + "<input type=\"text\" id=\"" + cantidad + "\" name=\"" + cantidad + "\" value=\"" + $("#cantidad_p").val() + "\"/>" + "</td><td>"+  +"</td><td>$2.90</td></tr><input type=\"hidden\" id=\"" + producto + "\" name=\"" + producto + "\" value=\"" + $('#topicID').val() + "\"/>");
 		$(".venta").append(input);
 	});
 
