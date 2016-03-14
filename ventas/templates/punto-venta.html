@@ -25,14 +25,16 @@
     		<!---->
     	</div>	
     	<div class="mdl-layout__tab-bar mdl-js-ripple-effect mdl-color--deep-orange-A400"> 		
-    		
+    		<a href="#orden" class="mdl-layout__tab">Venta</a>
+    		<a href="#productos" class="mdl-layout__tab is-active">Productos</a>
+          	
     	</div>	
     </header>
 {% endblock %}
 
 {% block contedor %}	
   	<main class="mdl-layout__content mdl-color--grey-100">
-  		<form action=""  method="post" role="form" class="mdl-grid form-add" enctype="multipart/form-data">{% csrf_token %}	  		
+  		<form action=""  method="post" role="form">{% csrf_token %}	  		
 	  	<div class="mdl-grid demo-content mdl-layout__tab-panel is-active" id="orden">
 	  		<div class="mdl-grid">	  		
 	  			<div class="demo-cards mdl-cell mdl-cell--3-col mdl-grid mdl-grid--no-spacing">	
@@ -43,16 +45,7 @@
 				  				<option value="{{c.id}}">{{c.nombre}}</option>
 				  			{% endfor %}
 				  		</select>      
-					    <label class="mdl-textfield__label" for="cliente">Clientes</label>
-				  	</div>
-				  	<div class="mdl-textfield mdl-js-textfield mdl-cell--12-col">
-				  		<select class="mdl-textfield__input" type="text" name="cliente" id="cliente" required>
-				  			<option value="" selected>Seleccia una...</option>
-					  			{% for c in clientes %}
-					  				<option value="{{c.id}}">{{c.nombre}}</option>
-					  			{% endfor %}				  			
-				  		</select>      
-					    <label class="mdl-textfield__label" for="categoria">Tipo Contrato</label>
+					    <label class="mdl-textfield__label" for="cliente">Cliente</label>
 				  	</div>	
 				  	<div class="mdl-textfield mdl-js-textfield mdl-cell--12-col">
 				  		<select class="mdl-textfield__input" type="text" name="tipo_pago" id="tipo_pago" required>
@@ -64,7 +57,9 @@
 					    <label class="mdl-textfield__label" for="tipo_pago">Tipo de Pago</label>
 				  	</div>
 				  	<input class="mdl-textfield__input" type="hidden" name="estatus_orden" id="estatus_orden" value="1" required/>
-				  	<input class="mdl-textfield__input" type="hidden" name="estatus_cobranza" id="estatus_cobranza" value="1" required/>		
+				  	<input class="mdl-textfield__input" type="hidden" name="estatus_cobranza" id="estatus_cobranza" value="1" required/>	
+				  	<input type="hidden" name="total" value="" required="required" /></input>
+		    		<input type="hidden" name="total_peso" value="" required="required" /></input>	
 		  			
 				</div>
 				<div class="demo-cards mdl-cell mdl-cell--9-col mdl-grid mdl-grid--no-spacing">	
@@ -103,6 +98,30 @@
 		    	</div>
 	    	</div>
 	  	</div>
+	  	<div class="mdl-grid demo-content mdl-layout__tab-panel " id="productos">
+	  		<div class="mdl-grid">	
+	  		<div class="demo-cards mdl-cell mdl-cell--12-col mdl-grid mdl-grid--no-spacing">	
+					<div class="mdl-color--white mdl-shadow--2dp mdl-cell mdl-cell--11-col mdl-grid ">
+						<table class="mdl-data-table mdl-js-data-table mdl-data-table--selectable mdl-fullwidth">
+							<thead>
+								<tr>
+								  <th class="mdl-data-table__cell--non-numeric">Producto</th>
+								  <th>Existencia</th>
+								</tr>
+							</thead>
+							<tbody>
+								{% for p in productos %}
+								<tr>
+								  <td class="mdl-data-table__cell--non-numeric">{{p.nombre}}</td>
+								  <td>{{p.stock}}</td>								  
+								</tr>								
+								{% endfor %}
+							</tbody>
+						</table>
+					</div>			    	
+		    	</div>
+	  		</div>
+	  	</div>
 	  	</form>
    	</main>
    	<footer class="mdl-mega-footer">	    
@@ -120,6 +139,7 @@
 	    	</div>
 		    <div class="mdl-mega-footer__right-section">
 		    	<div>Total: $</div>
+		    	
 		    </div>
 	  	</div>
 	</footer>
