@@ -129,16 +129,16 @@
    	<footer class="mdl-mega-footer">	    
 	  	<div class="mdl-mega-footer__bottom-section">
 	  		<div class="mdl-mega-footer__left-section">
+	  			<div class="mdl-textfield mdl-js-textfield ui-widget">
+			  		<input class="mdl-textfield__input" type="text" id="producto">
+    				<label class="mdl-textfield__label" for="producto">Añadir Producto...</label>
+    			</div>
 	    		<div class="mdl-textfield mdl-js-textfield">	    			
 				    <input class="mdl-textfield__input" type="text" pattern="-?[0-9]*(\.[0-9]+)?" id="categoria">
 				    <label class="mdl-textfield__label" for="categoria">Cantidad</label>
 				    <span class="mdl-textfield__error">¡No es número!</span>
 			  	</div>
-			  	<div class="mdl-textfield mdl-js-textfield">
-			  		<input class="mdl-textfield__input" type="text" id="producto">
-    				<label class="mdl-textfield__label" for="producto">Añadir Producto...</label>
-    			</div>
-    			<input type="hidden" id="topicID" />
+			  	
 	    	</div>
 		    <div class="mdl-mega-footer__right-section">
 		    	<div>Total: $</div>
@@ -158,11 +158,7 @@
 	        id: "{{p.id}}"
 	    },
     {% endfor %}
-    {
-        value: "",
-        label: "",
-        id: ""
-    }
+    
 ];
 
 $(document).ready(function() {
@@ -174,12 +170,12 @@ $(document).ready(function() {
             return false;
         },
         select: function( event, ui ) {
-            $( "#producto" ).val( ui.item.label );
+            $("#producto").val( ui.item.label );
             $("#topicID").val(ui.item.id);
             /*$( "#results").text($("#topicID").val());    */
             return false;
-    }
-})
+    	}
+	})
 
 });
 
