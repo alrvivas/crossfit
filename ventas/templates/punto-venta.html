@@ -167,7 +167,7 @@ $(document).ready(function() {
     	}
 	})
 	$("#add").click(function() {
-		input = $("<tr><td class='mdl-data-table__cell--non-numeric'>"+ $("#producto_p").val() +"</td><td>" + "<input type=\"text\" id='cantidad' name='cantidad' value=\"" + $("#cantidad_p").val() + "\"/>" + "</td><td>"+  +"</td><td>"+ $("#precio_p").val()+"</td></tr><input type=\"hidden\" id=\"" + producto + "\" name=\"" + producto + "\" value=\"" + $('#topicID').val() + "\"/>");
+		input = $("<tr><td class='mdl-data-table__cell--non-numeric'>"+ $("#producto_p").val() +"</td><td>" + "<input type=\"text\" id='cantidad' name='cantidad' value=\"" + $("#cantidad_p").val() + "\"/>" + "</td><td>"+  +"</td><td>"+ $("#precio_p").val()+"</td></tr><input type=\"hidden\" id='producto' name='producto' value=\"" + $('#topicID').val() + "\"/>");
 		$(".venta").append(input);
 	});
 
