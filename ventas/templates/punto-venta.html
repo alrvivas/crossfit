@@ -46,6 +46,15 @@
 					    <label class="mdl-textfield__label" for="cliente">Clientes</label>
 				  	</div>
 				  	<div class="mdl-textfield mdl-js-textfield mdl-cell--12-col">
+				  		<select class="mdl-textfield__input" type="text" name="cliente" id="cliente" required>
+				  			<option value="" selected>Seleccia una...</option>
+					  			{% for c in clientes %}
+					  				<option value="{{c.id}}">{{c.nombre}}</option>
+					  			{% endfor %}				  			
+				  		</select>      
+					    <label class="mdl-textfield__label" for="categoria">Tipo Contrato</label>
+				  	</div>	
+				  	<div class="mdl-textfield mdl-js-textfield mdl-cell--12-col">
 				  		<select class="mdl-textfield__input" type="text" name="tipo_pago" id="tipo_pago" required>
 				  			<option selected>Tipo de Pago ...</option>
 				  			{% for tp in tipo_pago %}
