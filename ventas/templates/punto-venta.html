@@ -73,7 +73,7 @@
 								  <th>Total</th>
 								</tr>
 							</thead>
-							<tbody>
+							<tbody class="venta">
 								<tr>
 								  <td class="mdl-data-table__cell--non-numeric">Acrylic (Transparent)</td>
 								  <td>25</td>
@@ -134,10 +134,13 @@
     				<label class="mdl-textfield__label" for="producto">Añadir Producto...</label>
     			</div>
 	    		<div class="mdl-textfield mdl-js-textfield">	    			
-				    <input class="mdl-textfield__input" type="text" pattern="-?[0-9]*(\.[0-9]+)?" id="categoria">
-				    <label class="mdl-textfield__label" for="categoria">Cantidad</label>
+				    <input class="mdl-textfield__input" type="text" pattern="-?[0-9]*(\.[0-9]+)?" id="cantidad">
+				    <label class="mdl-textfield__label" for="cantidad">Cantidad</label>
 				    <span class="mdl-textfield__error">¡No es número!</span>
 			  	</div>
+			  	<button class="mdl-button mdl-js-button mdl-button--primary mdl-js-ripple-effect" id="add">
+				  Añadir
+				</button>
 			  	
 	    	</div>
 		    <div class="mdl-mega-footer__right-section">
@@ -176,6 +179,10 @@ $(document).ready(function() {
             return false;
     	}
 	})
+	$("#add").click(function() {
+		input = $("<tr><td class='mdl-data-table__cell--non-numeric'>"+ $("#producto").val() +"</td>								  <td>" + $('#cantidad').val() + "</td><td>$1.25</td><td>$2.90</td></tr><input type=\"hidden\" id=\"" + producto + "\" name=\"" + producto + "\" value=\"" + $('#topicID').val() + "\"/>");
+		$(".venta").append(input);
+	});
 
 });
 
