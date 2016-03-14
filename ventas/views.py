@@ -31,7 +31,7 @@ def punto_venta(request):
     tipo_pago = Tipo_Pago.objects.all()
     tipo_abono = Tipo_Abono.objects.all()
     estatus_orden = Estatus_Orden.objects.all()
-    estatus_cobrana = Estatus_Cobranza.objects.all()
+    estatus_cobranza = Estatus_Cobranza.objects.all()
     if request.method == 'POST':
         form_orden = ordenForm(request.POST)
         if form_orden.is_valid():
