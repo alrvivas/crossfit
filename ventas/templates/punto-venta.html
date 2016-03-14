@@ -149,33 +149,33 @@
 {% endblock %}
 {% block adicional-scripts %}
 <script type="text/javascript">
-	var topics= [
+	var productos= [
 	{% for p in productos %}
-    {
-        value: "{{p.sku}}",
-        label: "{{p.nombre}}",
-        id: "{{p.id}}"
-    },
+	    {
+	        value: "{{p.sku}}",
+	        label: "{{p.nombre}}",
+	        id: "{{p.id}}"
+	    },
     {% endfor %}
     {
         value: "",
         label: "",
-        id: "
+        id: ""
     }
 ];
 
 $(document).ready(function() {
     $( "#producto" ).autocomplete({
         minLength: 0,
-        source: topics,
+        source: productos,
         focus: function( event, ui ) {
             $( "#producto" ).val( ui.item.label );
             return false;
         },
         select: function( event, ui ) {
             $( "#producto" ).val( ui.item.label );
-            $("#topicID").val(ui.item.id);
-            $( "#results").text($("#topicID").val());    
+            /*$("#topicID").val(ui.item.id);
+            $( "#results").text($("#topicID").val());    */
             return false;
     }
 })
