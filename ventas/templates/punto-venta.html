@@ -151,14 +151,17 @@
 <script type="text/javascript">
 	var topics= [
 	{% for p in productos %}
-
     {
-        value: "p.sku",
-        label: "p.nombre",
+        value: "{{p.sku}}",
+        label: "{{p.nombre}}",
         id: "{{p.id}}"
     },
     {% endfor %}
-    
+    {
+        value: "",
+        label: "",
+        id: "
+    }
 ];
 
 $(document).ready(function() {
