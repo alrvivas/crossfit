@@ -122,7 +122,7 @@
 			    				<input type="hidden" id="precio_p">								
 							</div>
 							<div class="mdl-textfield mdl-js-textfield mdl-cell--4-col">	    			
-							    <input class="mdl-textfield__input textfield--align-right" type="text" pattern="-?[0-9]*(\.[0-9]+)?" id="cantidad_p">
+							    <input class="mdl-textfield__input mdl-textfield--align-right" type="text" pattern="-?[0-9]*(\.[0-9]+)?" id="cantidad_p">
 							    <label class="mdl-textfield__label" for="cantidad_p">Cantidad</label>
 							    <span class="mdl-textfield__error">¡No es número!</span>
 							    <button id="anadir" type="button"  class="mdl-button mdl-js-button mdl-button--icon mdl-color--red-500" style="right: 0;">
@@ -174,7 +174,7 @@ $(document).ready(function() {
     	}
 	})
 	$("#anadir").click(function() {
-		input = $("<tr><td></td><td class='mdl-data-table__cell--non-numeric'>"+ $("#producto_p").val() +"</td><td>" + "<input type='text' id='cantidad' class='mdl-textfield__input' name='cantidad' value=\"" + $("#cantidad_p").val() + "\"/>" + "</td><td>"+ $("#precio_p").val()  +"</td><td>" + "$500" + "</td></tr><input type=\"hidden\" id='producto' name='producto' value=\"" + $('#topicID').val() + "\"/>");
+		input = $("<tr><td></td><td class='mdl-data-table__cell--non-numeric'>"+ $("#producto_p").val() +"</td><td>" + "<input type='text' id='cantidad' class='mdl-textfield__input mdl-textfield--align-right' name='cantidad' value=\"" + $("#cantidad_p").val() + "\"/>" + "</td><td>"+ $("#precio_p").val()  +"</td><td>" + "$500" + "</td></tr><input type=\"hidden\" id='producto' name='producto' value=\"" + $('#topicID').val() + "\"/>");
 		$(".venta").append(input);
 		$(".venta tr td:first-child").addClass("mdl-data-table__cell--non-numeric")
 

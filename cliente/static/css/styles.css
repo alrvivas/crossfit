@@ -292,7 +292,7 @@ html, body {
     border-spacing: 0;
     width: 100%;
 }
-.textfield--align-right {text-align: right !important;}
+.mdl-textfield--align-right {text-align: right !important;}
 .mdl-select-file{
   border-color: #9E9E9E; border-radius: 9px; border-style: dashed;margin: 0.5em;cursor: pointer;
 }
