@@ -174,7 +174,7 @@ $(document).ready(function() {
     	}
 	})
 	$("#anadir").click(function() {
-		input = $("<tr><td></td><td class='mdl-data-table__cell--non-numeric'>"+ $("#producto_p").val() +"</td><td>" + "<input type='text' id='cantidad' class='mdl-textfield__input mdl-textfield--align-right' name='cantidad' value=\"" + $("#cantidad_p").val() + "\"/>" + "</td><td>"+ $("#precio_p").val()  +"</td><td>" +  ($("#cantidad_p").val()*$("#precio_p").val()) + "</td></tr><input type=\"hidden\" id='producto' name='producto' value=\"" + $('#topicID').val() + "\"/>");
+		input = $("<tr><td></td><td class='mdl-data-table__cell--non-numeric'>"+ $("#producto_p").val() +"</td><td>" + "<input type='text' id='cantidad' class='mdl-textfield__input mdl-textfield--align-right' name='cantidad' value=\"" + $("#cantidad_p").val() + "\"/>" + "</td><td> $"+ $("#precio_p").val()  +"</td><td> $" +  parseFloat($("#cantidad_p").val()*$("#precio_p").val()).toFixed(2) + "</td></tr><input type=\"hidden\" id='producto' name='producto' value=\"" + $('#topicID').val() + "\"/>");
 		$(".venta").append(input);
 		$(".venta tr td:first-child").addClass("mdl-data-table__cell--non-numeric")
 
