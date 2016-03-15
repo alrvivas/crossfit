@@ -63,7 +63,7 @@
 		  			
 				</div>
 				<div class="demo-cards mdl-cell mdl-cell--9-col mdl-grid mdl-grid--no-spacing">	
-					<div class="mdl-color--white mdl-shadow--2dp mdl-cell mdl-cell--12-col mdl-grid ">
+					<div class="mdl-color--white mdl-shadow--2dp mdl-cell mdl-cell--12-col mdl-grid suminputs">
 						<table class="mdl-data-table mdl-js-data-table mdl-data-table--selectable mdl-fullwidth">
 							<thead>
 								<tr>
@@ -174,12 +174,12 @@ $(document).ready(function() {
     	}
 	})
 	$("#anadir").click(function() {
-		input = $("<tr><td></td><td class='mdl-data-table__cell--non-numeric'>"+ $("#producto_p").val() +"</td><td>" + "<input type='text' id='cantidad' class='mdl-textfield__input mdl-textfield--align-right' name='cantidad' value=\"" + $("#cantidad_p").val() + "\"/>" + "</td><td> $"+ $("#precio_p").val()  +"</td><td> $" +  parseFloat($("#cantidad_p").val()*$("#precio_p").val()).toFixed(2) + "</td></tr><input type=\"hidden\" id='producto' name='producto' value=\"" + $('#topicID').val() + "\"/>");
+		input = $("<tr><td></td><td class='mdl-data-table__cell--non-numeric'>"+ $("#producto_p").val() +"</td><td>" + "<input type='text' id='cantidad' class='mdl-textfield__input mdl-textfield--align-right' name='cantidad' value=\"" + $("#cantidad_p").val() + "\"/>" + "</td><td> $"+ $("#precio_p").val()  +"</td><td> $" +  parseFloat($("#cantidad_p").val()*$("#precio_p").val()).toFixed(3) + "</td></tr><input type='hidden' id='producto' name='producto' value=\"" + $('#topicID').val() + "\"/><input type='hidden' id='precio' name='precio' value=\"" + $('#precio_p').val() + "\"/><input type='hidden' class='subtotal' id='subtotal' name='subtotal' value=\"" + parseFloat($("#cantidad_p").val()*$("#precio_p").val()) + "\"/>");
 		$(".venta").append(input);
 		$(".venta tr td:first-child").addClass("mdl-data-table__cell--non-numeric")
 
 	});
-	/*$("tbody.venta").bind('keyup mouseup', function () {*/
+	$("tbody.venta").bind('keyup mouseup', function () {*/
 	   /*alert("changed");   */             
 	    /*$(this).find("#subtotal").val(parseFloat($(this).find("#cantidad").val()*$(this).find("#precio").val()).toFixed(3)); 
 	    $(this).find("#subtotalkg").val(parseFloat($(this).find("#cantidad").val()*$(this).find("#peso").val()).toFixed(3)); */
@@ -189,14 +189,14 @@ $(document).ready(function() {
 					total = parseFloat(total)+parseFloat($(this).val(),3); //<==== a catch  in here !! read below
 				});
 				$(".totalkg").val(parseFloat(total).toFixed(3));
-			});
+			});*/
 	    $('.suminputs').each(function(){
 				var totalp = 0.0;
-				$(this).find('.stotalp').each(function(){
+				$(this).find('.subtotal').each(function(){
 					totalp = parseFloat(totalp)+parseFloat($(this).val(),3); //<==== a catch  in here !! read below
 				});
 				$(".total").val(parseFloat(totalp).toFixed(3));
-				$("#pago_efectivo").val(parseFloat(totalp).toFixed(3));
+				/*$("#pago_efectivo").val(parseFloat(totalp).toFixed(3));*/
 			
 		}); */
 		/*Comision leche*/
