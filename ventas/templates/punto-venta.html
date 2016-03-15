@@ -112,30 +112,30 @@
    	</main>
    	<footer class="mdl-mega-footer">	    
 	  	<div class="mdl-mega-footer__bottom-section">
-	  		<div class="mdl-mega-footer__left-section mdl-cell--8-col ">
-	  			<div class="mdl-mega-footer__left-section mdl-cell--11-col mdl-grid">
-		  			<form>
-			  			<div class="mdl-textfield mdl-js-textfield mdl-cell--6-col ui-widget">
-					  		<input class="mdl-textfield__input" type="text" id="producto_p">
-		    				<label class="mdl-textfield__label" for="producto">Añadir Producto...</label>
-		    			</div>
-		    			<input type="hidden" id="topicID">
-		    			<input type="hidden" id="precio_p">
-			    		<div class="mdl-textfield mdl-js-textfield mdl-cell--3-col">	    			
-						    <input class="mdl-textfield__input" type="text" pattern="-?[0-9]*(\.[0-9]+)?" id="cantidad_p">
-						    <label class="mdl-textfield__label" for="cantidad_p">Cantidad</label>
-						    <span class="mdl-textfield__error">¡No es número!</span>
-					  	</div>
-					  	<div class="mdl-cell--3-col mdl-textfield--align-right">				  			   		
-					  		<button class="mdl-button mdl-js-button  mdl-js-ripple-effect mdl-button--primary" id="add">
-							  	ENVIAR
-							</button>
-				    	</div>
-			    	</form>
+	  		<div class="mdl-mega-footer__left-section mdl-cell--8-col ">		  		
+	  			<div class="mdl-mega-footer__left-section mdl-cell--11-col">		  			
+			  		<div class="mdl-grid">
+			  			<div class="mdl-color--white mdl-shadow--2dp mdl-cell mdl-cell--12-col mdl-grid ">
+					  		<div class="mdl-textfield mdl-js-textfield mdl-cell--7-col">
+								<input class="mdl-textfield__input" type="text" id="producto_p">
+			    				<label class="mdl-textfield__label" for="producto">Añadir Producto...</label>
+			    				<input type="hidden" id="topicID">
+			    				<input type="hidden" id="precio_p">
+								<button id="add" type="button"  class="mdl-button mdl-js-button mdl-button--icon mdl-color--red-500" style="right: 0;">
+									<i class="material-icons mdl-color-text--white">add_shopping_cart</i>
+								</button>
+							</div>
+							<div class="mdl-textfield mdl-js-textfield mdl-cell--3-col">	    			
+							    <input class="mdl-textfield__input" type="text" pattern="-?[0-9]*(\.[0-9]+)?" id="cantidad_p">
+							    <label class="mdl-textfield__label" for="cantidad_p">Cantidad</label>
+							    <span class="mdl-textfield__error">¡No es número!</span>
+						  	</div>
+							<div class="mdl-tooltip" for="add">
+								Añadir Producto
+							</div>						
+						</div>
+					</div>				 
 				</div>
-			  	
-				
-			  	
 	    	</div>
 		    <div class="mdl-mega-footer__right-section">
 		    	<div>Total: $</div>
