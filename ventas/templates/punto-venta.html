@@ -88,17 +88,18 @@
 						<table class="mdl-data-table mdl-js-data-table mdl-data-table--selectable mdl-fullwidth">
 							<thead>
 								<tr>
-								  <th class="mdl-data-table__cell--non-numeric">Producto</th>
-								  <th>SKU</th>
-								  <th>Existencia</th>
+								  	<th class="mdl-data-table__cell--non-numeric">Producto</th>
+								  	<th>SKU</th>
+								  	<th>Existencia</th>
 								</tr>
 							</thead>
 							<tbody>
 								{% for p in productos %}
 								<tr>
-								  <td class="mdl-data-table__cell--non-numeric">{{p.nombre}}</td>
-								  <td>{{p.sku}}</td>
-								  <td>{{p.stock}}</td>								  
+									<td></td>
+								  	<td class="mdl-data-table__cell--non-numeric">{{p.nombre}}</td>
+								  	<td>{{p.sku}}</td>
+								  	<td>{{p.stock}}</td>								  
 								</tr>								
 								{% endfor %}
 							</tbody>
@@ -113,22 +114,24 @@
 	  	<div class="mdl-mega-footer__bottom-section">
 	  		<div class="mdl-mega-footer__left-section mdl-cell--8-col ">
 	  			<div class="mdl-mega-footer__left-section mdl-cell--11-col mdl-grid">
-		  			<div class="mdl-textfield mdl-js-textfield mdl-cell--6-col ui-widget">
-				  		<input class="mdl-textfield__input" type="text" id="producto_p">
-	    				<label class="mdl-textfield__label" for="producto">Añadir Producto...</label>
-	    			</div>
-	    			<input type="hidden" id="topicID">
-	    			<input type="hidden" id="precio_p">
-		    		<div class="mdl-textfield mdl-js-textfield mdl-cell--3-col">	    			
-					    <input class="mdl-textfield__input" type="text" pattern="-?[0-9]*(\.[0-9]+)?" id="cantidad_p">
-					    <label class="mdl-textfield__label" for="cantidad_p">Cantidad</label>
-					    <span class="mdl-textfield__error">¡No es número!</span>
-				  	</div>
-				  	<div class="mdl-cell--3-col mdl-textfield--align-right">				  			   		
-				  		<button class="mdl-button mdl-js-button  mdl-js-ripple-effect mdl-button--primary" id="add">
-						  	ENVIAR
-						</button>
-			    	</div>
+		  			<form>
+			  			<div class="mdl-textfield mdl-js-textfield mdl-cell--6-col ui-widget">
+					  		<input class="mdl-textfield__input" type="text" id="producto_p">
+		    				<label class="mdl-textfield__label" for="producto">Añadir Producto...</label>
+		    			</div>
+		    			<input type="hidden" id="topicID">
+		    			<input type="hidden" id="precio_p">
+			    		<div class="mdl-textfield mdl-js-textfield mdl-cell--3-col">	    			
+						    <input class="mdl-textfield__input" type="text" pattern="-?[0-9]*(\.[0-9]+)?" id="cantidad_p">
+						    <label class="mdl-textfield__label" for="cantidad_p">Cantidad</label>
+						    <span class="mdl-textfield__error">¡No es número!</span>
+					  	</div>
+					  	<div class="mdl-cell--3-col mdl-textfield--align-right">				  			   		
+					  		<button class="mdl-button mdl-js-button  mdl-js-ripple-effect mdl-button--primary" id="add">
+							  	ENVIAR
+							</button>
+				    	</div>
+			    	</form>
 				</div>
 			  	
 				
