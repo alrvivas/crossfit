@@ -174,12 +174,38 @@ $(document).ready(function() {
     	}
 	});
 	$("#anadir").click(function() {
-		input = $("<tr><td></td><td class='mdl-data-table__cell--non-numeric'>"+ $("#producto_p").val() +"</td><td>" + "<input type='text' id='cantidad' class='mdl-textfield__input mdl-textfield--align-right' name='cantidad' value=\"" + $("#cantidad_p").val() + "\"/>" + "</td><td> $"+ $("#precio_p").val()  +"</td><td> $" +  parseFloat($("#cantidad_p").val()*$("#precio_p").val()).toFixed(3) + "</td></tr><input type='hidden' id='producto' name='producto' value=\"" + $('#topicID').val() + "\"/><input type='hidden' id='precio' name='precio' value=\"" + $('#precio_p').val() + "\"/><input type='hidden' class='subtotal' id='subtotal' name='subtotal' value=\"" + parseFloat($("#cantidad_p").val()*$("#precio_p").val()) + "\"/>");
+		input = $("<tr><td></td><td class='mdl-data-table__cell--non-numeric'>"+ $("#producto_p").val() +"</td><td>" + "<input type='number' id='cantidad' class='mdl-textfield__input mdl-textfield--align-right' name='cantidad' value=\"" + $("#cantidad_p").val() + "\"/>" + "</td><td> $"+ $("#precio_p").val()  +"</td><td> $" +  parseFloat($("#cantidad_p").val()*$("#precio_p").val()).toFixed(3) + "</td></tr><input type='hidden' id='producto' name='producto' value=\"" + $('#topicID').val() + "\"/><input type='hidden' id='precio' name='precio' value=\"" + $('#precio_p').val() + "\"/><input type='hidden' class='subtotal' id='subtotal' name='subtotal' value=\"" + parseFloat($("#cantidad_p").val()*$("#precio_p").val()) + "\"/>");
 		$(".venta").append(input);
 		$(".venta tr td:first-child").addClass("mdl-data-table__cell--non-numeric")
-		$("#producto_p").val(" ");
-		$("#cantidad_p").val(" ");
+		$("#producto_p").val("");
+		$("#cantidad_p").val("");
 		$("#producto_p").focus();
+		$('.suminputs').each(function(){
+				var totalp = 0.0;
+				$(this).find('.subtotal').each(function(){
+					totalp = parseFloat(totalp)+parseFloat($(this).val(),3); //<==== a catch  in here !! read below
+				});
+				$(".total").val(parseFloat(totalp).toFixed(3));
+				/*$("#pago_efectivo").val(parseFloat(totalp).toFixed(3));*/
+			
+		});
+
+	});
+	$(document).keypress(function(e) {
+  		if(e.which == 13) {
+		    $("#producto_p").val(" ");
+			$("#cantidad_p").val(" ");
+			$("#producto_p").focus();
+			$('.suminputs').each(function(){
+				var totalp = 0.0;
+				$(this).find('.subtotal').each(function(){
+					totalp = parseFloat(totalp)+parseFloat($(this).val(),3); //<==== a catch  in here !! read below
+				});
+				$(".total").val(parseFloat(totalp).toFixed(3));
+				/*$("#pago_efectivo").val(parseFloat(totalp).toFixed(3));*/
+			
+			});
+  		}
 
 	});
 	$("tbody.venta").bind('keyup mouseup', function () {
