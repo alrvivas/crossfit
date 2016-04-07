@@ -195,7 +195,7 @@ $(document).ready(function() {
 		}
 	});
 	$("tbody.venta").bind('keyup mouseup', function () {
-	   /*alert("changed");   */             
+	   alert("changed");              
 	    $(this).find(".subtotal").val(parseFloat($(this).find("#cantidad").val()*$(this).find("#precio").val()).toFixed(2)); 
 	    /*$(this).find("#subtotalkg").val(parseFloat($(this).find("#cantidad").val()*$(this).find("#peso").val()).toFixed(3)); */
 	    /*$('.suminputs').each(function(){
@@ -205,15 +205,15 @@ $(document).ready(function() {
 				});
 				$(".totalkg").val(parseFloat(total).toFixed(3));
 			});*/
-	    $('.suminputs').each(function(){
+	    /*$('.suminputs').each(function(){
 				var totalp = 0.0;
 				$(this).find('.subtotal').each(function(){
 					totalp = parseFloat(totalp)+parseFloat($(this).val(),3); //<==== a catch  in here !! read below
 				});
-				$(".total").val(parseFloat(totalp).toFixed(3));
+				$(".total").val(parseFloat(totalp).toFixed(3));*/
 				/*$("#pago_efectivo").val(parseFloat(totalp).toFixed(3));*/
 			
-		});
+		/*});*/
 		/*Comision leche*/
 
 	 	
