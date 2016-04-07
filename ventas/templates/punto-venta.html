@@ -125,7 +125,7 @@
 							    <input class="mdl-textfield__input mdl-textfield--align-left" type="text" pattern="-?[0-9]*(\.[0-9]+)?" id="cantidad_p" tabindex="2">
 							    <label class="mdl-textfield__label" for="cantidad_p">Cantidad</label>
 							    <span class="mdl-textfield__error">¡No es número!</span>
-							    <button id="anadir" type="button"  class="mdl-button mdl-js-button mdl-button--icon mdl-color--red-500" style="right: 0;">
+							    <button id="anadir" type="button"  class="mdl-button mdl-js-button mdl-button--icon mdl-color--red-500" style="right: 0;" tabindex="3">
 									<i class="material-icons mdl-color-text--white">add_shopping_cart</i>
 								</button>
 						  	</div>							
@@ -210,8 +210,8 @@ $(document).ready(function() {
 	});
 	$("tbody.venta").bind('keyup mouseup', function () {
 	   /*alert("changed");   */             
-	    /*$(this).find("#subtotal").val(parseFloat($(this).find("#cantidad").val()*$(this).find("#precio").val()).toFixed(3)); 
-	    $(this).find("#subtotalkg").val(parseFloat($(this).find("#cantidad").val()*$(this).find("#peso").val()).toFixed(3)); */
+	    $(this).find("#subtotal").val(parseFloat($(this).find("#cantidad").val()*$(this).find("#precio").val()).toFixed(3)); 
+	    /*$(this).find("#subtotalkg").val(parseFloat($(this).find("#cantidad").val()*$(this).find("#peso").val()).toFixed(3)); */
 	    /*$('.suminputs').each(function(){
 				var total = 0.0;
 				$(this).find('.stotalkg').each(function(){
