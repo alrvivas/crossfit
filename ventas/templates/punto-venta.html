@@ -191,7 +191,7 @@ $(document).ready(function() {
 
 	$(document).keypress(function(e) {
   		if(e.which == 13) {
-  			input = $("<tr><td></td><td class='mdl-data-table__cell--non-numeric'>"+ $("#producto_p").val() +"</td><td>" + "<input type='number' id='cantidad_f' class='cantidad_f mdl-textfield__input mdl-textfield--align-right' name='cantidad_f' value=\"" + $("#cantidad_p").val() + "\"/>" + "</td><td class='precio_front' id='precio_front'> $"+ $("#precio_p").val()  +"<input type='hidden' class='precio' id='precio' name='precio' value=\"" + $('#precio_p').val() + "\"/></td><td class='subtotal_front'> $" +  parseFloat($("#cantidad_p").val()*$("#precio_p").val()).toFixed(3) + "<input type='hidden' class='subtotal' id='subtotal' name='subtotal' value=\"" + parseFloat($("#cantidad_p").val()*$("#precio_p").val()) + "\"/></td><input type='hidden' class='producto' id='producto' name='producto' value=\"" + $('#topicID').val() + "\"/><input type='hidden' id='cantidad' class='cantidad ' name='cantidad' value=\"" + $("#cantidad_f").val() + "\"/></tr>");
+  			input = $("<tr><td></td><td class='mdl-data-table__cell--non-numeric'>"+ $("#producto_p").val() +"</td><td>" + "<input type='number' id='cantidad_f' class='cantidad_f mdl-textfield__input mdl-textfield--align-right' name='cantidad_f' value=\"" + $("#cantidad_p").val() + "\"/>" + "</td><td class='precio_front' id='precio_front'> $"+ $("#precio_p").val()  +"<input type='hidden' class='precio' id='precio' name='precio' value=\"" + $('#precio_p').val() + "\"/></td><td >"+"<input type='number' class='subtotal' id='subtotal' name='subtotal' value=\"" + parseFloat($("#cantidad_p").val()*$("#precio_p").val()).toFixed(3) + "\" disable/></td><input type='hidden' class='producto' id='producto' name='producto' value=\"" + $('#topicID').val() + "\"/><input type='hidden' id='cantidad' class='cantidad ' name='cantidad' value=\"" + $("#cantidad_f").val() + "\"/></tr>");
 			$(".lista-venta").append(input);
 			$(".lista-venta tr td:first-child").addClass("mdl-data-table__cell--non-numeric")
 		    $("#producto_p").val("");
@@ -222,7 +222,7 @@ function calculateRowSum(){
         $(this).find('td').each(function(){
       		precio += parseFloat($(this).find('input.precio').val()).toFixed(3) || 0;
         });
-        $(this).find('td:last').html(parseFloat(cantidad*precio).toFixed(3));
+        /*$(this).find('.subtotal_front').html("$"+parseFloat(cantidad*precio).toFixed(3));*/
         $(this).find('.subtotal').val(parseFloat(cantidad*precio).toFixed(3));
     });
 }
