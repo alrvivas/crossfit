@@ -221,7 +221,7 @@ function calculateRowSum(){
     $('table tr:has(td):not(:last)').each(function(){
    		var subtotal = 0; 
    		$(this).find('td').each(function(){
-      		subtotal = parseFloat($(this).find('.cantidad').val()*($(this).find('.precio').val());
+      		subtotal = parseFloat($(this).find('.cantidad').val()*$(this).find('.precio').val());
         });
            $(this).find('td:last').html(subtotal);
     });
