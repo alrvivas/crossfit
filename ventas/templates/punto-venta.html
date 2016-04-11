@@ -218,10 +218,10 @@ function calculateRowSum(){
    		var precio = 0.0; 
    		$(this).find('td').each(function(){
       		cantidad += parseFloat($(this).find('.cantidad').val()).toFixed(3) || 0;
-      		alert($(this).find('.cantidad').val()+"+"+precio);
+      		
         });
         $(this).find('td').each(function(){
-      		precio += parseFloat($(this).find('.precio').val()).toFixed(3) || 0;
+      		precio += parseFloat($(this).find('input.precio').val()).toFixed(3) || 0;
       		alert($(this).find('.precio').val()+"+"+precio);
         });
         alert(cantidad+"+"+precio);   
