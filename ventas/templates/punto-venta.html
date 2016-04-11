@@ -219,11 +219,12 @@ $(document).ready(function() {
 });
 function calculateRowSum(){
     $('table tr:has(td):not(:last)').each(function(){
-   		var subtotal = 0; 
+   		var subtotal = 0.0; 
    		$(this).find('td').each(function(){
-      		subtotal = parseFloat($(this).find('.cantidad_f').val()*$(this).find('.precio_front').text());
+      		subtotal = parseFloat($(this).find('.cantidad_f').val()*$(this).find('.precio').val());
         });
-           $(this).find('td:last').html(subtotal);
+        alert(subtotal);
+        $(this).find('td:last').html(subtotal);
     });
 }
 </script>
