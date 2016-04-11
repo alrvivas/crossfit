@@ -203,12 +203,13 @@ $(document).ready(function() {
 			  $(this).find('.precio').attr('name', 'form-' + i +'-precio');
 			  $(this).find('.subtotal').attr('name', 'form-' + i +'-subtotal');
 			});
-			
+			calcularTotal();
 		}
 	});
 	
 	$("div.venta").bind('keyup mouseup', function () {
 		calculateRowSum();
+		calcularTotal();
 	});
 
 });
