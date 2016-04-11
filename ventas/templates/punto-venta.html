@@ -222,13 +222,20 @@ function calculateRowSum(){
    		var cantidad = 0.0; 
    		var precio = 0.0; 
    		$(this).find('td').each(function(){
-      		cantidad += parseFloat($(this).find('input.cantidad_f').val()) || 0;
+      		cantidad += parseFloat($(this).find('input.cantidad_f').val()).toFixed(3) || 0;
         });
         $(this).find('td').each(function(){
-      		precio += parseFloat($(this).find('input.precio').val()) || 0;
+      		precio += parseFloat($(this).find('input.precio').val()).toFixed(3) || 0;
         });
-        $(this).find('td:last').html(cantidad*precio);
+        $(this).find('td:last').html(parseFloat(cantidad*precio).toFixed(3));
     });
+}
+function calculateSum() {
+    var total = 0;
+    $("td.subtotal_front").each(function() {
+            total += parseFloat($(this).html())||0;
+    });
+    $("#total").html("<h3> $"+total.toFixed(3)+"</h3>");
 }
 </script>
 
