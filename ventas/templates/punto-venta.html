@@ -218,10 +218,13 @@ function calculateRowSum(){
    		var precio = 0.0; 
    		$(this).find('td').each(function(){
       		cantidad += parseFloat($(this).find('.cantidad').val()).toFixed(3) || 0;
+      		alert($(this).find('.cantidad').val()+"+"+precio);
         });
         $(this).find('td').each(function(){
       		precio += parseFloat($(this).find('.precio').val()).toFixed(3) || 0;
+      		alert($(this).find('.precio').val()+"+"+precio);
         });
+        alert(cantidad+"+"+precio);   
         /*$(this).find('.subtotal_front').html("$"+parseFloat(cantidad*precio).toFixed(3));*/
         $(this).find('td .subtotal').val(parseFloat(cantidad*precio).toFixed(3));
     });
@@ -231,7 +234,7 @@ function calcularTotal() {
 	    var total = 0.0;
 	    $(".subtotal").each(function() {
 	    	total = parseFloat(total)+parseFloat($(this).val());
-	        alert(total);   
+	        
 	    });
 	    $("#total").html("<h3> $"+total.toFixed(3)+"</h3>");
     });
