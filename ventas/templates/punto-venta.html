@@ -203,7 +203,7 @@ $(document).ready(function() {
 			  $(this).find('.precio').attr('name', 'form-' + i +'-precio');
 			  $(this).find('.subtotal').attr('name', 'form-' + i +'-subtotal');
 			});
-			calcularTotal();
+			
 		}
 	});
 	
@@ -223,7 +223,7 @@ function calculateRowSum(){
       		precio += parseFloat($(this).find('input.precio').val()).toFixed(3) || 0;
         });
         /*$(this).find('.subtotal_front').html("$"+parseFloat(cantidad*precio).toFixed(3));*/
-        $(this).find('.subtotal').val(parseFloat(cantidad*precio).toFixed(3));
+        $(this).find('td .subtotal').val(parseFloat(cantidad*precio).toFixed(3));
     });
 }
 function calcularTotal() {
