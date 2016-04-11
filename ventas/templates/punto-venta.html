@@ -196,8 +196,8 @@ $(document).ready(function() {
 	});
 	$("tbody.venta").bind('keyup mouseup', function () {
 	   /*alert("changed");              */
-	    $(this).find("tr.subtotal").val(parseFloat($(this).find("tr#cantidad").val()*$(this).find("tr#precio").val()).toFixed(3)); 
-	    $(this).find("td.subtotal_front").text(parseFloat($(this).find("td#cantidad").val()*$(this).find("td#precio").val()).toFixed(3)); 
+	    $(this).find(".subtotal").val(parseFloat($(this).find("#cantidad").val()*$(this).find("#precio").val()).toFixed(3)); 
+	    $(this).find("td.subtotal_front").text(parseFloat($(this).find("#cantidad").val()*$(this).find("#precio").val()).toFixed(3)); 
 	    /*$(this).find("#subtotalkg").val(parseFloat($(this).find("#cantidad").val()*$(this).find("#peso").val()).toFixed(3)); */
 	    /*$('.suminputs').each(function(){
 				var total = 0.0;
