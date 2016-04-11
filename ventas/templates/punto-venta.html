@@ -195,7 +195,7 @@ $(document).ready(function() {
 
 	$(document).keypress(function(e) {
   		if(e.which == 13) {
-  			input = $("<tr><td></td><td class='mdl-data-table__cell--non-numeric'>"+ $("#producto_p").val() +"</td><td>" + "<input type='number' id='cantidad' class='cantidad mdl-textfield__input mdl-textfield--align-right' name='cantidad' value=\"" + $("#cantidad_p").val() + "\"/>" + "</td><td id='precio_front'> $"+ $("#precio_p").val()  +"</td><td class='subtotal_front'> $" +  parseFloat($("#cantidad_p").val()*$("#precio_p").val()).toFixed(3) + "</td></tr><input type='hidden' class='producto' id='producto' name='producto' value=\"" + $('#topicID').val() + "\"/><input type='hidden' class='precio' id='precio' name='precio' value=\"" + $('#precio_p').val() + "\"/><input type='hidden' class='subtotal' id='subtotal' name='subtotal' value=\"" + parseFloat($("#cantidad_p").val()*$("#precio_p").val()) + "\"/>");
+  			input = $("<tr><td></td><td class='mdl-data-table__cell--non-numeric'>"+ $("#producto_p").val() +"</td><td>" + "<input type='number' id='cantidad_f' class='cantidad_f mdl-textfield__input mdl-textfield--align-right' name='cantidad_f' value=\"" + $("#cantidad_p").val() + "\"/>" + "</td><td id='precio_front'> $"+ $("#precio_p").val()  +"</td><td class='subtotal_front'> $" +  parseFloat($("#cantidad_p").val()*$("#precio_p").val()).toFixed(3) + "</td><input type='hidden' class='producto' id='producto' name='producto' value=\"" + $('#topicID').val() + "\"/><input type='hidden' id='cantidad' class='cantidad ' name='cantidad' value=\"" + $("#cantidad_f").val() + "\"/>"<input type='hidden' class='precio' id='precio' name='precio' value=\"" + $('#precio_p').val() + "\"/><input type='hidden' class='subtotal' id='subtotal' name='subtotal' value=\"" + parseFloat($("#cantidad_p").val()*$("#precio_p").val()) + "\"/></tr>");
 			$(".lista-venta").append(input);
 			$(".lista-venta tr td:first-child").addClass("mdl-data-table__cell--non-numeric")
 		    $("#producto_p").val("");
@@ -212,8 +212,9 @@ $(document).ready(function() {
 	});
 	
 	$("div.venta").bind('keyup mouseup', function () {
-	   /*alert("changed");  */  
-		$(this).find(".subtotal").val(parseFloat($(this).find("input.cantidad").val()*$(this).find("#precio").val()).toFixed(3)); 
+	   /*alert("changed");  */
+	   	$(this).find(".cantidad").val($(this).find(".cantidad_f").val())  
+		$(this).find(".subtotal").val(parseFloat($(this).find(".cantidad").val()*$(this).find(".precio").val()).toFixed(3)); 
 	    
 	    /*$(this).find("td.subtotal_front").text(parseFloat($(this).find("#cantidad").val()*$(this).find("#precio").val()).toFixed(3)); */
 	    /*$(this).find("#subtotalkg").val(parseFloat($(this).find("#cantidad").val()*$(this).find("#peso").val()).toFixed(3)); */
