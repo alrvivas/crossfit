@@ -212,36 +212,20 @@ $(document).ready(function() {
 	});
 	
 	$("div.venta").bind('keyup mouseup', function () {
-	   /*alert("changed");  */
-	   	$(this).find(".cantidad").val($(this).find(".cantidad_f").val())  
-		$(this).find(".subtotal").val(parseFloat($(this).find(".cantidad").val()*$(this).find(".precio").val()).toFixed(3)); 
-	    
-	    /*$(this).find("td.subtotal_front").text(parseFloat($(this).find("#cantidad").val()*$(this).find("#precio").val()).toFixed(3)); */
-	    /*$(this).find("#subtotalkg").val(parseFloat($(this).find("#cantidad").val()*$(this).find("#peso").val()).toFixed(3)); */
-	    /*$('.suminputs').each(function(){
-				var total = 0.0;
-				$(this).find('.stotalkg').each(function(){
-					total = parseFloat(total)+parseFloat($(this).val(),3); //<==== a catch  in here !! read below
-				});
-				$(".totalkg").val(parseFloat(total).toFixed(3));
-			});*/
-	    /*$('.suminputs').each(function(){
-				var totalp = 0.0;
-				$(this).find('.subtotal').each(function(){
-					totalp = parseFloat(totalp)+parseFloat($(this).val(),3); //<==== a catch  in here !! read below
-				});
-				$(".total").val(parseFloat(totalp).toFixed(3));*/
-				/*$("#pago_efectivo").val(parseFloat(totalp).toFixed(3));*/
-			
-		/*});*/
-		/*Comision leche*/
-
-	 	
+		calculateRowSum();	 	
 	   
 	});
 
 });
-
+function calculateRowSum(){
+    $('table tr:has(td):not(:last)').each(function(){
+   		var subtotal = 0; 
+   		$(this).find('td').each(function(){
+      		subtotal = parseFloat($(this).find('.cantidad').val()*($(this).find('.precio').val());
+        });
+           $(this).find('td:last').html(subtotal);
+    });
+}
 </script>
 
 {% endblock %}
