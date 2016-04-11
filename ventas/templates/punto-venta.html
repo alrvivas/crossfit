@@ -223,7 +223,7 @@ function calculateRowSum()
        $(this).find('td').each(function(){
           precio += parseFloat($(this).find('.precio').val()) || 0;
         });
-    	$(this).find('td:last').html(cantidad*precio);
+    	$(this).find('.subtotal').val(cantidad*precio);
     });
 }
 function calcularTotal() {
