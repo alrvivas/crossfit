@@ -208,7 +208,7 @@ $(document).ready(function() {
 	
 	$(".venta").bind('keyup mouseup', function () {
 	   /*alert("changed");  */  
-		(this).find(".subtotal").val(parseFloat($(this).closest('tr').find("input.cantidad").val()*$(this).find("#precio").val()).toFixed(3)); 
+		$(this).find(".subtotal").val(parseFloat($(this).closest('tr').find("input.cantidad").val()*$(this).find("#precio").val()).toFixed(3)); 
 	    
 	    /*$(this).find("td.subtotal_front").text(parseFloat($(this).find("#cantidad").val()*$(this).find("#precio").val()).toFixed(3)); */
 	    /*$(this).find("#subtotalkg").val(parseFloat($(this).find("#cantidad").val()*$(this).find("#peso").val()).toFixed(3)); */
