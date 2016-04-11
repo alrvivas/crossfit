@@ -180,24 +180,37 @@ $(document).ready(function() {
 		$("#producto_p").val("");
 		$("#cantidad_p").val("");
 		$("#producto_p").focus();		
-
+		$(".venta").each(function(i) {
+		  $(this).find('.cantidad').attr('name', 'form-' + i +'-cantidad');
+		  $(this).find('.producto').attr('name', 'form-' + i +'-producto');
+		  $(this).find('.precio').attr('name', 'form-' + i +'-precio');
+		  $(this).find('.subtotal').attr('name', 'form-' + i +'-subtotal');
+		});
 	});
 
 	$(document).keypress(function(e) {
   		if(e.which == 13) {
-  			input = $("<tr><td></td><td class='mdl-data-table__cell--non-numeric'>"+ $("#producto_p").val() +"</td><td>" + "<input type='number' id='cantidad' class='mdl-textfield__input mdl-textfield--align-right' name='cantidad' value=\"" + $("#cantidad_p").val() + "\"/>" + "</td><td id='precio_front'> $"+ $("#precio_p").val()  +"</td><td class='subtotal_front'> $" +  parseFloat($("#cantidad_p").val()*$("#precio_p").val()).toFixed(3) + "</td></tr><input type='hidden' id='producto' name='producto' value=\"" + $('#topicID').val() + "\"/><input type='hidden' id='precio' name='precio' value=\"" + $('#precio_p').val() + "\"/><input type='hidden' class='subtotal' id='subtotal' name='subtotal' value=\"" + parseFloat($("#cantidad_p").val()*$("#precio_p").val()) + "\"/>");
+  			input = $("<tr><td></td><td class='mdl-data-table__cell--non-numeric'>"+ $("#producto_p").val() +"</td><td>" + "<input type='number' id='cantidad' class='cantidad mdl-textfield__input mdl-textfield--align-right' name='cantidad' value=\"" + $("#cantidad_p").val() + "\"/>" + "</td><td id='precio_front'> $"+ $("#precio_p").val()  +"</td><td class='subtotal_front'> $" +  parseFloat($("#cantidad_p").val()*$("#precio_p").val()).toFixed(3) + "</td></tr><input type='hidden' class='producto' id='producto' name='producto' value=\"" + $('#topicID').val() + "\"/><input type='hidden' class='precio' id='precio' name='precio' value=\"" + $('#precio_p').val() + "\"/><input type='hidden' class='subtotal' id='subtotal' name='subtotal' value=\"" + parseFloat($("#cantidad_p").val()*$("#precio_p").val()) + "\"/>");
 			$(".venta").append(input);
 			$(".venta tr td:first-child").addClass("mdl-data-table__cell--non-numeric")
 		    $("#producto_p").val("");
 			$("#cantidad_p").val("");
 			$("#producto_p").focus();
+			$(".venta").each(function(i) {
+			  $(this).find('.cantidad').attr('name', 'form-' + i +'-cantidad');
+			  $(this).find('.producto').attr('name', 'form-' + i +'-producto');
+			  $(this).find('.precio').attr('name', 'form-' + i +'-precio');
+			  $(this).find('.subtotal').attr('name', 'form-' + i +'-subtotal');
+			});
 			
 		}
 	});
-	$("tbody.venta").bind('keyup mouseup', function () {
-	   /*alert("changed");              */
-	    $(this).find(".subtotal").val(parseFloat($(this).find("#cantidad").val()*$(this).find("#precio").val()).toFixed(3)); 
-	    $(this).find("td.subtotal_front").text(parseFloat($(this).find("#cantidad").val()*$(this).find("#precio").val()).toFixed(3)); 
+	
+	$(".venta").bind('keyup mouseup', function () {
+	   /*alert("changed");  */  
+		(this).find(".subtotal").val(parseFloat($(this).closest('tr').find("input.cantidad").val()*$(this).find("#precio").val()).toFixed(3)); 
+	    
+	    /*$(this).find("td.subtotal_front").text(parseFloat($(this).find("#cantidad").val()*$(this).find("#precio").val()).toFixed(3)); */
 	    /*$(this).find("#subtotalkg").val(parseFloat($(this).find("#cantidad").val()*$(this).find("#peso").val()).toFixed(3)); */
 	    /*$('.suminputs').each(function(){
 				var total = 0.0;
