@@ -223,11 +223,9 @@ function calculateRowSum(){
    		var precio = 0.0; 
    		$(this).find('td').each(function(){
       		cantidad += parseFloat($(this).find('input.cantidad_f').val()) || 0;
-      		alert($(this).find('.cantidad_f').val());
         });
         $(this).find('td').each(function(){
       		precio += parseFloat($(this).find('input.precio').val()) || 0;
-      		alert($(this).find('.precio').val());
         });
         $(this).find('td:last').html(cantidad*precio);
     });
