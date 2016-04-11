@@ -191,7 +191,7 @@ $(document).ready(function() {
 
 	$(document).keypress(function(e) {
   		if(e.which == 13) {
-  			input = $("<tr><td></td><td class='mdl-data-table__cell--non-numeric'>"+ $("#producto_p").val() +"</td><td>" + "<input type='number' id='cantidad_f' class='cantidad_f mdl-textfield__input mdl-textfield--align-right' name='cantidad_f' value=\"" + $("#cantidad_p").val() + "\"/>" + "</td><td class='precio_front' id='precio_front'> $"+ $("#precio_p").val()  +"<input type='hidden' class='precio' id='precio' name='precio' value=\"" + $('#precio_p').val() + "\"/></td><td >"+"<input type='number' class='subtotal' id='subtotal' name='subtotal' value=\"" + parseFloat($("#cantidad_p").val()*$("#precio_p").val()).toFixed(3) + "\" disable/></td><input type='hidden' class='producto' id='producto' name='producto' value=\"" + $('#topicID').val() + "\"/><input type='hidden' id='cantidad' class='cantidad ' name='cantidad' value=\"" + $("#cantidad_f").val() + "\"/></tr>");
+  			input = $("<tr><td></td><td class='mdl-data-table__cell--non-numeric'>"+ $("#producto_p").val() +"</td><td>" + "<input type='number' id='cantidad' class='cantidad mdl-textfield__input mdl-textfield--align-right' name='cantidad' value=\"" + $("#cantidad_p").val() + "\"/>" + "</td><td class='precio_front' id='precio_front'> $"+ $("#precio_p").val()  +"<input type='hidden' class='precio' id='precio' name='precio' value=\"" + $('#precio_p').val() + "\"/></td><td >"+"<input type='number' class='subtotal mdl-textfield__input mdl-textfield--align-right' id='subtotal' name='subtotal' value=\"" + parseFloat($("#cantidad_p").val()*$("#precio_p").val()).toFixed(3) + "\" disabled/></td><input type='hidden' class='producto' id='producto' name='producto' value=\"" + $('#topicID').val() + "\"/></tr>");
 			$(".lista-venta").append(input);
 			$(".lista-venta tr td:first-child").addClass("mdl-data-table__cell--non-numeric")
 		    $("#producto_p").val("");
@@ -217,7 +217,7 @@ function calculateRowSum(){
    		var cantidad = 0.0; 
    		var precio = 0.0; 
    		$(this).find('td').each(function(){
-      		cantidad += parseFloat($(this).find('input.cantidad_f').val()).toFixed(3) || 0;
+      		cantidad += parseFloat($(this).find('input.cantidad').val()).toFixed(3) || 0;
         });
         $(this).find('td').each(function(){
       		precio += parseFloat($(this).find('input.precio').val()).toFixed(3) || 0;
