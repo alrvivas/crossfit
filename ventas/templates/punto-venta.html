@@ -63,7 +63,7 @@
 		  			
 				</div>
 				<div class="demo-cards mdl-cell mdl-cell--9-col mdl-grid mdl-grid--no-spacing">	
-					<div class="mdl-color--white mdl-shadow--2dp mdl-cell mdl-cell--12-col mdl-grid suminputs">
+					<div class="mdl-color--white mdl-shadow--2dp mdl-cell mdl-cell--12-col mdl-grid suminputs venta">
 						<table class="mdl-data-table mdl-js-data-table mdl-data-table--selectable mdl-fullwidth">
 							<thead>
 								<tr>
@@ -73,7 +73,7 @@
 								  <th>Total</th>
 								</tr>
 							</thead>
-							<tbody class="venta">
+							<tbody>
 								
 							</tbody>
 						</table>
@@ -206,9 +206,9 @@ $(document).ready(function() {
 		}
 	});
 	
-	$(".venta").bind('keyup mouseup', function () {
+	$("div.venta").bind('keyup mouseup', function () {
 	   /*alert("changed");  */  
-		$(this).find(".subtotal").val(parseFloat($(this).closest('tr').find("input.cantidad").val()*$(this).find("#precio").val()).toFixed(3)); 
+		$(this).find(".subtotal").val(parseFloat($(this).find(".cantidad").val()*$(this).find("#precio").val()).toFixed(3)); 
 	    
 	    /*$(this).find("td.subtotal_front").text(parseFloat($(this).find("#cantidad").val()*$(this).find("#precio").val()).toFixed(3)); */
 	    /*$(this).find("#subtotalkg").val(parseFloat($(this).find("#cantidad").val()*$(this).find("#peso").val()).toFixed(3)); */
