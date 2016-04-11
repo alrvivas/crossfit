@@ -229,7 +229,7 @@ function calculateRowSum(){
 function calcularTotal() {
     var total = 0.0;
     $("td.subtotal_front").each(function() {
-    	total = parseFloat(total)+parseFloat($(this).val());
+    	total = parseFloat(total)+parseFloat($(this).text());
            
     });
     $("#total").html("<h3> $"+total.toFixed(3)+"</h3>");
