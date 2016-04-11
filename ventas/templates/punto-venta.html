@@ -74,12 +74,7 @@
 								</tr>
 							</thead>
 							<tbody class="lista-venta">
-								<tr>
-								  <td></td>
-								  <td></td>
-								  <td></td>
-								  <td></td>
-								</tr>
+								
 							</tbody>
 						</table>
 					</div>			    	
@@ -232,9 +227,10 @@ function calculateRowSum(){
     });
 }
 function calcularTotal() {
-    var total = 0;
+    var total = 0.0;
     $("td.subtotal_front").each(function() {
-            total += parseFloat($(this).html())||0;
+            total += parseFloat($(this).text())||0;
+            alert(total);
     });
     $("#total").html("<h3> $"+total.toFixed(3)+"</h3>");
 }
