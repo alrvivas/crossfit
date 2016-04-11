@@ -222,8 +222,8 @@ function calculateRowSum(){
    		var subtotal = 0.0; 
    		$(this).find('td').each(function(){
       		subtotal = parseFloat($(this).find('.cantidad_f').val()*$(this).find('.precio').val());
+      		alert($(this).find('.cantidad_f').val()+"*"+$(this).find('.precio').val());
         });
-        alert(subtotal);
         $(this).find('td:last').html(subtotal);
     });
 }
