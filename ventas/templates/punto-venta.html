@@ -179,9 +179,7 @@ $(document).ready(function() {
 		$(".venta tr td:first-child").addClass("mdl-data-table__cell--non-numeric")
 		$("#producto_p").val("");
 		$("#cantidad_p").val("");
-		$("#producto_p").focus();
-		
-		
+		$("#producto_p").focus();		
 
 	});
 
@@ -196,10 +194,10 @@ $(document).ready(function() {
 			
 		}
 	});
-	$(".venta").bind('keyup mouseup', function () {
+	$("tbody.venta").bind('keyup mouseup', function () {
 	   /*alert("changed");              */
-	    $(this).find(".subtotal").val(parseFloat($(this).find("#cantidad").val()*$(this).find("#precio").val()).toFixed(3)); 
-	    $(this).find(".subtotal_front").text(parseFloat($(this).find("#cantidad").val()*$(this).find("#precio").val()).toFixed(3)); 
+	    $(this).find(".subtotal").val(parseFloat($(this).find("input#cantidad").val()*$(this).find("input#precio").val()).toFixed(3)); 
+	    $(this).find(".subtotal_front").text(parseFloat($(this).find("input#cantidad").val()*$(this).find("input#precio").val()).toFixed(3)); 
 	    /*$(this).find("#subtotalkg").val(parseFloat($(this).find("#cantidad").val()*$(this).find("#peso").val()).toFixed(3)); */
 	    /*$('.suminputs').each(function(){
 				var total = 0.0;
