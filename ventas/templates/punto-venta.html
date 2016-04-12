@@ -37,33 +37,36 @@
   		<form action=""  method="post" role="form">{% csrf_token %}	  		
 	  	<div class="mdl-grid demo-content mdl-layout__tab-panel is-active" id="orden">
 	  		<div class="mdl-grid">	  		
-	  			<section class="demo-cards dl-color--white mdl-shadow--2dp mdl-cell mdl-cell--3-col mdl-grid mdl-grid--no-spacing">	
-	  				<div class="mdl-textfield mdl-js-textfield mdl-cell--12-col">
-				  		<select class="mdl-textfield__input" type="text" name="cliente" id="cliente" required>
-				  			<option selected>Seleccione un cliente ...</option>
-				  			{% for c in clientes %}
-				  				<option value="{{c.id}}">{{c.nombre}}</option>
-				  			{% endfor %}
-				  		</select>      
-					    <label class="mdl-textfield__label" for="cliente">Cliente</label>
-				  	</div>	
-				  	<div class="mdl-textfield mdl-js-textfield mdl-cell--12-col">
-				  		<select class="mdl-textfield__input" type="text" name="tipo_pago" id="tipo_pago" required>
-				  			<option selected>Tipo de Pago ...</option>
-				  			{% for tp in tipo_pago %}
-				  				<option value="{{tp.id}}">{{tp.nombre}}</option>
-				  			{% endfor %}
-				  		</select>      
-					    <label class="mdl-textfield__label" for="tipo_pago">Tipo de Pago</label>
-				  	</div>
+	  			<section class="demo-cards dl-color--white mdl-shadow--2dp mdl-cell mdl-cell--3-col mdl-grid mdl-grid--no-spacing">
+	  				<div class="datos-venta mdl-cell--11-col">
+	  					<div class="mdl-textfield mdl-js-textfield mdl-cell--12-col">
+					  		<select class="mdl-textfield__input" type="text" name="cliente" id="cliente" required>
+					  			<option selected>Seleccione un cliente ...</option>
+					  			{% for c in clientes %}
+					  				<option value="{{c.id}}">{{c.nombre}}</option>
+					  			{% endfor %}
+					  		</select>      
+						    <label class="mdl-textfield__label" for="cliente">Cliente</label>
+					  	</div>	
+					  	<div class="mdl-textfield mdl-js-textfield mdl-cell--12-col">
+					  		<select class="mdl-textfield__input" type="text" name="tipo_pago" id="tipo_pago" required>
+					  			<option selected>Tipo de Pago ...</option>
+					  			{% for tp in tipo_pago %}
+					  				<option value="{{tp.id}}">{{tp.nombre}}</option>
+					  			{% endfor %}
+					  		</select>      
+						    <label class="mdl-textfield__label" for="tipo_pago">Tipo de Pago</label>
+					  	</div>
+	  				</div>	
+	  				
 				  	<input class="mdl-textfield__input" type="hidden" name="estatus_orden" id="estatus_orden" value="1" required/>
 				  	<input class="mdl-textfield__input" type="hidden" name="estatus_cobranza" id="estatus_cobranza" value="1" required/>	
 				  	<input type="hidden" name="total" value="" required="required" /></input>
 		    		<input type="hidden" name="total_peso" value="" required="required" /></input>	
 		  			
 				</section>
-				<section class=" mdl-cell mdl-cell--9-col mdl-grid mdl-grid--no-spacing">	
-					<div class="mdl-color--white mdl-shadow--2dp mdl-cell mdl-cell--12-col mdl-grid suminputs venta">
+				<section class=" mdl-cell mdl-cell--9-col mdl-grid ">	
+					<div class="mdl-color--white mdl-shadow--2dp mdl-cell mdl-cell--12-col suminputs venta">
 						<table class="mdl-data-table mdl-js-data-table mdl-data-table--selectable mdl-fullwidth">
 							<thead>
 								<tr>
