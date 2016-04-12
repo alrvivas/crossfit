@@ -37,7 +37,7 @@
   		<form action=""  method="post" role="form">{% csrf_token %}	  		
 	  	<div class="mdl-grid demo-content mdl-layout__tab-panel is-active" id="orden">
 	  		<div class="mdl-grid">	  		
-	  			<div class="demo-cards mdl-cell mdl-cell--3-col mdl-grid mdl-grid--no-spacing">	
+	  			<section class="demo-cards dl-color--white mdl-shadow--2dp mdl-cell mdl-cell--3-col mdl-grid mdl-grid--no-spacing">	
 	  				<div class="mdl-textfield mdl-js-textfield mdl-cell--12-col">
 				  		<select class="mdl-textfield__input" type="text" name="cliente" id="cliente" required>
 				  			<option selected>Seleccione un cliente ...</option>
@@ -61,8 +61,8 @@
 				  	<input type="hidden" name="total" value="" required="required" /></input>
 		    		<input type="hidden" name="total_peso" value="" required="required" /></input>	
 		  			
-				</div>
-				<div class="demo-cards mdl-cell mdl-cell--9-col mdl-grid mdl-grid--no-spacing">	
+				</section>
+				<section class=" mdl-cell mdl-cell--9-col mdl-grid mdl-grid--no-spacing">	
 					<div class="mdl-color--white mdl-shadow--2dp mdl-cell mdl-cell--12-col mdl-grid suminputs venta">
 						<table class="mdl-data-table mdl-js-data-table mdl-data-table--selectable mdl-fullwidth">
 							<thead>
@@ -78,7 +78,7 @@
 							</tbody>
 						</table>
 					</div>			    	
-		    	</div>
+		    	</section>
 	    	</div>
 	  	</div>
 	  	<div class="mdl-grid demo-content mdl-layout__tab-panel " id="productos">
