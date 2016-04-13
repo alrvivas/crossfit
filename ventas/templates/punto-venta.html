@@ -200,12 +200,7 @@ $(document).ready(function() {
 		    $("#producto_p").val("");
 			$("#cantidad_p").val("");
 			$("#producto_p").focus();
-			$(".lista-venta").each(function(i) {
-			  $(this).find('.cantidad').attr('name', 'form-' + i +'-cantidad');
-			  $(this).find('.producto').attr('name', 'form-' + i +'-producto');
-			  $(this).find('.precio').attr('name', 'form-' + i +'-precio');
-			  $(this).find('.subtotal').attr('name', 'form-' + i +'-subtotal');
-			});
+			
 			calcularTotal();
 		}
 	});
@@ -239,6 +234,15 @@ function calcularTotal() {
 	    });
 	    $("#total").html("<h3> $"+total.toFixed(3)+"</h3>");
     });
+    renombrar();
+}
+function renombrar(){
+	$(".lista-venta").each(function(i) {
+	  $(this).find('.cantidad').attr('name', 'form-' + i +'-cantidad');
+	  $(this).find('.producto').attr('name', 'form-' + i +'-producto');
+	  $(this).find('.precio').attr('name', 'form-' + i +'-precio');
+	  $(this).find('.subtotal').attr('name', 'form-' + i +'-subtotal');
+	});
 }
 </script>
 
