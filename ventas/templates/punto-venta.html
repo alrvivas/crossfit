@@ -237,8 +237,8 @@ function calcularTotal() {
     renombrar();
 }
 function renombrar(){
-	$('table tr:has(td):not(:last)').each(function(){
-		$(this).find('td').each(function(i){
+	$('table tr:has(td):not(:last)').each(function(i){
+		$(this).find('td').each(function(){
 	   		$(this).find('.cantidad').attr('name', 'form-' + i +'-cantidad');
 		  	$(this).find('.producto').attr('name', 'form-' + i +'-producto');
 		  	$(this).find('.precio').attr('name', 'form-' + i +'-precio');
