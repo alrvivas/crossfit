@@ -230,12 +230,18 @@ function calculateRowSum()
 function calcularTotal() {
     $('.suminputs').each(function(){
 	    var total = 0.0;
+	    var peso = 0.0;
 	    $(".subtotal").each(function() {
-	    	total = parseFloat(total)+parseFloat($(this).val());
+	    	total = parseFloat(total)+parseFloat($(this).val());	    	
+	        
+	    });
+	    $(".subtotal_peso").each(function() {
+	    	peso = parseFloat(peso)+parseFloat($(this).val());
 	        
 	    });
 	    $("#total").html("<h3> $"+total.toFixed(3)+"</h3>");
 	    $(".total-orden").val(total.toFixed(3));
+	    $(".total-peso").val(total.toFixed(3));
     });
     renombrar();
 }
