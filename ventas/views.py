@@ -38,10 +38,10 @@ def punto_venta(request):
     if request.method == 'POST':
         form_orden = ordenForm(request.POST)
         formset = orden_producto(request.POST, request.FILES)
-        if form_orden.is_valid() and formset.is_valid():
-            formset.save()
+        if form_orden.is_valid() and formset.is_valid():            
             orden = form_orden.save(commit = False)
-            orden.save()            
+            orden.save()
+            formset.save()            
             return redirect(orden.get_absolute_urle())
     else:
         formset = orden_producto(queryset=Orden_Producto.objects.none())
