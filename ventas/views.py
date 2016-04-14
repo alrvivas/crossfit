@@ -37,10 +37,18 @@ def punto_venta(request):
         if form_orden.is_valid():
             orden = form_orden.save(commit = False)
             orden.save()            
-            return redirect(orden.get_absolute_url())
+            return redirect(orden.get_absolute_urle())
     else:
         form_orden = ordenForm()
     args = {}
     args.update(csrf(request))
     template_name = "punto-venta.html"
     return render_to_response(template_name, locals(), context_instance=RequestContext(request))
+
+@login_required(login_url='/login/')
+def orden_exitosa(request,orden_id):
+    user = request.user
+    orden = get_object_or_404(Cliente, id=orden_id)
+    page_title = cliente.nombre     
+    template_name ="orden-exitosa.html" 
+    return render_to_response(template_name, locals(),context_instance=RequestContext(request))
