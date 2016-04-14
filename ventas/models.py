@@ -90,7 +90,7 @@ class Orden_Producto(models.Model):
     producto = models.ForeignKey(Producto, null=True, blank=True)
     precio = models.DecimalField(max_digits=10, decimal_places=3, null=True, blank=True)
     cantidad = models.IntegerField(null=True, blank=True)
-    subtotal = models.DecimalField(max_digits=10, decimal_places=3, null=True, blank=True)
+    subtotal_producto = models.DecimalField(max_digits=10, decimal_places=3, null=True, blank=True)
     subtotal_peso = models.DecimalField(max_digits=30, decimal_places=3, null=True, blank=True)
 
     def __unicode__(self):

@@ -7,7 +7,7 @@ from .models import *
 class ordenForm(ModelForm):
     class Meta:
         model = Orden
-        fields = '__all__'
+        fields = ('cliente','estatus_orden','tipo_pago','estatus_cobranza','fecha','subtotal','total','total_peso','saldo',)
 
 class oobservacionForm(forms.ModelForm):
     class Meta:
