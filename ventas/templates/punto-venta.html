@@ -40,12 +40,12 @@
 	  			<section class="demo-cards dl-color--white mdl-shadow--2dp mdl-cell mdl-cell--3-col mdl-grid mdl-grid--no-spacing datos-venta">
 	  				<div class="datos-venta mdl-cell--12-col">
 	  					<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell--12-col">
-						    <input class="mdl-textfield__input" type="date" name="fecha" id="fecha" value="" required/>
-						    <label class="mdl-textfield__label" for="fecha_registro">Fecha</label>
+						   	<input class="mdl-textfield__input" type="date" name="fecha" id="fecha" value="" required/>
+						    <label class="mdl-textfield__label" for="fecha">Fecha</label>
 					  	</div>	
 	  					<div class="mdl-textfield mdl-js-textfield mdl-cell--12-col">
 					  		<select class="mdl-textfield__input" type="text" name="cliente" id="cliente" required>
-					  			<option selected>Seleccione un cliente ...</option>
+					  			<option  value="" selected>Seleccione un cliente ...</option>
 					  			{% for c in clientes %}
 					  				<option value="{{c.id}}">{{c.nombre}}</option>
 					  			{% endfor %}
@@ -54,7 +54,7 @@
 					  	</div>	
 					  	<div class="mdl-textfield mdl-js-textfield mdl-cell--12-col">
 					  		<select class="mdl-textfield__input" type="text" name="tipo_pago" id="tipo_pago" required>
-					  			<option selected>Tipo de Pago ...</option>
+					  			<option  value="" selected>Tipo de Pago ...</option>
 					  			{% for tp in tipo_pago %}
 					  				<option value="{{tp.id}}">{{tp.nombre}}</option>
 					  			{% endfor %}
@@ -255,7 +255,7 @@ function calcularTotal() {
 	    });
 	    $("#total").html("<h3> $"+total.toFixed(3)+"</h3>");
 	    $(".total-orden").val(total.toFixed(3));
-	    $(".subtotal-orden").val(((total.toFixed(3)/1.16)*0.16));
+	    $(".subtotal-orden").val((total.toFixed(3)/1.16).toFixed(3));
 	    $(".saldo-orden").val(total.toFixed(3));
 	    $(".total-peso").val(peso.toFixed(3));
     });
