@@ -18,7 +18,7 @@ class oobservacionForm(forms.ModelForm):
 class oproductoForm(forms.ModelForm):
     class Meta:
         model = Orden_Producto
-        fields = '__all__'
+        fields = ('orden','producto','precio','cantidad','subtotal_producto','subtotal_peso',) 
 
 class osaldoForm(forms.ModelForm):
     class Meta:
