@@ -49,6 +49,6 @@ def punto_venta(request):
 def orden_exitosa(request,orden_id):
     user = request.user
     orden = get_object_or_404(Cliente, id=orden_id)
-    page_title = orden_id +"-"+orden.cliente     
+    page_title = "¡Orden exitosa!"    
     template_name ="orden-exitosa.html" 
     return render_to_response(template_name, locals(),context_instance=RequestContext(request))
