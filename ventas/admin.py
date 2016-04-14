@@ -20,3 +20,7 @@ class Tipo_AbonoAdmin(admin.ModelAdmin):
 @admin.register(Orden)
 class OrdenAdmin(admin.ModelAdmin):
 	list_display 	= ('id','cliente','estatus_orden','total_peso','total')
+
+@admin.register(Orden_Producto)
+class Orden_ProductoAdmin(admin.ModelAdmin):
+	list_display 	= ('id','orden','producto')
