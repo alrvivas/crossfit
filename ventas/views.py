@@ -29,6 +29,7 @@ def punto_venta(request):
     productos = Producto.objects.filter(activo = True)
     clientes = Cliente.objects.all()
     orden = Orden.objects.all()
+    last_orden = Orden.objects.latest('id')
     tipo_pago = Tipo_Pago.objects.all()
     tipo_abono = Tipo_Abono.objects.all()
     estatus_orden = Estatus_Orden.objects.all()
