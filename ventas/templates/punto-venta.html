@@ -236,7 +236,7 @@ function calculateRowSum()
        $(this).find('td').each(function(){
           peso += parseFloat($(this).find('.peso').val()) || 0;
         });
-    	$(this).find('.subtotal').val(parseFloat(cantidad*precio).toFixed(3));
+    	$(this).find('.subtotal_producto').val(parseFloat(cantidad*precio).toFixed(3));
     	$(this).find('.subtotal_peso').val(parseFloat(cantidad*peso).toFixed(3));
     });
 }
