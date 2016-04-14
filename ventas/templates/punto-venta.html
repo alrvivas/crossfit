@@ -66,9 +66,9 @@
 				  	<input class="mdl-textfield__input" type="hidden" name="estatus_orden" id="estatus_orden" value="1" required/>
 				  	<input class="mdl-textfield__input" type="hidden" name="estatus_cobranza" id="estatus_cobranza" value="1" required/>
 				  	<input type="hidden" class="subtotal-orden"name="subtotal" value="" required="required" />	
-				  	<input type="hidden" class="total-orden"name="total" value="" required="required" />
+				  	<input type="hidden" class="total-orden" name="total" value="" required="required" />
 		    		<input type="hidden" class="total-peso" name="total_peso" value="0.0" required="required" />
-		    		<input type="hidden" class="saldo-orden"name="saldo" value="" required="required" />	
+		    		<input type="hidden" class="saldo-orden" name="saldo" value="" required="required" />	
 		  			
 				</section>
 				<section class=" mdl-cell mdl-cell--9-col mdl-grid ">	
@@ -245,7 +245,7 @@ function calcularTotal() {
     $('.suminputs').each(function(){
 	    var total = 0.0;
 	    var peso = 0.0;
-	    $(".subtotal").each(function() {
+	    $(".subtotal_producto").each(function() {
 	    	total = parseFloat(total)+parseFloat($(this).val());	    	
 	        
 	    });
@@ -255,7 +255,7 @@ function calcularTotal() {
 	    });
 	    $("#total").html("<h3> $"+total.toFixed(3)+"</h3>");
 	    $(".total-orden").val(total.toFixed(3));
-	    $(".subtotal-orden").val(((total/1.16)*0.16).toFixed(3));
+	    $(".subtotal-orden").val(((total.toFixed(3)/1.16)*0.16));
 	    $(".saldo-orden").val(total.toFixed(3));
 	    $(".total-peso").val(peso.toFixed(3));
     });
