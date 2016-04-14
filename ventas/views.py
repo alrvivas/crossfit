@@ -33,7 +33,7 @@ def punto_venta(request):
     tipo_abono = Tipo_Abono.objects.all()
     estatus_orden = Estatus_Orden.objects.all()
     estatus_cobranza = Estatus_Cobranza.objects.all()
-    orden_producto = modelformset_factory(Orden_Producto,form=oproductoForm)
+    orden_producto = modelformset_factory(Orden_Producto,form=oproductoForm,extra=len(productos))
     if request.method == 'POST':
         form_orden = ordenForm(request.POST)
         formset = orden_producto(request.POST, request.FILES)
