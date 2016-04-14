@@ -34,7 +34,8 @@
 
 {% block contedor %}	
   	<main class="mdl-layout__content mdl-color--grey-100">
-  		<form action=""  method="post" role="form">{% csrf_token %}	  		
+  		<form action=""  method="post" role="form">{% csrf_token %}
+  		{{ formset.management_form }}	  		
 	  	<div class="mdl-grid demo-content mdl-layout__tab-panel is-active" id="orden">
 	  		<div class="mdl-grid">	  		
 	  			<section class="demo-cards dl-color--white mdl-shadow--2dp mdl-cell mdl-cell--3-col mdl-grid mdl-grid--no-spacing datos-venta">

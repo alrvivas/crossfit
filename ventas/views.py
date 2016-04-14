@@ -34,11 +34,11 @@ def punto_venta(request):
     tipo_abono = Tipo_Abono.objects.all()
     estatus_orden = Estatus_Orden.objects.all()
     estatus_cobranza = Estatus_Cobranza.objects.all()
-    orden_producto = modelformset_factory(Orden_Producto,form=oproductoForm,extra=len(productos))
+    orden_producto = modelformset_factory(Orden_Producto,form=oproductoForm)
     if request.method == 'POST':
         form_orden = ordenForm(request.POST)
         formset = orden_producto(request.POST, request.FILES)
-        if form_orden.is_valid() and formset.is_valid():            
+        if form_orden.is_valid() and formset.is_valid():           
             orden = form_orden.save(commit = False)
             orden.save()
             formset.save()            
