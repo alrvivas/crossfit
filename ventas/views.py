@@ -15,6 +15,7 @@ from productos.models import *
 from forms import *
 from productos.forms import *
 from django.forms.models import modelformset_factory
+from django.forms import BaseFormSet, formset_factory
 import datetime
 from django.contrib.auth.models import User
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
@@ -34,17 +35,20 @@ def punto_venta(request):
     tipo_abono = Tipo_Abono.objects.all()
     estatus_orden = Estatus_Orden.objects.all()
     estatus_cobranza = Estatus_Cobranza.objects.all()
-    orden_producto = modelformset_factory(Orden_Producto,form=oproductoForm,extra=1)
+    OrdenProductoFormSet = formset_factory(Orden_Producto,form=oproductoForm)
     if request.method == 'POST':
         form_orden = ordenForm(request.POST)
-        formset = orden_producto(request.POST, request.FILES)
+        formset = OrdenProductoFormSet(request.POST, request.FILES)
         if form_orden.is_valid() and formset.is_valid():           
             orden = form_orden.save(commit = False)
             orden.save()
+            formset.save(commit = False)       
+            for obj in formset.deleted_objects:
+                obj.delete()
             formset.save()            
             return redirect(orden.get_absolute_urle())
     else:
-        formset = orden_producto()
+        formset = OrdenProductoFormSet()
         form_orden = ordenForm()
     args = {}
     args.update(csrf(request))
