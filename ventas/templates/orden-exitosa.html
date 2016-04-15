@@ -56,7 +56,7 @@
 							<tbody class="lista-venta">
 								{% for op in orden_producto %}
 									<tr>
-										<td class='mdl-data-table__cell--non-numeric'></td>{{op.producto.nombre}}
+										<td class='mdl-data-table__cell--non-numeric'>{{op.producto.nombre}}</td>
 										<td>{{op.cantidad}}</td>
 										<td>${{op.precio}}</td>
 										<td>${{op.subtotal_producto}}</td>
