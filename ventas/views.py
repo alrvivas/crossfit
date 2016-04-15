@@ -39,9 +39,7 @@ def punto_venta(request):
     if request.method == 'POST':
         form_orden = ordenForm(request.POST)
         formset = OrdenProductoFormSet(request.POST, request.FILES)
-        if form_orden.is_valid() and formset.is_valid():           
-            orden = form_orden.save(commit = False)
-            orden.save()
+        if formset.is_valid():     
             formset.save(commit = False)       
             for obj in formset.deleted_objects:
                 obj.delete()
@@ -49,7 +47,6 @@ def punto_venta(request):
             return redirect(orden.get_absolute_urle())
     else:
         formset = OrdenProductoFormSet()
-        form_orden = ordenForm()
     args = {}
     args.update(csrf(request))
     template_name = "punto-venta.html"
