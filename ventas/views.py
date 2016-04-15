@@ -39,9 +39,7 @@ def punto_venta(request):
     if request.method == 'POST':
         form_orden = ordenForm(request.POST)
         formset = OrdenProductoFormSet(request.POST, request.FILES)
-        if formset.is_valid():          
-            for obj in formset.deleted_objects:
-                obj.delete()
+        if formset.is_valid():           
             formset.save()            
             return redirect(orden.get_absolute_urle())
     else:
