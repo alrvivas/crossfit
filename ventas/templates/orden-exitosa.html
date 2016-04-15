@@ -39,7 +39,7 @@
 	  				<h4 class="mdl-cell mdl-cell--12-col">Orden: {{orden.id}}</h4>
 	  				<h4 class="mdl-cell mdl-cell--12-col">Cliente: {{orden.cliente.nombre}} {{orden.cliente.apellidos}}</h4>
 	  				<ul class="mdl-textfield--align-left">
-	  					<li>{{orden.fecha|date:'Y-m-d'}}</li>
+	  					<li>Fecha:{{orden.fecha|date:'Y-m-d'}}</li>
 	  					<li>Tipo de Pago:{{orden.tipo_pago}}</li>
 	  					<li>Estatus Orden: {{orden.estatus_orden}}</li>
 	  					<li>Estatus Cobranza{{orden.estatus_cobranza}}</li>
@@ -68,6 +68,16 @@
 							</tbody>
 						</table>
 					</div>			    	
+		    	</section>
+		    	<section class=" mdl-cell mdl-cell--12-col mdl-grid mdl-textfield--align-right">	
+					<div class="mdl-cell mdl-cell--8-col ">
+						<h4>Sub Total: $</h4>
+						<h4>Total: $</h4>
+					</div>
+					<div class="mdl-cell mdl-cell--4-col ">
+						<h4>{{orden.subtotal}}</h4>
+						<h4>{{orden.total}}</h4>
+					</div>				    	
 		    	</section>
 		    	<section class=" mdl-cell mdl-cell--12-col mdl-grid ">	
 					<div class="mdl-cell mdl-cell--12-col mdl-textfield--align-right">
