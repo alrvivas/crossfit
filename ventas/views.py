@@ -52,7 +52,7 @@ def punto_venta(request):
 @login_required(login_url='/login/')
 def orden_exitosa(request,orden_id):
     user = request.user
-    orden = get_object_or_404(Cliente, id=orden_id)
+    orden = get_object_or_404(Orden, id=orden_id)
     orden_producto = Orden_Producto.objects.filter(orden=orden)
     page_title = "¡Orden Exitosa!"    
     template_name ="orden-exitosa.html" 
