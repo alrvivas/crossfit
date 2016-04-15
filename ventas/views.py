@@ -43,7 +43,7 @@ def punto_venta(request):
             formset.save()            
             return redirect(last_orden.get_absolute_urle())
     else:
-        formset = OrdenProductoFormSet()
+        formset = OrdenProductoFormSet(queryset=Orden_Producto.objects.none())
     args = {}
     args.update(csrf(request))
     template_name = "punto-venta.html"
