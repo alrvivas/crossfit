@@ -38,7 +38,7 @@
 	  			<section class="demo-cards dl-color--white mdl-shadow--2dp mdl-cell mdl-cell--3-col mdl-grid mdl-grid--no-spacing datos-venta">
 	  				<h4 class="mdl-cell mdl-cell--12-col">Orden: {{orden.id}}</h4>
 	  				<h4 class="mdl-cell mdl-cell--12-col">Cliente: {{orden.cliente.nombre}} {{orden.cliente.apellidos}}</h4>
-	  				<ul>
+	  				<ul class="mdl-textfield--align-left">
 	  					<li>{{orden.fecha|date:'Y-m-d'}}</li>
 	  					<li>Tipo de Pago:{{orden.tipo_pago}}</li>
 	  					<li>Estatus Orden: {{orden.estatus_orden}}</li>
