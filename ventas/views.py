@@ -41,7 +41,7 @@ def punto_venta(request):
         formset = OrdenProductoFormSet(request.POST,request.FILES)
         if formset.is_valid():           
             formset.save()            
-            return redirect(orden.get_absolute_urle())
+            return redirect(last_orden.get_absolute_urle())
     else:
         formset = OrdenProductoFormSet()
     args = {}
