@@ -2,14 +2,7 @@
 {% load static from staticfiles %} 
 {% block staticos %}
 	<link rel="stylesheet" type="text/css"  href="{% static "css/print.css" %}">
-	<style type="text/css">
-	@media print {		
-	    td,th{
-	    	padding: 0px !important;
-	    	margin: 0px !important;
-	    }
-	}
-	</style>
+	
 {% endblock %}  
 {% block header %}
 	<header class="header mdl-layout__header mdl-layout__header--scroll mdl-color--green-500">	  			
