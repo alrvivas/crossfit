@@ -73,7 +73,7 @@
 						</table>
 					</div>			    	
 		    	</section>
-		    	<section class="mdl-color--white mdl-shadow--2dp mdl-cell mdl-cell--12-col mdl-grid mdl-textfield--align-right totales">	
+		    	<section class="mdl-color--white mdl-shadow--2dp mdl-cell mdl-cell--12-col mdl-cell--12-col-tablet mdl-cell--12-col-phone mdl-grid mdl-textfield--align-right totales">	
 					<div class="mdl-cell mdl-cell--10-col mdl-cell--5-col-tablet mdl-cell--2-col-phone letra">
 						<h4>Sub Total: $</h4>
 						<h4>Total: $</h4>
@@ -88,10 +88,35 @@
 						<button type="submit" class="print mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" tabindex="4">
 							  Imprimir<i class="material-icons mdl-color-text--white">print</i>
 						</button>
-						<a href="{% url 'punto-venta' %}" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" tabindex="4">
+						<a href="{% url 'punto-venta' %}" class="continuar mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" tabindex="4">
 							  Continuar
 						</a>
 					</div>			    	
+		    	</section>
+		    	<section class="tiket">
+		    		<div class="t-fecha">Fecha:{{orden.fecha|date:'Y-m-d'}}</div>
+		    		<div class="t-empresa">Campo Alegre Alimentos S.A. de C.V.</div><div class="t-orden">Orden: {{orden.id}}</div>
+		    		<div class="t-cliente">Cliente: {{orden.cliente.nombre}} {{orden.cliente.apellidos}}</div>
+		    		<table>
+		    			<thead>
+		    				<tr>
+						  		<th>Producto</th>
+						  		<th>Catidad</th>
+						  		<th>Precio Unitario</th>
+						  		<th>Total</th>
+							</tr>
+		    			</thead>
+		    			<tbody>
+		    				{% for op in orden_producto %}
+								<tr>
+									<td>{{op.producto.nombre}}</td>
+									<td>{{op.cantidad}}</td>
+									<td>${{op.precio}}</td>
+									<td>${{op.subtotal_producto}}</td>
+								</tr>
+							{% endfor %}
+		    			</tbody>
+		    		</table>
 		    	</section>
 	    	</div>
 	  	</div>
@@ -105,6 +130,7 @@
 <script type="text/javascript">
 $(document).ready(function() {
 	$(".print").click(function() {
+
 		window.print();
 	});
 });
