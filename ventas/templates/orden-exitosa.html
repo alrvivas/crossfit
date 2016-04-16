@@ -1,4 +1,8 @@
-{% extends "base.html" %} 
+{% extends "base.html" %}
+{% load static from staticfiles %} 
+{% block staticos %}
+	<link rel="stylesheet" type="text/css"  href="{% static "css/print.css" %}">
+{% endblock %}  
 {% block header %}
 	<header class="mdl-layout__header mdl-layout__header--scroll mdl-color--green-500">	  			
     	<div class="mdl-layout--large-screen-only mdl-layout__header-row">	    		
@@ -36,13 +40,13 @@
 	  	<div class="mdl-grid demo-content mdl-layout__tab-panel is-active" id="orden">
 	  		<div class="mdl-grid">	  		
 	  			<section class="demo-cards mdl-color--white mdl-shadow--2dp mdl-cell mdl-cell--3-col mdl-grid mdl-grid--no-spacing datos-venta">
-	  				<h4 class="mdl-cell mdl-cell--12-col">Orden: {{orden.id}}</h4>
-	  				<h4 class="mdl-cell mdl-cell--12-col">Cliente: {{orden.cliente.nombre}} {{orden.cliente.apellidos}}</h4>
+	  				<h4 class="mdl-cell mdl-cell--12-col orden-id">Orden: {{orden.id}}</h4>
+	  				<h4 class="mdl-cell mdl-cell--12-col cliente-nombre">Cliente: {{orden.cliente.nombre}} {{orden.cliente.apellidos}}</h4>
 	  				<ul class="mdl-textfield--align-left">
-	  					<li>Fecha:{{orden.fecha|date:'Y-m-d'}}</li>
-	  					<li>Tipo de Pago:{{orden.tipo_pago}}</li>
-	  					<li>Estatus Orden: {{orden.estatus_orden}}</li>
-	  					<li>Estatus Cobranza{{orden.estatus_cobranza}}</li>
+	  					<li class="fecha-orden">Fecha:{{orden.fecha|date:'Y-m-d'}}</li>
+	  					<li class="tipo-pago">Tipo de Pago:{{orden.tipo_pago}}</li>
+	  					<li class="estatus-orden">Estatus Orden: {{orden.estatus_orden}}</li>
+	  					<li class="estatus-cobranza">Estatus Cobranza{{orden.estatus_cobranza}}</li>
 	  				</ul>		    		 			
 				</section>
 				<section class=" mdl-cell mdl-cell--9-col mdl-grid ">	
@@ -81,9 +85,12 @@
 		    	</section>
 		    	<section class=" mdl-cell mdl-cell--12-col mdl-grid ">	
 					<div class="mdl-cell mdl-cell--12-col mdl-textfield--align-right">
-						<button type="submit" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" tabindex="4">
-							  Continuar
+						<button type="submit" class="print mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" tabindex="4">
+							  Imprimir<i class="material-icons mdl-color-text--white">print</i>
 						</button>
+						<a href="{% url 'punto-venta' %}" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" tabindex="4">
+							  Continuar
+						</a>
 					</div>			    	
 		    	</section>
 	    	</div>
@@ -95,5 +102,12 @@
     
 {% endblock %}
 {% block adicional-scripts %}
-
+<script type="text/javascript">
+$(document).ready(function() {
+	$(".print").click(function() {
+		window.print();
+	}
+}
+	
+</script>
 {% endblock %}

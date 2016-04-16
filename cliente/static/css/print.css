@@ -1,0 +1,14 @@
+@media print {
+	header{display: none;}
+	#orden{
+		width: 107.5mm;
+		height: 340mm;
+		padding: 10mm;
+		margin: 5mm auto;
+	}
+	#orden .orden-id{
+		font-size: 14px;
+		text-align: right;
+		text-transform: uppercase;
+	}
+}
