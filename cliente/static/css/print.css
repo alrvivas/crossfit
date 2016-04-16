@@ -1,5 +1,5 @@
 @media print {
-	.header,.venta,.print,.continuar,.datos-venta,section{display: none;}
+	.orden{display: none;}
 	section.tiket{
 		display: block !important;
 		width: 107.5mm;
@@ -12,26 +12,38 @@
 		font-size: 14px;
 		text-align: right;
 		text-transform: uppercase;
+		width: 100%;
 	}
 	.tiket .orden-id{
 		font-size: 14px;
 		text-align: right;
 		text-transform: uppercase;
+		width: 20%;
+		float: right;
+		margin-left: 10px;
 	}
 	.tiket .t-empresa{
 		font-size: 14px;
 		text-align: right;
 		text-transform: uppercase;
+		width: 80%;
+		float: right;
 	}
 	.tiket .t-cliente{
 		font-size: 14px;
 		text-align: justify;
-		text-transform: uppercase;;
+		text-transform: uppercase;
+		width: 100%;
 	}
 	.tiket table{
 		width: 100%;
 	}
 	.tiket table tr th{
+		font-size: 13px;
+		text-align: center;
+		text-transform: uppercase;;
+	}
+	.tiket table tr td{
 		font-size: 13px;
 		text-align: center;
 		text-transform: uppercase;;
