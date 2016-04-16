@@ -4,13 +4,48 @@
 		display: block !important;
 		width: 107.5mm;
 		height: 340mm;
-		padding: 10mm;
+		padding: 5mm;
 		margin: 5mm auto;
+		border: 1px solid #000;
 	}
-	#orden .orden-id{
+	.datos-venta{
+		width: 100%;
+	}
+	.datos-venta .orden-id{
 		display: block !important;
 		font-size: 14px;
 		text-align: right;
 		text-transform: uppercase;
+	}
+	.datos-venta .cliente-nombre{
+		display: block !important;
+		font-size: 14px;
+		text-align: justify;
+		text-transform: uppercase;
+	}
+	.datos-venta ul{
+		list-style: none;		
+	}
+	.datos-venta ul li{
+		display: inline;		
+	}
+	section.totales{
+		width: 100%;
+	}
+	section.totales div{
+		float: left;
+	}
+	.totales h3{
+		font-size: 14px;
+		text-align: right;
+		text-transform: uppercase;
+	}
+	.letra{
+		width: 40%;
+		float: left;		
+	}
+	.cantidad{
+		width: 20%;
+		float: left;
 	}
 }
