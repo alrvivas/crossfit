@@ -1,7 +1,6 @@
 @media print {
-	.header,.venta,.print,.continuar,.datos-venta{display: none;}
-	.tiket{
-		display: block !important;
+	.header,.venta,.print,.continuar,.datos-venta,section{display: none;}
+	section.tiket{
 		display: block !important;
 		width: 107.5mm;
 		height: 340mm;
@@ -27,6 +26,19 @@
 	.tiket .t-cliente{
 		font-size: 14px;
 		text-align: justify;
+		text-transform: uppercase;;
+	}
+	.tiket table{
+		width: 100%;
+	}
+	.tiket table tr th{
+		font-size: 13px;
+		text-align: center;
+		text-transform: uppercase;;
+	}
+	.tiket table tr td.producto{
+		font-size: 13px;
+		text-align: left;
 		text-transform: uppercase;;
 	}
 }
