@@ -1,6 +1,7 @@
 @media print {
-	header{display: none;}
+	*{display: none;}
 	#orden{
+		display: block;
 		width: 107.5mm;
 		height: 340mm;
 		padding: 10mm;
