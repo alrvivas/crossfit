@@ -97,9 +97,9 @@
 	    	</div>
 	  	</div>
 	  	<section class="tiket">
-		    		<div class="t-fecha">Fecha:{{orden.fecha|date:'Y-m-d'}}</div>
-		    		<div class="t-empresa">Campo Alegre Alimentos S.A. de C.V.</div><div class="t-orden">Orden: {{orden.id}}</div>
-		    		<div class="t-cliente">Cliente: {{orden.cliente.nombre}} {{orden.cliente.apellidos}}</div>
+		    		<div class="t-fecha">FECHA:{{orden.fecha|date:'Y-m-d'}}</div>
+		    		<div class="t-empresa">Campo Alegre Alimentos S.A. de C.V.</div><div class="t-orden">ORDEN: {{orden.id}}</div>
+		    		<div class="t-cliente">CLIENTE: {{orden.cliente.nombre}} {{orden.cliente.apellidos}}</div>
 		    		<table>
 		    			<thead>
 		    				<tr>
@@ -119,6 +119,26 @@
 								</tr>
 							{% endfor %}
 		    			</tbody>
+		    			<tfoot>
+		    				<tr>
+								<td></td>
+								<td></td>
+								<td>Subtotal</td>
+								<td>${{orden.subtotal}}</td>
+							</tr>
+							<tr>
+								<td></td>
+								<td></td>
+								<td>Desc. vta. Leche</td>
+								<td>$</td>
+							</tr>
+							<tr>
+								<td></td>
+								<td></td>
+								<td>Total</td>
+								<td>${{orden.total}}</td>
+							</tr>
+		    			</tfoot>
 		    		</table>
 		    	</section>
 	  	
