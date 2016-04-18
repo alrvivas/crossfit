@@ -70,3 +70,12 @@ def orden(request,orden_id):
     page_title = "Orden"    
     template_name ="orden-exitosa.html" 
     return render_to_response(template_name, locals(),context_instance=RequestContext(request))
+
+@login_required(login_url='/login/')
+def credito_cobranza(request):
+    user = request.user
+    orden_pendiente = Orden.objects.filter(estatus_cobranza=1)
+    orden_abonada = Orden.objects.filter(estatus_cobranza=3)
+    page_title = "Credito y Cobranza"    
+    template_name ="credito-cobranza.html" 
+    return render_to_response(template_name, locals(),context_instance=RequestContext(request))
