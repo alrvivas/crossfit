@@ -80,12 +80,12 @@ def credito_cobranza(request):
     query = request.GET.get('q', '')
     if query:
         qset = (
-            Q(cliente__icontains=query) | Q(orden__icontains=query)
+            Q(orden__icontains=query) | Q(cliente__icontains=query)
         )    
         results_op = Orden.objects.filter(qset,estatus_cobranza=1).order_by('-id')
         results_oa = Orden.objects.filter(qset,estatus_cobranza=3).order_by('-id')
         template_name = "resultados-credito-cobranza.html"
-        return render_to_response(template_name, {"results": results,"query": query,'page_title':page_title},context_instance=RequestContext(request)) 
+        return render_to_response(template_name, {"results_op": results_op,'results_oa':results_oa,"query": query,'page_title':page_title},context_instance=RequestContext(request)) 
     else:
         results = []       
     template_name ="credito-cobranza.html" 
