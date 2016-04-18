@@ -95,6 +95,36 @@
 						</button>
 					</div>			    	
 		    	</section>
+		    	<section class="mdl-color--white mdl-shadow--2dp mdl-cell mdl-cell--12-col mdl-cell--12-col-tablet mdl-cell--12-col-phone mdl-grid mdl-textfield--align-right totales">	
+					<div class="mdl-cell mdl-cell--8-col mdl-grid ">		
+					  	<div class="mdl-textfield mdl-js-textfield mdl-cell--7-col">
+							<input class="mdl-textfield__input" type="text" id="producto_p" tabindex="1">
+		    				<label class="mdl-textfield__label" for="producto">Añadir Producto...</label>
+		    				<input type="hidden" id="topicID">
+		    				<input type="hidden" id="precio_p">
+		    				<input type="hidden" id="peso_p">									
+						</div>
+						<div class="mdl-textfield mdl-js-textfield mdl-cell--4-col">	    			
+						    <input class="mdl-textfield__input mdl-textfield--align-left" type="text" pattern="-?[0-9]*(\.[0-9]+)?" id="cantidad_p" tabindex="2">
+						    <label class="mdl-textfield__label" for="cantidad_p">Cantidad</label>
+						    <span class="mdl-textfield__error">¡No es número!</span>
+						    <button id="anadir" type="button"  class="mdl-button mdl-js-button mdl-button--icon mdl-color--red-500" style="right: 0;" tabindex="3">
+								<i class="material-icons mdl-color-text--white">add_shopping_cart</i>
+							</button>
+					  	</div>							
+						<div class="mdl-tooltip" for="anadir">
+							Añadir Producto
+						</div>						
+					</div>
+					<div class="mdl-cell mdl-cell--2-col mdl-cell--2-col-tablet mdl-cell--2-col-phone letra">
+						<h4>Sub Total: $</h4>
+						<h4>Total: $</h4>
+					</div>
+					<div class="mdl-cell mdl-cell--2-col mdl-cell--2-col-tablet mdl-cell--2-col-phone cantidad">
+						<h4></h4>
+						<h4 id="total"></h4>
+					</div>				    	
+		    	</section>
 	    	</div>
 	  	</div>
 	  	</form>
@@ -125,41 +155,7 @@
 	  		</div>
 	  	</div>
 	  	
-   	</main>
-   	<footer class="mdl-mega-footer mdl-color--blue-grey-100">	    
-	  	<div class="mdl-mega-footer__bottom-section">
-	  		<div class="mdl-mega-footer__left-section mdl-cell--8-col ">		  		
-	  			<div class="mdl-mega-footer__left-section mdl-cell--11-col">		  			
-			  		<div class="mdl-grid">
-			  			<div class="mdl-cell mdl-cell--12-col mdl-grid ">		
-						  	<div class="mdl-textfield mdl-js-textfield mdl-cell--7-col">
-								<input class="mdl-textfield__input" type="text" id="producto_p" tabindex="1">
-			    				<label class="mdl-textfield__label" for="producto">Añadir Producto...</label>
-			    				<input type="hidden" id="topicID">
-			    				<input type="hidden" id="precio_p">
-			    				<input type="hidden" id="peso_p">									
-							</div>
-							<div class="mdl-textfield mdl-js-textfield mdl-cell--4-col">	    			
-							    <input class="mdl-textfield__input mdl-textfield--align-left" type="text" pattern="-?[0-9]*(\.[0-9]+)?" id="cantidad_p" tabindex="2">
-							    <label class="mdl-textfield__label" for="cantidad_p">Cantidad</label>
-							    <span class="mdl-textfield__error">¡No es número!</span>
-							    <button id="anadir" type="button"  class="mdl-button mdl-js-button mdl-button--icon mdl-color--red-500" style="right: 0;" tabindex="3">
-									<i class="material-icons mdl-color-text--white">add_shopping_cart</i>
-								</button>
-						  	</div>							
-							<div class="mdl-tooltip" for="anadir">
-								Añadir Producto
-							</div>						
-						</div>
-					</div>				 
-				</div>
-	    	</div>
-		    <div class="mdl-mega-footer__right-section">
-		    	<div id="total"><h3>Total: $0.00</h3></div>
-		    	
-		    </div>
-	  	</div>
-	</footer>
+   	</main>   	
     
 {% endblock %}
 {% block adicional-scripts %}
@@ -253,7 +249,7 @@ function calcularTotal() {
 	    	peso = parseFloat(peso)+parseFloat($(this).val());
 	        
 	    });
-	    $("#total").html("<h3> $"+total.toFixed(3)+"</h3>");
+	    $("#total").html(total.toFixed(3));
 	    $(".total-orden").val(total.toFixed(3));
 	    $(".subtotal-orden").val((total.toFixed(3)/1.16).toFixed(3));
 	    $(".saldo-orden").val(total.toFixed(3));

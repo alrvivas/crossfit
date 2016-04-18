@@ -35,9 +35,9 @@
 		text-transform: uppercase;
 		width: 100%;
 	}
-	th,td{
-		margin: 0px!important;
-		border-spacing: 0px;
+	table,th,td{
+		margin: 0px !important;
+		border-spacing: 0px !important;
 	}
 	table{
 		width: 100%;
