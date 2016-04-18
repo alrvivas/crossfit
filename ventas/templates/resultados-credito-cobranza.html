@@ -16,7 +16,7 @@
 		</div>
 		<div class="mdl-typography--text-center ">
 			<div class="mdl-layout-title">
-				<h1 >{{page_title}}</h1>
+				{% if query %}<h1 >{{ query|escape }}</h1> {% endif %}	
 			</div>
 
 			
@@ -50,7 +50,7 @@
 					    </tr>
 					  	</thead>
 					  	<tbody>
-					  	{% for op in orden_pendiente %}
+					  	{% for op in results_op %}
 					    	<tr>
 					      		<td class="mdl-data-table__cell--non-numeric">
 					      			<a href="{{ c.get_absolute_url }}">
@@ -80,7 +80,7 @@
 					    </tr>
 					  	</thead>
 					  	<tbody>
-					  	{% for oa in orden_abonada %}
+					  	{% for oa in results_oa %}
 					    	<tr>
 					      		<td class="mdl-data-table__cell--non-numeric">
 					      			<a href="{{ oa.get_absolute_url }}">
