@@ -50,7 +50,7 @@
 					    </tr>
 					  	</thead>
 					  	<tbody>
-					  	{% if results %} 
+					  	{% if results_op %} 
 						  	{% for op in results_op %}
 						    	<tr>
 						      		<td class="mdl-data-table__cell--non-numeric">
@@ -58,7 +58,7 @@
 						      				{{op.id}}
 						      			</a>
 						      		</td>
-						      		<td>{{op.cliente.nombre}} {{op.cliente.apellidos}}</td>					      	
+						      		<td>{{op.cliente.nombre}} {{op.cliente.apellidos}}</td>				      	
 						      		<td>{{op.subtotal}}</td>
 						      		<td>{{op.total}}</td>
 						      		<td>{{op.saldo}}</td>
@@ -84,7 +84,7 @@
 					    </tr>
 					  	</thead>
 					  	<tbody>
-					  	{% if results %}
+					  	{% if results_oa %}
 						  	{% for oa in results_oa %}
 						    	<tr>
 						      		<td class="mdl-data-table__cell--non-numeric">
