@@ -321,6 +321,35 @@ html, body {
 .demo-card-image.mdl-card img{ width: 100%;    height: 100%;    position: absolute;    z-index: -99;}
 .mdl-mega-footer {background-color: #FFFFFF !important; border-top: 2px solid #F44336;}
 .tiket{display: none;}
+.ui-autocomplete {
+    max-height: 240px;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+.ui-widget-content {
+    border: 1px solid #aaaaaa;
+    color: #222222;
+}
+.ui-widget {
+    font-family: Verdana,Arial,sans-serif;
+    font-size: 1.1em;
+}
+.ui-menu {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: block;
+    outline: none;
+}
+.ui-autocomplete {
+    position: absolute;
+    top: 0;
+    left: 0;
+    cursor: default;
+}
+.ui-front {
+    z-index: 100;
+}
 /*#file {
     display:none;
 }*/
