@@ -54,7 +54,7 @@
 						  	{% for op in results_op %}
 						    	<tr>
 						      		<td class="mdl-data-table__cell--non-numeric">
-						      			<a href="{{ c.get_absolute_url }}">
+						      			<a href="{{ op.get_absolute_url }}">
 						      				{{op.id}}
 						      			</a>
 						      		</td>
@@ -72,7 +72,7 @@
 					</table>
 		    	</div>
 	  	</div>
-	  	<div class="mdl-grid demo-content mdl-layout__tab-panel is-active" id="abonadas">		  		
+	  	<div class="mdl-grid demo-content mdl-layout__tab-panel" id="abonadas">		  		
 		    	<div class="mdl-color--white mdl-shadow--2dp mdl-cell mdl-cell--12-col mdl-grid ">
 		    		<table class="mdl-data-table mdl-js-data-table mdl-data-table--selectable mdl-fullwidth">
 					  <thead>
