@@ -80,7 +80,7 @@ def credito_cobranza(request):
     query = request.GET.get('q', '')
     if query:
         qset = (
-            Q(orden__icontains=query) 
+            Q(id__icontains=query) | Q(cliente__icontains=query) 
         )    
         results_op = Orden.objects.filter(qset,estatus_cobranza=1).order_by('-id')
         results_oa = Orden.objects.filter(qset,estatus_cobranza=3).order_by('-id')
