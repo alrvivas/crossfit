@@ -50,19 +50,23 @@
 					    </tr>
 					  	</thead>
 					  	<tbody>
-					  	{% for op in results_op %}
-					    	<tr>
-					      		<td class="mdl-data-table__cell--non-numeric">
-					      			<a href="{{ c.get_absolute_url }}">
-					      				{{op.id}}
-					      			</a>
-					      		</td>
-					      		<td>{{op.cliente.nombre}} {{op.cliente.apellidos}}</td>					      	
-					      		<td>{{op.subtotal}}</td>
-					      		<td>{{op.total}}</td>
-					      		<td>{{op.saldo}}</td>
-					    	</tr>
-					    {% endfor %}
+					  	{% if results %} 
+						  	{% for op in results_op %}
+						    	<tr>
+						      		<td class="mdl-data-table__cell--non-numeric">
+						      			<a href="{{ c.get_absolute_url }}">
+						      				{{op.id}}
+						      			</a>
+						      		</td>
+						      		<td>{{op.cliente.nombre}} {{op.cliente.apellidos}}</td>					      	
+						      		<td>{{op.subtotal}}</td>
+						      		<td>{{op.total}}</td>
+						      		<td>{{op.saldo}}</td>
+						    	</tr>
+						    {% endfor %}
+					    {% else %}             
+                    		<p>No hay resultados para {{ query|escape }} :(</p>
+					    {% endif %}
 					    
 					  </tbody>
 					</table>
@@ -80,18 +84,22 @@
 					    </tr>
 					  	</thead>
 					  	<tbody>
-					  	{% for oa in results_oa %}
-					    	<tr>
-					      		<td class="mdl-data-table__cell--non-numeric">
-					      			<a href="{{ oa.get_absolute_url }}">
-					      				{{oa.id}}
-					      			</a>
-					      		</td>
-					      		<td>{{oa.cliente.nombre}} {{oa.cliente.apellidos}}</td>					      	
-					      		<td>{{oa.subtotal}}</td>
-					      		<td>{{oa.total}}</td>
-					    	</tr>
-					    {% endfor %}
+					  	{% if results %}
+						  	{% for oa in results_oa %}
+						    	<tr>
+						      		<td class="mdl-data-table__cell--non-numeric">
+						      			<a href="{{ oa.get_absolute_url }}">
+						      				{{oa.id}}
+						      			</a>
+						      		</td>
+						      		<td>{{oa.cliente.nombre}} {{oa.cliente.apellidos}}</td>					      	
+						      		<td>{{oa.subtotal}}</td>
+						      		<td>{{oa.total}}</td>
+						    	</tr>
+						    {% endfor %}
+					    {% else %}             
+                    		<p>No hay resultados para {{ query|escape }} :(</p>
+					    {% endif %}
 					    
 					  </tbody>
 					</table>
