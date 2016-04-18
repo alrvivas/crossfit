@@ -87,6 +87,7 @@ def credito_cobranza(request):
         template_name = "resultados-credito-cobranza.html"
         return render_to_response(template_name, {"results_op": results_op,'results_oa':results_oa,"query": query,'page_title':page_title},context_instance=RequestContext(request)) 
     else:
-        results = []       
+        results_op = []
+        results_oa = []    
     template_name ="credito-cobranza.html" 
     return render_to_response(template_name, locals(),context_instance=RequestContext(request))
