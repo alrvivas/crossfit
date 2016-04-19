@@ -96,6 +96,10 @@
 				    	</div>	  				
 	  				</form>		    		 			
 				</section>
+				<div id="demo-snackbar-example" class="mdl-js-snackbar mdl-snackbar">
+			  		<div class="mdl-snackbar__text"></div>
+			  		<button class="mdl-snackbar__action" type="button"></button>
+				</div>
 				
 		    	
 	    	</div>
@@ -109,11 +113,33 @@
 {% block adicional-scripts %}
 <script type="text/javascript">
 $(document).ready(function() {
-	$(".print").click(function() {
-
-		window.print();
+	$("#tipo_pago").click(function() {
+		if( $("#tipo_pago").val() == 1 ){
+			$("#saldo").val(0.0);
+			'use strict';
+			  var snackbarContainer = document.querySelector('#demo-snackbar-example');
+			  var showSnackbarButton = document.querySelector('#tipo_pago');
+			  var handler = function(event) {
+			    showSnackbarButton.style.backgroundColor = '';
+			  };
+			  showSnackbarButton.addEventListener('click', function() {
+			    'use strict';    
+			    var data = {
+			      message: 'El saldo a cambiado.',
+			      timeout: 2000,
+			      actionHandler: handler,
+			      actionText: 'Ok'
+			    };
+			    snackbarContainer.MaterialSnackbar.showSnackbar(data);
+			  });
+		}
 	});
 });
 	
+</script>
+<script>
+(function() {
+  
+}());
 </script>
 {% endblock %}
