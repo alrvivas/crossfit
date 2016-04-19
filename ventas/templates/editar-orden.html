@@ -46,7 +46,7 @@
 						    <input class="mdl-textfield__input" type="date" name="fecha" id="fecha" value="{{orden.fecha|date:'Y-m-d'}}" required/>
 						    <label class="mdl-textfield__label" for="fecha">Fecha</label>
 					  	</div>
-	  					<div class="mdl-textfield mdl-js-textfield mdl-cell--12-col">
+	  					<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell--12-col">
 					  		<select class="mdl-textfield__input" type="text" name="cliente" id="cliente" required>
 					  			<option  value="{{orden.cliente.id}}" selected>{{orden.cliente.nombre}} {{orden.cliente.apellidos}}</option>
 					  			{% for c in clientes %}
@@ -55,7 +55,7 @@
 					  		</select>      
 						    <label class="mdl-textfield__label" for="cliente">Cliente</label>
 					  	</div>					  	  		
-			    		<div class="mdl-textfield mdl-js-textfield mdl-cell--12-col">
+			    		<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell--12-col">
 					  		<select class="mdl-textfield__input" type="text" name="tipo_pago" id="tipo_pago" required>
 					  			<option  value="{{orden.tipo_pago.id}}" selected>{{orden.tipo_pago.nombre}}</option>
 					  			{% for tp in tipo_pago %}
@@ -64,7 +64,7 @@
 					  		</select>      
 						    <label class="mdl-textfield__label" for="tipo_pago">Tipo de Pago</label>
 					  	</div>
-					  	<div class="mdl-textfield mdl-js-textfield mdl-cell--12-col">
+					  	<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell--12-col">
 					  		<select class="mdl-textfield__input" type="text" name="estatus_cobranza" id="estatus_cobranza" required>
 					  			<option  value="{{orden.estatus_cobranza.id}}" selected>{{orden.estatus_cobranza.nombre}}</option>
 					  			{% for tp in estatus_cobranza %}
@@ -73,7 +73,7 @@
 					  		</select>      
 						    <label class="mdl-textfield__label" for="estatus_cobranza">Estatus Cobranza</label>
 					  	</div>
-					  	<div class="mdl-textfield mdl-js-textfield mdl-cell--12-col">
+					  	<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell--12-col">
 					  		<select class="mdl-textfield__input" type="text" name="estatus_orden" id="estatus_orden" required>
 					  			<option  value="{{orden.estatus_orden.id}}" selected>{{orden.estatus_orden.nombre}}</option>
 					  			{% for tp in estatus_orden %}
