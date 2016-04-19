@@ -72,7 +72,7 @@ def orden(request,orden_id):
     return render_to_response(template_name, locals(),context_instance=RequestContext(request))
 
 @login_required(login_url='/login/')
-def edit_orden(request,orden_id):
+def editar_orden(request,orden_id):
     user = request.user
     orden = get_object_or_404(Orden, id=orden_id)
     if request.method == 'POST':
