@@ -1,0 +1,24 @@
+<ul class="mdl-menu mdl-menu--bottom-left mdl-js-menu" for="add">
+
+<li class="mdl-menu__item-padding">
+		<a href="{{orden.get_absolute_url_editar}}" class="mdl-button mdl-js-button mdl-button--fab mdl-button--mini-fab mdl-js-ripple-effect mdl-color--light-green-500 mdl-shadow--4dp" id="pago">
+		<i class="material-icons mdl-color-text--white" role="personales">shopping_basket</i>            
+		</a>
+			
+	</li>
+	<li class="mdl-menu__item-padding">
+		<a href="{{orden.get_absolute_url_editar}}" class="mdl-button mdl-js-button mdl-button--fab mdl-button--mini-fab mdl-js-ripple-effect mdl-color--blue-500 mdl-shadow--4dp" id="pr">
+		<i class="material-icons mdl-color-text--white" role="presentation">payment</i>            
+		</a>
+	</li>	
+</ul>
+
+<div class="mdl-tooltip mdl-tooltip--left" for="pago">
+	Editar Datos<br />Generales
+</div>
+<div class="mdl-tooltip mdl-tooltip--left" for="pr">
+	Abonar o Liquidar <br />Orden
+</div>
+<div class="mdl-tooltip mdl-tooltip--left" for="add">
+	Editar
+</div>	

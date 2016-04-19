@@ -68,14 +68,32 @@ def orden(request,orden_id):
     orden = get_object_or_404(Orden, id=orden_id)
     orden_producto = Orden_Producto.objects.filter(orden=orden)
     page_title = "Orden"    
-    template_name ="orden-exitosa.html" 
+    template_name ="orden.html" 
+    return render_to_response(template_name, locals(),context_instance=RequestContext(request))
+
+@login_required(login_url='/login/')
+def edit_orden(request,orden_id):
+    user = request.user
+    orden = get_object_or_404(Orden, id=orden_id)
+    if request.method == 'POST':
+        form_orden = editordenForm(request.POST,request.FILES,instance=orden)
+        if form_orden.is_valid():
+            orden = form_orden.save(commit = False)
+            orden.save()            
+            return redirect(orden.get_absolute_url())
+    else:
+        form_orden = editordenForm()
+    args = {}
+    args.update(csrf(request))
+    page_title = "Editar Orden"  
+    template_name ="editar-orden.html" 
     return render_to_response(template_name, locals(),context_instance=RequestContext(request))
 
 @login_required(login_url='/login/')
 def credito_cobranza(request):
     user = request.user
-    orden_pendiente = Orden.objects.filter(estatus_cobranza=1)
-    orden_abonada = Orden.objects.filter(estatus_cobranza=3)
+    orden_pendiente = Orden.objects.filter(estatus_cobranza=1).order_by('-id')
+    orden_abonada = Orden.objects.filter(estatus_cobranza=3).order_by('-id')
     page_title = "Credito y Cobranza"
     query = request.GET.get('q', '')
     if query:

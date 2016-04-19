@@ -62,8 +62,8 @@ class Orden(models.Model):
         return('orden-exitosa', (), { 'orden_id': self.id })
 
     @models.permalink
-    def get_absolute_url_corregir(self):
-        return('corregir-orden', (), { 'orden_id': self.id })
+    def get_absolute_url_editar(self):
+        return('editar-orden', (), { 'orden_id': self.id })
 
     @models.permalink
     def get_absolute_url_revision(self):
