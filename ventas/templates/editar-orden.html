@@ -1,0 +1,119 @@
+{% extends "base.html" %}
+{% load static from staticfiles %} 
+{% block staticos %}
+	<link rel="stylesheet" type="text/css"  href="{% static "css/print.css" %}">
+	
+{% endblock %}  
+{% block header %}
+	<header class="header mdl-layout__header mdl-layout__header--scroll mdl-color--green-500">	  			
+    	<div class="mdl-layout--large-screen-only mdl-layout__header-row">	    		
+	    	<div class=" mdl-layout-spacer"></div>
+	    	<div class="mdl-textfield mdl-js-textfield mdl-textfield--expandable mdl-textfield--floating-label mdl-textfield--align-right mdl-textfield--full-width">
+    			<form>
+		            <label class="mdl-button mdl-js-button mdl-button--icon" for="search-field">
+		              	<i class="material-icons">search</i>
+		            </label>
+		            <div class="mdl-textfield__expandable-holder">
+		              	<input class="mdl-textfield__input" type="text" id="search-field">
+		            </div>
+	            </form>
+          	</div>
+		</div>
+    	<div class="mdl-typography--text-center ">
+    		<div class="mdl-layout-title">
+    			<h1 >{{page_title}} - {{orden.id}}</h1>
+    		</div>
+
+    		
+    	</div>
+    	<div class="mdl-layout--large-screen-only mdl-layout__header-row">
+    		<!---->
+    	</div>	
+    	<div class="mdl-layout__tab-bar mdl-js-ripple-effect mdl-color--green-A400"> 		
+    		<a href="#orden" class="mdl-layout__tab is-active">Venta</a>    		            	
+    	</div>
+    	
+    </header>
+{% endblock %}
+
+{% block contedor %}	
+  	<main class="mdl-layout__content mdl-color--grey-100">  		  		
+	  	<div class="mdl-grid demo-content mdl-layout__tab-panel is-active" id="orden">
+	  		<div class="mdl-grid">	  		
+	  			<section class="demo-cards mdl-color--white mdl-shadow--2dp mdl-cell mdl-cell--12-col mdl-cell--12-col-tablet mdl-cell--12-col-phone mdl-grid mdl-grid--no-spacing">
+	  				<form action=""  method="post" role="form" class="mdl-grid form-add" enctype="multipart/form-data">{% csrf_token %}
+	  					<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell--12-col">
+						    <input class="mdl-textfield__input" type="date" name="fecha" id="fecha" value="{{orden.fecha|date:'Y-m-d'}}" required/>
+						    <label class="mdl-textfield__label" for="fecha">Fecha</label>
+					  	</div>
+	  					<div class="mdl-textfield mdl-js-textfield mdl-cell--12-col">
+					  		<select class="mdl-textfield__input" type="text" name="cliente" id="cliente" required>
+					  			<option  value="{{orden.cliente.id}}" selected>{{orden.cliente.nombre}} {{orden.cliente.apellidos}}</option>
+					  			{% for c in clientes %}
+					  				<option value="{{c.id}}">{{c.nombre}} {{c.apellidos}}</option>
+					  			{% endfor %}
+					  		</select>      
+						    <label class="mdl-textfield__label" for="cliente">Cliente</label>
+					  	</div>					  	  		
+			    		<div class="mdl-textfield mdl-js-textfield mdl-cell--12-col">
+					  		<select class="mdl-textfield__input" type="text" name="tipo_pago" id="tipo_pago" required>
+					  			<option  value="{{orden.tipo_pago.id}}" selected>{{orden.tipo_pago.nombre}}</option>
+					  			{% for tp in tipo_pago %}
+					  				<option value="{{tp.id}}">{{tp.nombre}}</option>
+					  			{% endfor %}
+					  		</select>      
+						    <label class="mdl-textfield__label" for="tipo_pago">Tipo de Pago</label>
+					  	</div>
+					  	<div class="mdl-textfield mdl-js-textfield mdl-cell--12-col">
+					  		<select class="mdl-textfield__input" type="text" name="estatus_cobranza" id="estatus_cobranza" required>
+					  			<option  value="{{orden.estatus_cobranza.id}}" selected>{{orden.estatus_cobranza.nombre}}</option>
+					  			{% for tp in estatus_cobranza %}
+					  				<option value="{{tp.id}}">{{tp.nombre}}</option>
+					  			{% endfor %}
+					  		</select>      
+						    <label class="mdl-textfield__label" for="estatus_cobranza">Estatus Cobranza</label>
+					  	</div>
+					  	<div class="mdl-textfield mdl-js-textfield mdl-cell--12-col">
+					  		<select class="mdl-textfield__input" type="text" name="estatus_orden" id="estatus_orden" required>
+					  			<option  value="{{orden.estatus_orden.id}}" selected>{{orden.estatus_orden.nombre}}</option>
+					  			{% for tp in estatus_orden %}
+					  				<option value="{{tp.id}}">{{tp.nombre}}</option>
+					  			{% endfor %}
+					  		</select>      
+						    <label class="mdl-textfield__label" for="estatus_orden">Estatus Orden</label>
+					  	</div>
+					  	<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell--12-col">
+						    <input class="mdl-textfield__input" type="number" name="saldo" id="saldo" value="{{orden.saldo'}}" required/>
+						    <label class="mdl-textfield__label" for="saldo">Saldo</label>
+					  	</div>					  	
+					   	<div class="mdl-cell--12-col mdl-textfield--align-right">
+						   	<a class="mdl-button mdl-js-button mdl-js-ripple-effect">
+							  	CANCELAR
+							</a>				   		
+					  		<button class="mdl-button mdl-js-button  mdl-js-ripple-effect mdl-button--primary">
+							  	ENVIAR
+							</button>
+				    	</div>	  				
+	  				</form>		    		 			
+				</section>
+				
+		    	
+	    	</div>
+	  	</div>
+	  	
+	  	
+   	</main>
+   	
+    
+{% endblock %}
+{% block adicional-scripts %}
+<script type="text/javascript">
+$(document).ready(function() {
+	$(".print").click(function() {
+
+		window.print();
+	});
+});
+	
+</script>
+{% endblock %}

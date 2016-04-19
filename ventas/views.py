@@ -75,6 +75,10 @@ def orden(request,orden_id):
 def editar_orden(request,orden_id):
     user = request.user
     orden = get_object_or_404(Orden, id=orden_id)
+    estatus_orden = Estatus_Orden.objects.all()
+    estatus_cobranza = Estatus_Cobranza.objects.all()
+    tipo_pago = Tipo_Pago.objects.all()
+    clientes = Cliente.objects.all()
     if request.method == 'POST':
         form_orden = editordenForm(request.POST,request.FILES,instance=orden)
         if form_orden.is_valid():
