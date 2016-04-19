@@ -117,11 +117,11 @@ $(document).ready(function() {
 		if( $("#tipo_pago").val() == 1 ){
 			$("#saldo").val(parseFloat(0).toFixed(3));
 			$(".saldo").fadeIn("slow", function() {
-			    $(this).addClass("mdl-color--red-500 mdl-color-text--white",1000);
+			    $(this).addClass("mdl-color--red-500 mdl-color-text--white");
 			});
-			alert("¡Se ha modificado el saldo!");
-			$(".saldo").removeClass("mdl-color--red-500 mdl-color-text--white",200);
-			
+			$(".saldo").fadeIn("slow", function() {
+			    $(this).removeClass("mdl-color--red-500 mdl-color-text--white");
+			});			
 		}
 	});
 });
