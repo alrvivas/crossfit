@@ -67,8 +67,8 @@
 					  	<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell--12-col">
 					  		<select class="mdl-textfield__input" type="text" name="estatus_cobranza" id="estatus_cobranza" required>
 					  			<option  value="{{orden.estatus_cobranza.id}}" selected>{{orden.estatus_cobranza.nombre}}</option>
-					  			{% for tp in estatus_cobranza %}
-					  				<option value="{{tp.id}}">{{tp.nombre}}</option>
+					  			{% for ec in estatus_cobranza %}
+					  				<option value="{{ec.id}}">{{ec.nombre}}</option>
 					  			{% endfor %}
 					  		</select>      
 						    <label class="mdl-textfield__label" for="estatus_cobranza">Estatus Cobranza</label>
@@ -120,6 +120,7 @@ $(document).ready(function() {
 	$("#tipo_pago").click(function() {
 		if( $("#tipo_pago").val() == 1 ){
 			$("#saldo").val(parseFloat(0).toFixed(3));
+			$("#estatus_cobranza").val(2)
 			$(".saldo").fadeIn("slow", function() {
 			    $(".saldo").addClass("mdl-color--red-500 mdl-color-text--white");
 			});
@@ -128,6 +129,7 @@ $(document).ready(function() {
 			});			
 		}else{
 			$("#saldo").val(parseFloat({{orden.saldo}}).toFixed(3));
+			$("#estatus_cobranza").val({{orden.estatus_cobranza.nombre}})
 			$(".saldo").fadeIn("slow", function() {
 			    $(".saldo").addClass("mdl-color--red-500 mdl-color-text--white");
 			});
