@@ -81,7 +81,8 @@
 					      	<th class="mdl-data-table__cell--non-numeric mdl-fullwidth ">Orden</th>
 					      	<th>Cliente</th>
 					      	<th>Subtotal</th>
-					      	<th>Total</th>					      	
+					      	<th>Total</th>
+					      	<th>Saldo</th>					      	
 					    </tr>
 					  	</thead>
 					  	<tbody>
@@ -93,9 +94,10 @@
 						      				{{oa.id}}
 						      			</a>
 						      		</td>
-						      		<td>{{oa.cliente.nombre}} {{oa.cliente.apellidos}}</td>					      	
+						      		<td>{{oa.cliente.nombre}} {{oa.cliente.apellidos}}</td>				      	
 						      		<td>{{oa.subtotal}}</td>
 						      		<td>{{oa.total}}</td>
+						      		<td>{{oa.saldo}}</td>
 						    	</tr>
 						    {% endfor %}
 					    {% else %}             
@@ -114,7 +116,8 @@
 					      	<th class="mdl-data-table__cell--non-numeric mdl-fullwidth ">Orden</th>
 					      	<th>Cliente</th>
 					      	<th>Subtotal</th>
-					      	<th>Total</th>					      	
+					      	<th>Total</th>
+					      	<th>Saldo</th>					      	
 					    </tr>
 					  	</thead>
 					  	<tbody>
@@ -126,9 +129,10 @@
 						      				{{op.id}}
 						      			</a>
 						      		</td>
-						      		<td>{{op.cliente.nombre}} {{op.cliente.apellidos}}</td>					      	
+						      		<td>{{op.cliente.nombre}} {{op.cliente.apellidos}}</td>				      	
 						      		<td>{{op.subtotal}}</td>
 						      		<td>{{op.total}}</td>
+						      		<td>{{op.saldo}}</td>
 						    	</tr>
 						    {% endfor %}
 					    {% else %}             

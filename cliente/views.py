@@ -12,6 +12,7 @@ from django.views.generic.base import View
 from models import *
 from personalrecords.models import *
 from ejercicios.models import *
+from ventas.models import *
 from forms import *
 import datetime
 from django.contrib.auth.models import User
@@ -93,6 +94,8 @@ def clientes(request):
 def cliente(request,cliente_id):
     user = request.user
     cliente = get_object_or_404(Cliente, id=cliente_id)
+    ordenes_pendientes = Orden.objects.filter(cliente=cliente).exclude(estatus_cobranza=2).order_by('-id')[:5]
+    ordenes_pagadas = Orden.objects.filter(cliente=cliente,estatus_cobranza=2).order_by('-id')[:5]
     ejercicio = Ejercicio.objects.all()
     pr = Personal_Record.objects.filter(cliente=cliente,fecha__gt=datetime.datetime.today()- datetime.timedelta(weeks=4)).order_by('-fecha')  
     page_title = cliente.nombre     
