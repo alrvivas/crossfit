@@ -27,6 +27,7 @@
 		<div class="mdl-layout__tab-bar mdl-js-ripple-effect mdl-color--deep-orange-A400">
 			<a href="#pendientes" class="mdl-layout__tab is-active">Pendientes</a>  
     		<a href="#abonadas" class="mdl-layout__tab">Abanodas</a>
+    		<a href="#pagadas" class="mdl-layout__tab">Abanodas</a>
 			<a href="{% url 'add-cliente' %}" class="mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect mdl-button--colored mdl-shadow--4dp mdl-color--accent" id="add">
 	            <i class="material-icons" role="presentation">add</i>
 	            <span class="visuallyhidden">Add</span>
@@ -104,7 +105,40 @@
 					  </tbody>
 					</table>
 		    	</div>
-	  	</div>		
+	  	</div>
+	  	<div class="mdl-grid demo-content mdl-layout__tab-panel" id="pagadas">		  		
+		    	<div class="mdl-color--white mdl-shadow--2dp mdl-cell mdl-cell--12-col mdl-grid ">
+		    		<table class="mdl-data-table mdl-js-data-table mdl-data-table--selectable mdl-fullwidth">
+					  <thead>
+					    <tr>
+					      	<th class="mdl-data-table__cell--non-numeric mdl-fullwidth ">Orden</th>
+					      	<th>Cliente</th>
+					      	<th>Subtotal</th>
+					      	<th>Total</th>					      	
+					    </tr>
+					  	</thead>
+					  	<tbody>
+					  	{% if results_oa %}
+						  	{% for op in results_op %}
+						    	<tr>
+						      		<td class="mdl-data-table__cell--non-numeric">
+						      			<a href="{{ op.get_absolute_url }}">
+						      				{{op.id}}
+						      			</a>
+						      		</td>
+						      		<td>{{op.cliente.nombre}} {{op.cliente.apellidos}}</td>					      	
+						      		<td>{{op.subtotal}}</td>
+						      		<td>{{op.total}}</td>
+						    	</tr>
+						    {% endfor %}
+					    {% else %}             
+                    		<p>No hay resultados para {{ query|escape }} :(</p>
+					    {% endif %}
+					    
+					  </tbody>
+					</table>
+		    	</div>
+	  	</div>			
 		    
 			
    	</main>
