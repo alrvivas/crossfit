@@ -91,7 +91,7 @@
 					</div>				    	
 		    	</section>
 		    	<section class=" mdl-cell mdl-cell--12-col mdl-grid entregar">
-		    		<form role="form" action=""  method="post" role="form">{% csrf_token %}
+		    		<form role="form" action=""  method="post">{% csrf_token %}
 	        			{{ formset.management_form }}
 	        			<input type="hidden" name="estatus_orden" id="estatus_orden" value="2" required/>		        				
 	        			{% for f in formset  %}
@@ -104,13 +104,14 @@
 		        			{% endfor %}
 		        		{% endfor %}
 
-		        	</form>	
+		        	
 					<div class="mdl-cell mdl-cell--12-col mdl-textfield--align-right">
 						<button type="submit" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" tabindex="4">
 							  Entregar
 						</button>
 						
-					</div>			    	
+					</div>
+					</form>				    	
 		    	</section>
 		    	
 	    	</div>
