@@ -37,7 +37,7 @@ def add_almacen(request):
 
 @login_required(login_url='/login/')
 def almacenes(request):
-    page_title = "Clientes"
+    page_title = "Almacenes"
     user = request.user
     almacenes = Almacen.objects.all()    
     query = request.GET.get('q', '')
