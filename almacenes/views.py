@@ -85,7 +85,7 @@ def entregar_orden(request,orden_id):
     productos = Producto.objects.filter(activo = True)
     clientes = Cliente.objects.all()
     orden = get_object_or_404(Orden, id=orden_id)
-    o_productos = OrdenProducto.objects.filter(orden=orden).order_by('id')
+    o_productos = Orden_Producto.objects.filter(orden=orden).order_by('id')
     estatus_orden = Estatus_Orden.objects.all()
     ProductoFormSet = modelformset_factory(Producto,form=stockForm,extra=0)
     if request.method == 'POST':
