@@ -64,7 +64,7 @@
 					  		</select>      
 						    <label class="mdl-textfield__label" for="tipo_pago">Tipo de Pago</label>
 					  	</div>
-					  	<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell--12-col">
+					  	<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell--12-col estatus_cobranza">
 					  		<select class="mdl-textfield__input" type="text" name="estatus_cobranza" id="estatus_cobranza" required>
 					  			<option  value="{{orden.estatus_cobranza.id}}" selected>{{orden.estatus_cobranza.nombre}}</option>
 					  			{% for ec in estatus_cobranza %}
@@ -120,22 +120,36 @@ $(document).ready(function() {
 	$("#tipo_pago").click(function() {
 		if( $("#tipo_pago").val() == 1 ){
 			$("#saldo").val(parseFloat(0).toFixed(3));
-			$("#estatus_cobranza").val(2)
+			
 			$(".saldo").fadeIn("slow", function() {
 			    $(".saldo").addClass("mdl-color--red-500 mdl-color-text--white");
 			});
 			$(".saldo").delay( 800 ).fadeIn("slow", function() {
 			    $(".saldo").removeClass("mdl-color--red-500 mdl-color-text--white");
+			});
+			$("#estatus_cobranza").val(2);
+			$(".estatus_cobranza").fadeIn("slow", function() {
+			    $(".estatus_cobranza").addClass("mdl-color--red-500 mdl-color-text--white");
+			});
+			$(".estatus_cobranza").delay( 800 ).fadeIn("slow", function() {
+			    $(".estatus_cobranza").removeClass("mdl-color--red-500 mdl-color-text--white");
 			});			
 		}else{
 			$("#saldo").val(parseFloat({{orden.saldo}}).toFixed(3));
-			$("#estatus_cobranza").val({{orden.estatus_cobranza.nombre}})
 			$(".saldo").fadeIn("slow", function() {
 			    $(".saldo").addClass("mdl-color--red-500 mdl-color-text--white");
 			});
 			$(".saldo").delay( 800 ).fadeIn("slow", function() {
 			    $(".saldo").removeClass("mdl-color--red-500 mdl-color-text--white");
-			});		
+			});
+			$("#estatus_cobranza").val({{orden.estatus_cobranza.nombre}});
+			$(".estatus_cobranza").fadeIn("slow", function() {
+			    $(".estatus_cobranza").addClass("mdl-color--red-500 mdl-color-text--white");
+			});
+			$(".estatus_cobranza").delay( 800 ).fadeIn("slow", function() {
+			    $(".estatus_cobranza").removeClass("mdl-color--red-500 mdl-color-text--white");
+			});
+					
 		}
 	});
 });
