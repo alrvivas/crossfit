@@ -49,7 +49,7 @@ def almacen(request,almacen_id):
     user = request.user
     almacen = get_object_or_404(Almacen, id=almacen_id)
     categorias = Categoria.objects.all()
-    productos = Producto.objects.filter(categoria=categorias)order_by('orden')
+    productos = Producto.objects.filter(categoria=categorias).order_by('orden')
     ordenes_pendientes = Orden.objects.filter(estatus_orden=1).order_by('-id')
     ordenes_entregadas = Orden.objects.filter(estatus_orden=2).order_by('-id')[:20]
     ordenes_canceladas = Orden.objects.filter(estatus_orden=3).order_by('-id')
