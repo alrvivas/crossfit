@@ -26,12 +26,10 @@
 		</div>
 		<div class="mdl-layout__tab-bar mdl-js-ripple-effect mdl-color--deep-orange-A400">
 			<a href="#pendientes" class="mdl-layout__tab is-active">Pendientes</a>  
-    		<a href="#abonadas" class="mdl-layout__tab">Abanodas</a>
-    		<a href="#pagadas" class="mdl-layout__tab">Pagadas</a>
-			<a href="{% url 'punto-venta' %}" class="mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect mdl-button--colored mdl-shadow--4dp mdl-color--accent" id="add">
-	            <i class="material-icons" role="presentation">add</i>
-	            <span class="visuallyhidden">Add</span>
-	      </a>
+    		<a href="#entregadas" class="mdl-layout__tab">Entrgadas</a>
+    		<a href="#canceladas" class="mdl-layout__tab">Revisión</a>
+    		<a href="#canceladas" class="mdl-layout__tab">Canceladas</a>
+    		<a href="#productos" class="mdl-layout__tab">Productos</a>			
 		</div>	
 	</header>
 {% endblock %}
@@ -47,11 +45,11 @@
 					      	<th>Cliente</th>
 					      	<th>Subtotal</th>
 					      	<th>Total</th>
-					      	<th>Saldo</th>					      	
+					      	<th>Peso</th>					      	
 					    </tr>
 					  	</thead>
 					  	<tbody>
-					  	{% for op in orden_pendiente %}
+					  	{% for op in ordenes_pendientes %}
 					    	<tr>
 					      		<td class="mdl-data-table__cell--non-numeric">
 					      			<a href="{{ op.get_absolute_url }}">
@@ -61,7 +59,7 @@
 					      		<td>{{op.cliente.nombre}} {{op.cliente.apellidos}}</td>					      	
 					      		<td>{{op.subtotal}}</td>
 					      		<td>{{op.total}}</td>
-					      		<td>{{op.saldo}}</td>
+					      		<td>{{oe.total_peso}} kg</td>
 					    	</tr>
 					    {% endfor %}
 					    
@@ -69,7 +67,7 @@
 					</table>
 		    	</div>
 	  	</div>
-	  	<div class="mdl-grid demo-content mdl-layout__tab-panel" id="abonadas">		  		
+	  	<div class="mdl-grid demo-content mdl-layout__tab-panel" id="entregadas">		  		
 		    	<div class="mdl-color--white mdl-shadow--2dp mdl-cell mdl-cell--12-col mdl-grid ">
 		    		<table class="mdl-data-table mdl-js-data-table mdl-data-table--selectable mdl-fullwidth">
 					  <thead>
@@ -78,21 +76,21 @@
 					      	<th>Cliente</th>
 					      	<th>Subtotal</th>
 					      	<th>Total</th>
-					      	<th>Saldo</th>					      	
+					      	<th>Peso</th>					      	
 					    </tr>
 					  	</thead>
 					  	<tbody>
-					  	{% for oa in orden_abonada %}
+					  	{% for oe in ordenes_entregadas %}
 					    	<tr>
 					      		<td class="mdl-data-table__cell--non-numeric">
-					      			<a href="{{ oa.get_absolute_url }}">
-					      				{{oa.id}}
+					      			<a href="{{ oe.get_absolute_url }}">
+					      				{{oe.id}}
 					      			</a>
 					      		</td>
-					      		<td>{{oa.cliente.nombre}} {{oa.cliente.apellidos}}</td>					      	
-					      		<td>{{oa.subtotal}}</td>
-					      		<td>{{oa.total}}</td>
-					      		<td>{{op.saldo}}</td>
+					      		<td>{{oe.cliente.nombre}} {{oe.cliente.apellidos}}</td>					      	
+					      		<td>{{oe.subtotal}}</td>
+					      		<td>{{oe.total}}</td>
+					      		<td>{{oe.total_peso}} kg</td>
 					    	</tr>
 					    {% endfor %}
 					    
@@ -100,7 +98,7 @@
 					</table>
 		    	</div>
 	  	</div>
-	  	<div class="mdl-grid demo-content mdl-layout__tab-panel" id="pagadas">		  		
+	  	<div class="mdl-grid demo-content mdl-layout__tab-panel" id="canceladas">		  		
 		    	<div class="mdl-color--white mdl-shadow--2dp mdl-cell mdl-cell--12-col mdl-grid ">
 		    		<table class="mdl-data-table mdl-js-data-table mdl-data-table--selectable mdl-fullwidth">
 					  <thead>
@@ -109,21 +107,83 @@
 					      	<th>Cliente</th>
 					      	<th>Subtotal</th>
 					      	<th>Total</th>
-					      	<th>Saldo</th>					      	
+					      	<th>Peso</th>					      	
 					    </tr>
 					  	</thead>
 					  	<tbody>
-					  	{% for op in orden_pagadas %}
+					  	{% for oc in ordenes_canceladas %}
 					    	<tr>
 					      		<td class="mdl-data-table__cell--non-numeric">
-					      			<a href="{{ op.get_absolute_url }}">
-					      				{{op.id}}
+					      			<a href="{{ oc.get_absolute_url }}">
+					      				{{oc.id}}
 					      			</a>
 					      		</td>
-					      		<td>{{op.cliente.nombre}} {{op.cliente.apellidos}}</td>					      	
-					      		<td>{{op.subtotal}}</td>
-					      		<td>{{op.total}}</td>
-					      		<td>{{op.saldo}}</td>
+					      		<td>{{oc.cliente.nombre}} {{oc.cliente.apellidos}}</td>					      	
+					      		<td>{{oc.subtotal}}</td>
+					      		<td>{{oc.total}}</td>
+					      		<td>{{oe.total_peso}} kg</td>
+					    	</tr>
+					    {% endfor %}
+					    
+					  </tbody>
+					</table>
+		    	</div>
+	  	</div>
+	  	<div class="mdl-grid demo-content mdl-layout__tab-panel" id="revision">		  		
+		    	<div class="mdl-color--white mdl-shadow--2dp mdl-cell mdl-cell--12-col mdl-grid ">
+		    		<table class="mdl-data-table mdl-js-data-table mdl-data-table--selectable mdl-fullwidth">
+					  <thead>
+					    <tr>
+					      	<th class="mdl-data-table__cell--non-numeric mdl-fullwidth ">Orden</th>
+					      	<th>Cliente</th>
+					      	<th>Subtotal</th>
+					      	<th>Total</th>
+					      	<th>Peso</th>
+					      	<th>Observación</th>					      	
+					    </tr>
+					  	</thead>
+					  	<tbody>
+					  	{% for or in ordenes_revision %}
+					    	<tr>
+					      		<td class="mdl-data-table__cell--non-numeric">
+					      			<a href="{{ or.get_absolute_url }}">
+					      				{{or.id}}
+					      			</a>
+					      		</td>
+					      		<td>{{or.cliente.nombre}} {{or.cliente.apellidos}}</td>					      	
+					      		<td>{{or.subtotal}}</td>
+					      		<td>{{or.total}}</td>
+					      		<td>{{oe.total_peso}} kg</td>
+					      		<td>{{oe.observacion}}</td>
+					    	</tr>
+					    {% endfor %}
+					    
+					  </tbody>
+					</table>
+		    	</div>
+	  	</div>	
+	  	<div class="mdl-grid demo-content mdl-layout__tab-panel" id="productos">		  		
+		    	<div class="mdl-color--white mdl-shadow--2dp mdl-cell mdl-cell--12-col mdl-grid ">
+		    		<table class="mdl-data-table mdl-js-data-table mdl-data-table--selectable mdl-fullwidth">
+					  <thead>
+					    <tr>
+					      	<th class="mdl-data-table__cell--non-numeric mdl-fullwidth ">id</th>
+					      	<th>Nombre</th>
+					      	<th>Categoria</th>
+					      	<th>stock</th>					      					      	
+					    </tr>
+					  	</thead>
+					  	<tbody>
+					  	{% for p in productos %}
+					    	<tr>
+					      		<td class="mdl-data-table__cell--non-numeric">
+					      			<a href="{{ p.get_absolute_url }}">
+					      				{{p.id}}
+					      			</a>
+					      		</td>
+					      		<td>{{p.nombre}}</td>					      	
+					      		<td>{{p.categoria.nombre}}</td>
+					      		<td>{{p.stock}}</td>
 					    	</tr>
 					    {% endfor %}
 					    

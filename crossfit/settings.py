@@ -45,6 +45,7 @@ INSTALLED_APPS = (
     'ejercicios',
     'personalrecords',
     'benchmarks',
+    'almacenes',
 )
 
 MIDDLEWARE_CLASSES = (
