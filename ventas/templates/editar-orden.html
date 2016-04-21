@@ -122,6 +122,14 @@ $(document).ready(function() {
 			$(".saldo").delay( 800 ).fadeIn("slow", function() {
 			    $(".saldo").removeClass("mdl-color--red-500 mdl-color-text--white");
 			});			
+		}else{
+			$("#saldo").val(parseFloat({{orden.saldo}}).toFixed(3));
+			$(".saldo").fadeIn("slow", function() {
+			    $(".saldo").addClass("mdl-color--red-500 mdl-color-text--white");
+			});
+			$(".saldo").delay( 800 ).fadeIn("slow", function() {
+			    $(".saldo").removeClass("mdl-color--red-500 mdl-color-text--white");
+			});		
 		}
 	});
 });
