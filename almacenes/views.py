@@ -40,16 +40,7 @@ def almacenes(request):
     page_title = "Almacenes"
     user = request.user
     almacenes = Almacen.objects.all()    
-    query = request.GET.get('q', '')
-    if query:
-        qset = (
-            Q(nombre__icontains=query)
-        )    
-        results = Almacen.objects.filter(qset).order_by('-id')
-        template_name = "resultados-almacenes.html"
-        return render_to_response(template_name, {"results": results,"query": query,'page_title':page_title},context_instance=RequestContext(request)) 
-    else:
-        results = []        
+    query = request.GET.get('q', '')            
     template_name ="almacenes.html" 
     return render_to_response(template_name, locals(),context_instance=RequestContext(request)) 
 
