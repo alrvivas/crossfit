@@ -12,7 +12,7 @@ class ordenForm(ModelForm):
 class editordenForm(ModelForm):
     class Meta:
         model = Orden
-        fields = ('cliente','estatus_orden','tipo_pago','estatus_cobranza','fecha','saldo',)
+        fields = ('cliente','estatus_orden','tipo_pago','estatus_cobranza','fecha','saldo','observacion',)
 
 class oobservacionForm(forms.ModelForm):
     class Meta:
