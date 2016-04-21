@@ -90,10 +90,10 @@
 						<h4>{{orden.total}}</h4>
 					</div>				    	
 		    	</section>
-		    	<section class=" mdl-cell mdl-cell--12-col mdl-grid ">
+		    	<section class=" mdl-cell mdl-cell--12-col mdl-grid entregar">
 		    		<form role="form" action=""  method="post" role="form">{% csrf_token %}
 	        			{{ formset.management_form }}
-	        			<input class="mdl-textfield__input" type="hidden" name="estatus_orden" id="estatus_orden" value="2" required/>		        				
+	        			<input type="hidden" name="estatus_orden" id="estatus_orden" value="2" required/>		        				
 	        			{% for f in formset  %}
 	        				{{f.id}}
 	        				{{ f.id.errors }}
@@ -107,7 +107,7 @@
 
 		        	</form>	
 					<div class="mdl-cell mdl-cell--12-col mdl-textfield--align-right">
-						<button type="submit" class="print mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" tabindex="4">
+						<button type="submit" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" tabindex="4">
 							  Entregar
 						</button>
 						
@@ -123,12 +123,11 @@
 {% endblock %}
 {% block adicional-scripts %}
 <script type="text/javascript">
-$(document).ready(function() {
-	$(".print").click(function() {
-
-		window.print();
+	$(document).ready(function() {
+		$('.entregar').each(function(i){
+			$(this).find('.stock').attr('name', 'form-' + i +'-stock');
+		});
 	});
-});
-	
 </script>
+
 {% endblock %}
