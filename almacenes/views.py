@@ -90,7 +90,7 @@ def entregar_orden(request,orden_id):
     estatus_orden = Estatus_Orden.objects.all()
     ProductoFormSet = modelformset_factory(Producto,form=stockForm,extra=0)
     if request.method == 'POST':
-        form_orden = entregarodenForm(request.POST,instance=orde)
+        form_orden = entregarodenForm(request.POST,instance=orden)
         formset = ProductoFormSet(request.POST,request.FILES)
         if form_orden.is_valid() and formset.is_valid():
             orden = form_orden.save(commit=False)
