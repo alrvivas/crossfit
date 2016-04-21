@@ -13,6 +13,8 @@ from models import *
 from productos.models import *
 from ventas.models import *
 from forms import *
+from productos.forms import *
+from ventas.forms import *
 import datetime
 from django.db.models import Q  
 
@@ -91,9 +93,9 @@ def entregar_orden(request,orden_id):
         formset = ProductoFormSet(request.POST,request.FILES)
         if form_orden.is_valid() and formset.is_valid():
             orden = form_orden.save(commit=False)
-            orden.save()              
-            formset.save()            
-        	return redirect(orden.get_absolute_urle())
+            orden.save()
+            formset.save()
+            return redirect(orden.get_absolute_urle())
     else:
         form_orden = entregarodenForm()
         formset = ProductoFormSet(queryset=Producto.objects.filter(activo = True))
