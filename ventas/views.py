@@ -96,7 +96,8 @@ def editar_orden(request,orden_id):
 @login_required(login_url='/login/')
 def credito_cobranza(request):
     user = request.user
-    orden_pendiente = Orden.objects.filter(estatus_cobranza=1).order_by('-id')
+    orden_pendiente = Orden.objects.filter(estatus_cobranza=1).order_by('-id')    
+    orden_pagadas = Orden.objects.filter(estatus_cobranza=2).order_by('-id')
     orden_abonada = Orden.objects.filter(estatus_cobranza=3).order_by('-id')
     page_title = "Credito y Cobranza"
     query = request.GET.get('q', '')
@@ -104,12 +105,14 @@ def credito_cobranza(request):
         qset = (
             Q(cliente__nombre__icontains=query) 
         )    
-        results_op = Orden.objects.filter(qset,estatus_cobranza=1).order_by('-id')
+        results_op = Orden.objects.filter(qset,estatus_cobranza=1).order_by('-id')        
+        results_opa = Orden.objects.filter(qset,estatus_cobranza=2).order_by('-id')
         results_oa = Orden.objects.filter(qset,estatus_cobranza=3).order_by('-id')
         template_name = "resultados-credito-cobranza.html"
-        return render_to_response(template_name, {"results_op": results_op,'results_oa':results_oa,"query": query,'page_title':page_title},context_instance=RequestContext(request)) 
+        return render_to_response(template_name, {'results_opa':results_opa,'results_op': results_op,'results_oa':results_oa,"query": query,'page_title':page_title},context_instance=RequestContext(request)) 
     else:
-        results_op = []
+        results_op = []        
+        results_opa = []
         results_oa = []    
     template_name ="credito-cobranza.html" 
     return render_to_response(template_name, locals(),context_instance=RequestContext(request))
