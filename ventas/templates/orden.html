@@ -47,7 +47,7 @@
 	  		<div class="mdl-grid">	  		
 	  			<section class="demo-cards mdl-color--white mdl-shadow--2dp mdl-cell mdl-cell--3-col mdl-cell--12-col-tablet mdl-cell--12-col-phone mdl-grid mdl-grid--no-spacing datos-venta">
 	  				<h4 class="mdl-cell mdl-cell--12-col orden-id">Orden: {{orden.id}}</h4>
-	  				<h4 class="mdl-cell mdl-cell--12-col cliente-nombre">Cliente: {{orden.cliente.nombre}} {{orden.cliente.apellidos}}</h4>
+	  				<h4 class="mdl-cell mdl-cell--12-col cliente-nombre">Cliente: <a href="{{orden.cliente.get_absolute_url}}">{{orden.cliente.nombre}} {{orden.cliente.apellidos}}</a></h4>
 	  				<ul class="mdl-textfield--align-left">
 	  					<li class="fecha-orden">Fecha:{{orden.fecha|date:'Y-m-d'}}</li>
 	  					<li class="tipo-pago">Tipo de Pago:{{orden.tipo_pago}}</li>

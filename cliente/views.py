@@ -118,3 +118,21 @@ def edit_cliente(request,cliente_id):
     args.update(csrf(request))
     template_name ="editar-cliente.html"
     return render_to_response(template_name, locals(), context_instance=RequestContext(request))
+
+@login_required(login_url='/login/')
+def ordenes_pendientes_cliente(request,cliente_id):
+    user = request.user
+    cliente = get_object_or_404(Cliente, id=cliente_id)
+    ordenes_pendientes = Orden.objects.filter(cliente=cliente).exclude(estatus_cobranza=2).order_by('-id')
+    page_title = "Ordenes"        
+    template_name ="ordenes-pendientes-cliente.html" 
+    return render_to_response(template_name, locals(),context_instance=RequestContext(request))
+
+@login_required(login_url='/login/')
+def ordenes_pagadas_cliente(request,cliente_id):
+    user = request.user
+    cliente = get_object_or_404(Cliente, id=cliente_id)
+    ordenes_pagadas = Orden.objects.filter(cliente=cliente,estatus_cobranza=2).order_by('-id')
+    page_title = "Ordenes"        
+    template_name ="ordenes-pagadas-cliente.html" 
+    return render_to_response(template_name, locals(),context_instance=RequestContext(request))
