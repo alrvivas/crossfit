@@ -16,3 +16,9 @@ class productoForm(ModelForm):
 		model = Producto
 		fields = '__all__'
 
+class stockForm(forms.ModelForm):
+
+	class Meta:
+		model = Producto
+		fields = ('stock',)
+

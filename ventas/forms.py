@@ -14,6 +14,11 @@ class editordenForm(ModelForm):
         model = Orden
         fields = ('cliente','estatus_orden','tipo_pago','estatus_cobranza','fecha','saldo','observacion',)
 
+class entregarodenForm(ModelForm):
+    class Meta:
+        model = Orden
+        fields = ('estatus_orden',)
+
 class oobservacionForm(forms.ModelForm):
     class Meta:
         model = Orden

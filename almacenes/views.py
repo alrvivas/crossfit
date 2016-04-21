@@ -74,3 +74,30 @@ def edit_almacen(request,almacen_id):
     args.update(csrf(request))
     template_name ="editar-almacen.html"
     return render_to_response(template_name, locals(), context_instance=RequestContext(request))
+
+
+@login_required(login_url='/login/')
+def entregar_orden(request,orden_id):
+    page_title = "Punto de Venta"
+    user = request.user
+    productos = Producto.objects.filter(activo = True)
+    clientes = Cliente.objects.all()
+    orden = get_object_or_404(Orden, id=orden_id)
+    o_productos = OrdenProducto.objects.filter(orden=orden).order_by('id')
+    estatus_orden = Estatus_Orden.objects.all()
+    ProductoFormSet = modelformset_factory(Producto,form=stockForm,extra=0)
+    if request.method == 'POST':
+        form_orden = entregarodenForm(request.POST,instance=orde)
+        formset = ProductoFormSet(request.POST,request.FILES)
+        if form_orden.is_valid() and formset.is_valid():
+            orden = form_orden.save(commit=False)
+            orden.save()              
+            formset.save()            
+        	return redirect(orden.get_absolute_urle())
+    else:
+        form_orden = entregarodenForm()
+        formset = ProductoFormSet(queryset=Producto.objects.filter(activo = True))
+    args = {}
+    args.update(csrf(request))
+    template_name = "entregar-orden.html"
+    return render_to_response(template_name, locals(), context_instance=RequestContext(request))

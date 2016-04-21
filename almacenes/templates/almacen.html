@@ -83,7 +83,7 @@
 					  	{% for oe in ordenes_entregadas %}
 					    	<tr>
 					      		<td class="mdl-data-table__cell--non-numeric">
-					      			<a href="{{ oe.get_absolute_url }}">
+					      			<a href="{{ oe.get_absolute_url_entregar }}">
 					      				{{oe.id}}
 					      			</a>
 					      		</td>
@@ -153,8 +153,8 @@
 					      		<td>{{or.cliente.nombre}} {{or.cliente.apellidos}}</td>					      	
 					      		<td>{{or.subtotal}}</td>
 					      		<td>{{or.total}}</td>
-					      		<td>{{oe.total_peso}} kg</td>
-					      		<td>{{oe.observacion}}</td>
+					      		<td>{{or.total_peso}} kg</td>
+					      		<td>{{or.observacion}}</td>
 					    	</tr>
 					    {% endfor %}
 					    

@@ -54,16 +54,16 @@ class Orden(models.Model):
         return('orden', (), { 'orden_id': self.id })
 
     @models.permalink
-    def get_absolute_urlo(self):
-        return('orden-pendiente', (), { 'orden_id': self.id })
-
-    @models.permalink
     def get_absolute_urle(self):
         return('orden-exitosa', (), { 'orden_id': self.id })
 
     @models.permalink
     def get_absolute_url_editar(self):
         return('editar-orden', (), { 'orden_id': self.id })
+
+    @models.permalink
+    def get_absolute_url_entregar(self):
+        return('entregar-orden', (), { 'orden_id': self.id })
 
     @models.permalink
     def get_absolute_url_revision(self):
