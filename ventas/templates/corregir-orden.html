@@ -112,10 +112,12 @@
 							{% for f in formset %}
 								<tr>
 									<td class='mdl-data-table__cell--non-numeric'>
-										<input id='id_form' name='id' type='hidden' value=''>
-										<input class='orden' name='orden' id='orden' type='hidden' value=''>
-										<input type='hidden' class='producto' id='producto' name='producto' value="{{f.id}}"/>{{f.producto.nombre.value}}
+										<input id='id_form' name='id' type='hidden' value='' required="required" />
+										<input class='orden' name='orden' id='orden' type='hidden' value='{{f.orden.value}}'>
+										<input type="hidden" class="producto" id="producto" name="producto" value="{{f.id}}"/>
+										{{f.producto.nombre.value}}
 									</td>
+									<input></input>
 									<td>
 										<input type='number' id='cantidad' class='cantidad mdl-textfield__input mdl-textfield--align-right' name='cantidad' value="{{f.cantidad}}"/>
 									</td>
