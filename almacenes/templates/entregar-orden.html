@@ -97,24 +97,22 @@
 	        			{% for p in o_productos %}	        				
 	        				{% for f in formset %}			        				
 		        				{% ifequal p.producto.id f.id.value %}
-		        					<input id="id" class="id" name="id" type="hidden" value="{{f.id.value}}">
+		        					{{ f.id }}
 	        						{{ f.id.errors }}
 			        				<input type="number" class="stock" name="stock" value="{{f.stock.value|sub:p.cantidad}}" />	
 			        			{% else %}
-			        				<input id="id" class="id" name="id" type="hidden" value="{{f.id.value}}">
+			        				{{ f.id }}
 	        						{{ f.id.errors }}
-			        				<input type="number" class="stock" name="stock" value="{{p.cantidad}}" />				        				
+			        				<input type="number" class="stock" name="stock" value="{{f.stock.value}}" />				        				
 		        				{% endifequal %}
 		        			{% endfor %}
 		        		{% endfor %}
-
 		        	
-					<div class="mdl-cell mdl-cell--12-col mdl-textfield--align-right">
-						<button type="submit" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" tabindex="4">
-							  Entregar
-						</button>
-						
-					</div>
+						<div class="mdl-cell mdl-cell--12-col mdl-textfield--align-right">
+							<button type="submit" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" tabindex="4">
+								  Entregar
+							</button>							
+						</div>
 					</form>				    	
 		    	</section>
 		    	
@@ -128,8 +126,7 @@
 {% block adicional-scripts %}
 <script type="text/javascript">
 	$(document).ready(function() {
-		$('.entregar').each(function(i){
-			$(this).find('.id').attr('name', 'form-' + i +'-id');
+		$('section.entregar').each(function(i){
 			$(this).find('.stock').attr('name', 'form-' + i +'-stock');
 		});
 	});
