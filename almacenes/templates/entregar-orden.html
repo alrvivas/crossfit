@@ -97,7 +97,7 @@
 	        			{% for p in o_productos %}	        				
 	        				{% for f in formset %}			        				
 		        				{% ifequal p.producto.id f.id.value %}
-		        					{{f.id}}
+		        					<input id="id" class="id" name="id" type="hidden" value="f.id.value">
 	        						{{ f.id.errors }}
 			        				<input type="number" class="stock" name="stock" value="{{f.stock.value|sub:p.cantidad}}" />				        				
 		        				{% endifequal %}
@@ -125,6 +125,7 @@
 <script type="text/javascript">
 	$(document).ready(function() {
 		$('.entregar').each(function(i){
+			$(this).find('.id').attr('name', 'form-' + i +'-id');
 			$(this).find('.stock').attr('name', 'form-' + i +'-stock');
 		});
 	});
