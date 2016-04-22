@@ -126,8 +126,10 @@
 {% block adicional-scripts %}
 <script type="text/javascript">
 	$(document).ready(function() {
-		$('section.entregar').each(function(i){
-			$(this).find('.stock').attr('name', 'form-' + i +'-stock');
+		$('section.entregar').each(function(){
+			$(this).find('form').each(function(i){
+				$(this).find('input.stock').attr('name', 'form-' + i +'-stock');
+			});
 		});
 	});
 </script>
