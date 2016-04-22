@@ -81,7 +81,7 @@ def edit_almacen(request,almacen_id):
 
 @login_required(login_url='/login/')
 def entregar_orden(request,orden_id):
-    page_title = "Punto de Venta"
+    page_title = "Entregar Orden"
     user = request.user
     productos = Producto.objects.filter(activo = True).order_by('id')
     clientes = Cliente.objects.all()
@@ -96,11 +96,32 @@ def entregar_orden(request,orden_id):
             orden = form_orden.save(commit=False)
             orden.save()
             formset.save()
-            return redirect(orden.get_absolute_urle())
+            return redirect(orden.get_absolute_url())
     else:
         form_orden = entregarodenForm()
         formset = ProductoFormSet(queryset=Producto.objects.filter(activo = True))
     args = {}
     args.update(csrf(request))
     template_name = "entregar-orden.html"
+    return render_to_response(template_name, locals(), context_instance=RequestContext(request))
+
+@login_required(login_url='/login/')
+def mandar_revision_orden(request,orden_id):
+    page_title = "Mandar a Revisar Orden"
+    user = request.user    
+    clientes = Cliente.objects.all()
+    orden = get_object_or_404(Orden, id=orden_id)
+    o_productos = Orden_Producto.objects.filter(orden=orden).order_by('id')
+    estatus_orden = Estatus_Orden.objects.all()
+    if request.method == 'POST':
+        form_orden = orevisionForm(request.POST,instance=orden)
+        if form_orden.is_valid():
+            orden = form_orden.save(commit=False)
+            orden.save()
+            return redirect(orden.get_absolute_url())
+    else:
+        form_orden = orevisionForm()
+    args = {}
+    args.update(csrf(request))
+    template_name = "mandar-revisar-orden.html"
     return render_to_response(template_name, locals(), context_instance=RequestContext(request))

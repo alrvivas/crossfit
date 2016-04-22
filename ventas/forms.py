@@ -19,10 +19,10 @@ class entregarodenForm(ModelForm):
         model = Orden
         fields = ('estatus_orden',)
 
-class oobservacionForm(forms.ModelForm):
+class orevisionForm(forms.ModelForm):
     class Meta:
         model = Orden
-        fields = ('observacion',)
+        fields = ('observacion','estatus_orden',)
 
 
 class oproductoForm(forms.ModelForm):

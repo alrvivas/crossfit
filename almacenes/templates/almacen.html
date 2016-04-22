@@ -45,7 +45,8 @@
 					      	<th>Cliente</th>
 					      	<th>Subtotal</th>
 					      	<th>Total</th>
-					      	<th>Peso</th>					      	
+					      	<th>Peso</th>
+					      	<th></th>					      	
 					    </tr>
 					  	</thead>
 					  	<tbody>
@@ -59,7 +60,8 @@
 					      		<td>{{op.cliente.nombre}} {{op.cliente.apellidos}}</td>					      	
 					      		<td>{{op.subtotal}}</td>
 					      		<td>{{op.total}}</td>
-					      		<td>{{oe.total_peso}} kg</td>
+					      		<td>{{op.total_peso}} kg</td>
+					      		<td><a href="{{op.get_absolute_url_mandar_revision}}"><i class="material-icons mdl-color-text--red-500 editar">mode_edit</i></a></td>
 					    	</tr>
 					    {% endfor %}
 					    
@@ -121,7 +123,7 @@
 					      		<td>{{oc.cliente.nombre}} {{oc.cliente.apellidos}}</td>					      	
 					      		<td>{{oc.subtotal}}</td>
 					      		<td>{{oc.total}}</td>
-					      		<td>{{oe.total_peso}} kg</td>
+					      		<td>{{oc.total_peso}} kg</td>
 					    	</tr>
 					    {% endfor %}
 					    
@@ -191,7 +193,9 @@
 					</table>
 		    	</div>
 	  	</div>		
-		    
+		<div class="mdl-tooltip mdl-tooltip--left" for="editar">
+			Mandar a <br />revisión
+		</div>    
 			
    	</main>
 {% endblock %}

@@ -66,8 +66,8 @@ class Orden(models.Model):
         return('entregar-orden', (), { 'orden_id': self.id })
 
     @models.permalink
-    def get_absolute_url_revision(self):
-        return('orden-revision', (), { 'orden_id': self.id })
+    def get_absolute_url_mandar_revision(self):
+        return('mandar-revision-orden', (), { 'orden_id': self.id })
 
     @models.permalink
     def get_absolute_url_pagada(self):
