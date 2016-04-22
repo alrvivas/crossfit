@@ -114,7 +114,7 @@
 										<input type="hidden" class="producto" id="producto" name="producto" value="{{f.producto.value}}"/>
 										{% for p in productos %}
 										{% ifequal p.id f.producto.value %}
-											{{f.producto.nombre}}
+											{{p.nombre}}
 										{% endifequal %}
 										{% endfor %}
 									</td>
