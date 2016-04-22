@@ -125,7 +125,6 @@ def corregir_orden(request,orden_id):
     productos = Producto.objects.filter(activo = True)
     clientes = Cliente.objects.all()
     orden = get_object_or_404(Orden, id=orden_id)
-    last_orden = Orden.objects.latest('id')
     tipo_pago = Tipo_Pago.objects.all()
     tipo_abono = Tipo_Abono.objects.all()
     estatus_orden = Estatus_Orden.objects.all()

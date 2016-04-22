@@ -245,7 +245,7 @@ $(document).ready(function() {
 		    $("#producto_p").val("");
 			$("#cantidad_p").val("");
 			$("#producto_p").focus();
-			$(".orden").val({{last_orden}}+1);
+			$(".orden").val({{orden.pk}});
 			calcularTotal();
 	});
 
