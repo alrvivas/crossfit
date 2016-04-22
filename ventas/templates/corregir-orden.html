@@ -106,7 +106,9 @@
 								</tr>
 							</thead>
 							<tbody class="lista-venta">
-							{% for f in formset|slice:":2" %}
+							{% for f in formset %}
+								{% for op in orden_producto %}
+								{% ifequal op.producto.id f.producto.value %}
 								<tr>
 									<td class='mdl-data-table__cell--non-numeric'>
 										<input id='id_form' name='id' type='hidden' value='{{f.id.value}}' required="required" />
@@ -130,7 +132,9 @@
 										<input type='text' class='subtotal_producto mdl-textfield__input mdl-textfield--align-right' id='subtotal_producto' name='subtotal_producto' value= "{{f.subtotal_producto.value}}" readonly/>
 										<input type='hidden' class='subtotal_peso mdl-textfield__input mdl-textfield--align-right' id='subtotal_peso' name='subtotal_peso' value=" {{f.subtotal_peso.value}}" readonly/>
 									</td>
-								</tr>	
+								</tr>
+								{% endifequal %}
+								{% endfor %}	
 							{% endfor %}
 							</tbody>
 						</table>

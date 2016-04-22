@@ -129,7 +129,7 @@ def corregir_orden(request,orden_id):
     tipo_abono = Tipo_Abono.objects.all()
     estatus_orden = Estatus_Orden.objects.all()
     estatus_cobranza = Estatus_Cobranza.objects.all()
-    total_orden_producto = Orden_Producto.objects.filter(orden=orden).count()
+    orden_producto = Orden_Producto.objects.filter(orden=orden)
     OrdenProductoFormSet = modelformset_factory(Orden_Producto,form=oproductoForm,extra=len(productos))
     if request.method == 'POST':
         form_orden = ordenForm(request.POST,instance=orden)
