@@ -111,11 +111,23 @@
 							<tbody class="lista-venta">
 							{% for f in formset %}
 								<tr>
-								  <td class="mdl-data-table__cell--non-numeric">{{f.producto.nombre}}</td>
-								  <td>{{f.cantidad}}</td>
-								  <td>Precio Unitario</td>
-								  <td>Total</td>
-								</tr>
+									<td class='mdl-data-table__cell--non-numeric'>
+										<input id='id_form' name='id' type='hidden' value=''>
+										<input class='orden' name='orden' id='orden' type='hidden' value=''>
+										<input type='hidden' class='producto' id='producto' name='producto' value="{{f.id}}"/>{{f.producto.nombre.value}}
+									</td>
+									<td>
+										<input type='number' id='cantidad' class='cantidad mdl-textfield__input mdl-textfield--align-right' name='cantidad' value="{{f.cantidad}}"/>
+									</td>
+									<td class='precio_front' id='precio_front'>${{f.precio.value}}
+										<input type='hidden' class='precio' id='precio' name='precio' value="{{f.precio.value}}"/>
+										<input type='hidden' class='peso' id='peso' value="{{f.peso.value}}"/>
+									</td>
+									<td >
+										<input type='text' class='subtotal_producto mdl-textfield__input mdl-textfield--align-right' id='subtotal_producto' name='subtotal_producto' value= "{{f.subtotal_producto.value}}" readonly/>
+										<input type='hidden' class='subtotal_peso mdl-textfield__input mdl-textfield--align-right' id='subtotal_peso' name='subtotal_peso' value=" {{f.subtotal_peso.value}}" readonly/>
+									</td>
+								</tr>	
 							{% endfor %}
 							</tbody>
 						</table>
@@ -147,24 +159,11 @@
 							</thead>
 							<tbody>
 								{% for p in productos %}
-								<tr>
-									<td class='mdl-data-table__cell--non-numeric'>
-										<input id='id_form' name='id' type='hidden' value=''>
-										<input class='orden' name='orden' id='orden' type='hidden' value=''>
-										<input type='hidden' class='producto' id='producto' name='producto' value="{{f.id}}"/>{{f.producto.nombre}}
-									</td>
-									<td>
-										<input type='number' id='cantidad' class='cantidad mdl-textfield__input mdl-textfield--align-right' name='cantidad' value="{{f.cantidad}}"/>
-									</td>
-									<td class='precio_front' id='precio_front'>${{f.precio}}
-										<input type='hidden' class='precio' id='precio' name='precio' value="{{f.precio}}"/>
-										<input type='hidden' class='peso' id='peso' value="{{f.peso}}"/>
-									</td>
-									<td >
-										<input type='text' class='subtotal_producto mdl-textfield__input mdl-textfield--align-right' id='subtotal_producto' name='subtotal_producto' value= "{{f.subtotal_producto}}" readonly/>
-										<input type='hidden' class='subtotal_peso mdl-textfield__input mdl-textfield--align-right' id='subtotal_peso' name='subtotal_peso' value=" {{f.subtotal_peso}}" readonly/>
-									</td>
-								</tr>							
+								<tr>									
+								  	<td class="mdl-data-table__cell--non-numeric">{{p.nombre}}</td>
+								  	<td>{{p.sku}}</td>
+								  	<td>{{p.stock}}</td>								  
+								</tr>								
 								{% endfor %}
 							</tbody>
 						</table>
