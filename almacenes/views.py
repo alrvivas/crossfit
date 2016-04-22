@@ -83,7 +83,7 @@ def edit_almacen(request,almacen_id):
 def entregar_orden(request,orden_id):
     page_title = "Punto de Venta"
     user = request.user
-    productos = Producto.objects.filter(activo = True)
+    productos = Producto.objects.filter(activo = True).order_by('id')
     clientes = Cliente.objects.all()
     orden = get_object_or_404(Orden, id=orden_id)
     o_productos = Orden_Producto.objects.filter(orden=orden).order_by('id')
