@@ -28,6 +28,7 @@
 			<a href="#pendientes" class="mdl-layout__tab is-active">Pendientes</a>  
     		<a href="#abonadas" class="mdl-layout__tab">Abanodas</a>
     		<a href="#pagadas" class="mdl-layout__tab">Pagadas</a>
+    		<a href="#revision" class="mdl-layout__tab">Por Revisar</a>
 			<a href="{% url 'punto-venta' %}" class="mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect mdl-button--colored mdl-shadow--4dp mdl-color--accent" id="add">
 	            <i class="material-icons" role="presentation">add</i>
 	            <span class="visuallyhidden">Add</span>
@@ -124,6 +125,39 @@
 					      		<td>{{op.subtotal}}</td>
 					      		<td>{{op.total}}</td>
 					      		<td>{{op.saldo}}</td>
+					    	</tr>
+					    {% endfor %}
+					    
+					  </tbody>
+					</table>
+		    	</div>
+	  	</div>
+	  	<div class="mdl-grid demo-content mdl-layout__tab-panel" id="pagadas">		  		
+		    	<div class="mdl-color--white mdl-shadow--2dp mdl-cell mdl-cell--12-col mdl-grid ">
+		    		<table class="mdl-data-table mdl-js-data-table mdl-data-table--selectable mdl-fullwidth">
+					  <thead>
+					    <tr>
+					      	<th class="mdl-data-table__cell--non-numeric mdl-fullwidth ">Orden</th>
+					      	<th>Cliente</th>
+					      	<th>Subtotal</th>
+					      	<th>Total</th>
+					      	<th>Saldo</th>
+					      	<th>Observaciones</th>					      	
+					    </tr>
+					  	</thead>
+					  	<tbody>
+					  	{% for or in ordenes_revision %}
+					    	<tr>
+					      		<td class="mdl-data-table__cell--non-numeric">
+					      			<a href="{{ or.get_absolute_url_corregir }}">
+					      				{{or.id}}
+					      			</a>
+					      		</td>
+					      		<td>{{or.cliente.nombre}} {{or.cliente.apellidos}}</td>					      	
+					      		<td>${{or.subtotal}}</td>
+					      		<td>${{or.total}}</td>
+					      		<td>${{or.saldo}}</td>
+					      		<td>{{or.observacion}}</td>
 					    	</tr>
 					    {% endfor %}
 					    

@@ -41,26 +41,52 @@
 	  			<section class="demo-cards dl-color--white mdl-shadow--2dp mdl-cell mdl-cell--3-col mdl-grid mdl-grid--no-spacing datos-venta">
 	  				<div class="datos-venta mdl-cell--12-col">
 	  					<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell--12-col">
-						   	<input class="mdl-textfield__input" type="date" name="fecha" id="fecha" value="" required/>
+						    <input class="mdl-textfield__input" type="date" name="fecha" id="fecha" value="{{orden.fecha|date:'Y-m-d'}}" required/>
 						    <label class="mdl-textfield__label" for="fecha">Fecha</label>
-					  	</div>	
-	  					<div class="mdl-textfield mdl-js-textfield mdl-cell--12-col">
+					  	</div>
+	  					<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell--12-col">
 					  		<select class="mdl-textfield__input" type="text" name="cliente" id="cliente" required>
-					  			<option  value="" selected>Seleccione un cliente ...</option>
+					  			<option  value="{{orden.cliente.id}}" selected>{{orden.cliente.nombre}} {{orden.cliente.apellidos}}</option>
 					  			{% for c in clientes %}
 					  				<option value="{{c.id}}">{{c.nombre}} {{c.apellidos}}</option>
 					  			{% endfor %}
 					  		</select>      
 						    <label class="mdl-textfield__label" for="cliente">Cliente</label>
-					  	</div>	
-					  	<div class="mdl-textfield mdl-js-textfield mdl-cell--12-col">
+					  	</div>					  	  		
+			    		<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell--12-col">
 					  		<select class="mdl-textfield__input" type="text" name="tipo_pago" id="tipo_pago" required>
-					  			<option  value="" selected>Tipo de Pago ...</option>
+					  			<option  value="{{orden.tipo_pago.id}}" selected>{{orden.tipo_pago.nombre}}</option>
 					  			{% for tp in tipo_pago %}
 					  				<option value="{{tp.id}}">{{tp.nombre}}</option>
 					  			{% endfor %}
 					  		</select>      
 						    <label class="mdl-textfield__label" for="tipo_pago">Tipo de Pago</label>
+					  	</div>
+					  	<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell--12-col estatus_cobranza">
+					  		<select class="mdl-textfield__input" type="text" name="estatus_cobranza" id="estatus_cobranza" required>
+					  			<option  value="{{orden.estatus_cobranza.id}}" selected>{{orden.estatus_cobranza.nombre}}</option>
+					  			{% for ec in estatus_cobranza %}
+					  				<option value="{{ec.id}}">{{ec.nombre}}</option>
+					  			{% endfor %}
+					  		</select>      
+						    <label class="mdl-textfield__label" for="estatus_cobranza">Estatus Cobranza</label>
+					  	</div>
+					  	<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell--12-col">
+					  		<select class="mdl-textfield__input" type="text" name="estatus_orden" id="estatus_orden" required>
+					  			<option  value="{{orden.estatus_orden.id}}" selected>{{orden.estatus_orden.nombre}}</option>
+					  			{% for tp in estatus_orden %}
+					  				<option value="{{tp.id}}">{{tp.nombre}}</option>
+					  			{% endfor %}
+					  		</select>      
+						    <label class="mdl-textfield__label" for="estatus_orden">Estatus Orden</label>
+					  	</div>
+					  	<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell--12-col saldo">
+						    <input class="mdl-textfield__input" type="number" name="saldo" id="saldo" value="{{orden.saldo}}" required/>
+						    <label class="mdl-textfield__label" for="saldo">Saldo</label>
+					  	</div>
+					  	<div class="mdl-textfield mdl-js-textfield mdl-cell--12-col">
+						    <textarea class="mdl-textfield__input" type="text" name="observacion" id="observacion" >{{orden.observacion}}</textarea>
+						    <label class="mdl-textfield__label" for="observacion">Observaciones</label>
 					  	</div>
 	  				</div>	
 				  	<input class="mdl-textfield__input" type="hidden" name="estatus_orden" id="estatus_orden" value="1" required/>
@@ -83,7 +109,14 @@
 								</tr>
 							</thead>
 							<tbody class="lista-venta">
-								
+							{% for f in formset %}
+								<tr>
+								  <td class="mdl-data-table__cell--non-numeric">{{f.producto.nombre}}</td>
+								  <td>{{f.cantidad}}</td>
+								  <td>Precio Unitario</td>
+								  <td>Total</td>
+								</tr>
+							{% endfor %}
 							</tbody>
 						</table>
 					</div>			    	
@@ -114,11 +147,24 @@
 							</thead>
 							<tbody>
 								{% for p in productos %}
-								<tr>									
-								  	<td class="mdl-data-table__cell--non-numeric">{{p.nombre}}</td>
-								  	<td>{{p.sku}}</td>
-								  	<td>{{p.stock}}</td>								  
-								</tr>								
+								<tr>
+									<td class='mdl-data-table__cell--non-numeric'>
+										<input id='id_form' name='id' type='hidden' value=''>
+										<input class='orden' name='orden' id='orden' type='hidden' value=''>
+										<input type='hidden' class='producto' id='producto' name='producto' value="{{f.id}}"/>{{f.producto.nombre}}
+									</td>
+									<td>
+										<input type='number' id='cantidad' class='cantidad mdl-textfield__input mdl-textfield--align-right' name='cantidad' value="{{f.cantidad}}"/>
+									</td>
+									<td class='precio_front' id='precio_front'>${{f.precio}}
+										<input type='hidden' class='precio' id='precio' name='precio' value="{{f.precio}}"/>
+										<input type='hidden' class='peso' id='peso' value="{{f.peso}}"/>
+									</td>
+									<td >
+										<input type='text' class='subtotal_producto mdl-textfield__input mdl-textfield--align-right' id='subtotal_producto' name='subtotal_producto' value= "{{f.subtotal_producto}}" readonly/>
+										<input type='hidden' class='subtotal_peso mdl-textfield__input mdl-textfield--align-right' id='subtotal_peso' name='subtotal_peso' value=" {{f.subtotal_peso}}" readonly/>
+									</td>
+								</tr>							
 								{% endfor %}
 							</tbody>
 						</table>

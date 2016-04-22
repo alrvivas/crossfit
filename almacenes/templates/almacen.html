@@ -58,8 +58,8 @@
 					      			</a>
 					      		</td>
 					      		<td>{{op.cliente.nombre}} {{op.cliente.apellidos}}</td>					      	
-					      		<td>{{op.subtotal}}</td>
-					      		<td>{{op.total}}</td>
+					      		<td>${{op.subtotal}}</td>
+					      		<td>${{op.total}}</td>
 					      		<td>{{op.total_peso}} kg</td>
 					      		<td><a href="{{op.get_absolute_url_mandar_revision}}"><i class="material-icons mdl-color-text--red-500" id="editar">mode_edit</i></a></td>
 					    	</tr>
@@ -90,8 +90,8 @@
 					      			</a>
 					      		</td>
 					      		<td>{{oe.cliente.nombre}} {{oe.cliente.apellidos}}</td>					      	
-					      		<td>{{oe.subtotal}}</td>
-					      		<td>{{oe.total}}</td>
+					      		<td>${{oe.subtotal}}</td>
+					      		<td>${{oe.total}}</td>
 					      		<td>{{oe.total_peso}} kg</td>
 					    	</tr>
 					    {% endfor %}
@@ -121,8 +121,8 @@
 					      			</a>
 					      		</td>
 					      		<td>{{oc.cliente.nombre}} {{oc.cliente.apellidos}}</td>					      	
-					      		<td>{{oc.subtotal}}</td>
-					      		<td>{{oc.total}}</td>
+					      		<td>${{oc.subtotal}}</td>
+					      		<td>${{oc.total}}</td>
 					      		<td>{{oc.total_peso}} kg</td>
 					    	</tr>
 					    {% endfor %}
@@ -153,8 +153,8 @@
 					      			</a>
 					      		</td>
 					      		<td>{{or.cliente.nombre}} {{or.cliente.apellidos}}</td>					      	
-					      		<td>{{or.subtotal}}</td>
-					      		<td>{{or.total}}</td>
+					      		<td>${{or.subtotal}}</td>
+					      		<td>${{or.total}}</td>
 					      		<td>{{or.total_peso}} kg</td>
 					      		<td>{{or.observacion}}</td>
 					    	</tr>

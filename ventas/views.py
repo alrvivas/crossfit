@@ -99,6 +99,7 @@ def credito_cobranza(request):
     orden_pendiente = Orden.objects.filter(estatus_cobranza=1).order_by('-id')    
     orden_pagadas = Orden.objects.filter(estatus_cobranza=2).order_by('-id')
     orden_abonada = Orden.objects.filter(estatus_cobranza=3).order_by('-id')
+    ordenes_revision = Orden.objects.filter(estatus_orden=4).order_by('-id')
     page_title = "Credito y Cobranza"
     query = request.GET.get('q', '')
     if query:
@@ -116,3 +117,32 @@ def credito_cobranza(request):
         results_oa = []    
     template_name ="credito-cobranza.html" 
     return render_to_response(template_name, locals(),context_instance=RequestContext(request))
+
+@login_required(login_url='/login/')
+def corregir_orden(request,orden_id):
+    page_title = "Corregir Orden"
+    user = request.user
+    productos = Producto.objects.filter(activo = True)
+    clientes = Cliente.objects.all()
+    orden = get_object_or_404(Orden, id=orden_id)
+    last_orden = Orden.objects.latest('id')
+    tipo_pago = Tipo_Pago.objects.all()
+    tipo_abono = Tipo_Abono.objects.all()
+    estatus_orden = Estatus_Orden.objects.all()
+    estatus_cobranza = Estatus_Cobranza.objects.all()
+    OrdenProductoFormSet = modelformset_factory(Orden_Producto,form=oproductoForm,extra=len(productos))
+    if request.method == 'POST':
+        form_orden = ordenForm(request.POST,instance=orden)
+        formset = OrdenProductoFormSet(request.POST,request.FILES,queryset=Orden_Producto.objects.filter(orden=orden))
+        if form_orden.is_valid() and formset.is_valid():
+            orden = form_orden.save(commit=False)
+            orden.save()
+            formset.save()
+            return redirect(orden.get_absolute_urle())
+    else:
+        form_orden = ordenForm()
+        formset = OrdenProductoFormSet(queryset=Orden_Producto.objects.filter(orden=orden))
+    args = {}
+    args.update(csrf(request))
+    template_name = "corregir-orden.html"
+    return render_to_response(template_name, locals(), context_instance=RequestContext(request))
