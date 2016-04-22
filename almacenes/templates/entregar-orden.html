@@ -99,7 +99,11 @@
 		        				{% ifequal p.producto.id f.id.value %}
 		        					<input id="id" class="id" name="id" type="hidden" value="{{f.id.value}}">
 	        						{{ f.id.errors }}
-			        				<input type="number" class="stock" name="stock" value="{{f.stock.value|sub:p.cantidad}}" />				        				
+			        				<input type="number" class="stock" name="stock" value="{{f.stock.value|sub:p.cantidad}}" />	
+			        			{% else %}
+			        				<input id="id" class="id" name="id" type="hidden" value="{{f.id.value}}">
+	        						{{ f.id.errors }}
+			        				<input type="number" class="stock" name="stock" value="{{p.cantidad}}" />				        				
 		        				{% endifequal %}
 		        			{% endfor %}
 		        		{% endfor %}
