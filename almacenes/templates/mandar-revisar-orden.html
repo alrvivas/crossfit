@@ -53,10 +53,22 @@
 	  					<li class="tipo-pago">Tipo de Pago:{{orden.tipo_pago}}</li>
 	  					<li class="estatus-orden">Estatus Orden: {{orden.estatus_orden}}</li>
 	  					<li class="estatus-cobranza">Estatus Cobranza{{orden.estatus_cobranza}}</li>
-	  				</ul>
-	  				<button type="submit" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" tabindex="4">
-						Enviar
-					</button>		    		 			
+	  				</ul> 
+	  				<form action=""  method="post" role="form" class="mdl-grid form-add" enctype="multipart/form-data">{% csrf_token %}				
+			  			<input type="hidden" name="estatus_orden" value="4">    
+						<div class="mdl-textfield mdl-js-textfield mdl-cell--12-col">
+						    <textarea class="mdl-textfield__input" type="text" name="observacion" id="observacion" >{{orden.observacion}}</textarea>
+						    <label class="mdl-textfield__label" for="observacion">Observaciones</label>
+					  	</div>					  	
+					   	<div class="mdl-cell--12-col mdl-textfield--align-right">
+						   	<a class="mdl-button mdl-js-button mdl-js-ripple-effect">
+							  	CANCELAR
+							</a>				   		
+					  		<button class="mdl-button mdl-js-button  mdl-js-ripple-effect mdl-button--primary">
+							  	ENVIAR
+							</button>
+				    	</div>
+				    </form>	  			    		 			
 				</section>
 				<section class=" mdl-cell mdl-cell--9-col mdl-cell mdl-cell--3-col mdl-cell--12-col-tablet mdl-cell--12-col-phone mdl-grid ">	
 					<div class="mdl-color--white mdl-shadow--2dp mdl-cell mdl-cell--12-col suminputs venta">
