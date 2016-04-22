@@ -95,7 +95,8 @@
 	        			{{ formset.management_form }}
 	        			<input type="hidden" name="estatus_orden" id="estatus_orden" value="2" required/>		        				
 	        			{% for p in o_productos %}	        				
-	        				{% for f in formset %}			        				
+	        				{% for f in formset %}
+	        					<div class="productos-entregar">			        				
 		        				{% ifequal p.producto.id f.id.value %}
 		        					{{ f.id }}
 	        						{{ f.id.errors }}
@@ -105,6 +106,7 @@
 	        						{{ f.id.errors }}
 			        				<input type="number" class="stock" name="stock" value="{{f.stock.value}}" />				        				
 		        				{% endifequal %}
+		        				</div>
 		        			{% endfor %}
 		        		{% endfor %}
 		        	
@@ -127,8 +129,8 @@
 <script type="text/javascript">
 	$(document).ready(function() {
 		$('section.entregar').each(function(){
-			$(this).find('form').each(function(i){
-				$(this).find('input.stock').attr('name', 'form-' + i +'-stock');
+			$(this).find('.productos-entregar').each(function(i){
+				$(this).find('.stock').attr('name', 'form-' + i +'-stock');
 			});
 		});
 	});
