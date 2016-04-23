@@ -128,8 +128,8 @@
 {% block adicional-scripts %}
 <script type="text/javascript">
 	$(document).ready(function() {
-		$('section.entregar').each(function(i){
-			$(this).find('.productos-entregar').each(function(){
+		$('section.entregar').each(function(){
+			$(this).find('.productos-entregar').each(function(i){
 				$(this).find('#id_form').attr('name', 'form-' + i +'-id');
 				$(this).find('.stock').attr('name', 'form-' + i +'-stock');
 			});
