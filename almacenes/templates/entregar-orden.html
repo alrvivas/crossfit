@@ -103,11 +103,7 @@
 				        				<input type="number" class="stock" name="stock" value="{{f.stock.value|sub:p.cantidad}}" />	
 			        				</div>
 			        			{% else %}
-			        				<div class="productos-entregar">
-			        					<input id='id_form' name='id' type='hidden' value='{{f.id.value}}' required="required" />
-		        						{{ f.id.errors }}
-				        				<input type="number" class="stock" name="stock" value="{{f.stock.value}}" />	
-			        				</div>					        				
+			        									        				
 		        				{% endifequal %}
 		        				
 		        			{% endfor %}
