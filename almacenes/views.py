@@ -88,7 +88,7 @@ def entregar_orden(request,orden_id):
     orden = get_object_or_404(Orden, id=orden_id)
     o_productos = Orden_Producto.objects.filter(orden=orden).order_by('id')
     estatus_orden = Estatus_Orden.objects.all()
-    ProductoFormSet = modelformset_factory(Producto,form=stockForm,extra=0)
+    ProductoFormSet = modelformset_factory(Producto,form=stockForm,extra=len(productos))
     if request.method == 'POST':
         form_orden = entregarodenForm(request.POST,instance=orden)
         formset = ProductoFormSet(request.POST,request.FILES)
@@ -99,7 +99,7 @@ def entregar_orden(request,orden_id):
             return redirect(orden.get_absolute_url())
     else:
         form_orden = entregarodenForm()
-        formset = ProductoFormSet(queryset=Producto.objects.filter(activo = True))
+        formset = ProductoFormSet(queryset=Producto.objects.none())
     args = {}
     args.update(csrf(request))
     template_name = "entregar-orden.html"

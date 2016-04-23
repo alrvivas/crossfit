@@ -98,14 +98,11 @@
 	        				{% for p in o_productos %}	
 	        					<div class="productos-entregar">			        				
 		        				{% ifequal p.producto.id f.id.value %}
-		        					{{ f.id }}
+		        					<input id='id_form' name='id' type='hidden' value='{{f.id.value}}' required="required" />
 	        						{{ f.id.errors }}
 			        				<input type="number" class="stock" name="stock" value="{{f.stock.value|sub:p.cantidad}}" />	
-			        			{% else %}
-			        				{{ f.id }}
-	        						{{ f.id.errors }}
-			        				<input type="number" class="stock" name="stock" value="{{f.stock.value}}" />
-			        				{% endifequal %}
+			        			{% else %}			        				
+		        				{% endifequal %}
 		        				</div>
 		        			{% endfor %}
 		        		{% endfor %}
@@ -130,6 +127,7 @@
 	$(document).ready(function() {
 		$('section.entregar').each(function(){
 			$(this).find('.productos-entregar').each(function(i){
+				$(this).find('#id_form').attr('name', 'form-' + i +'-id');
 				$(this).find('.stock').attr('name', 'form-' + i +'-stock');
 			});
 		});
