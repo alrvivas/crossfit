@@ -95,9 +95,9 @@
 	        			{{ formset.management_form }}
 	        			<input type="hidden" name="estatus_orden" id="estatus_orden" value="2" required/>		        				
 	        			{% for f in formset %}
-	        				
+	        				<div class="productos-entregar">
 	        				{% for p in o_productos %}	
-	        					<div class="productos-entregar">			        				
+	        								        				
 		        				{% ifequal p.producto.id f.id.value %}
 		        					<input id='id_form' name='id' type='hidden' value='{{f.id.value}}' required="required" />
 	        						{{ f.id.errors }}
@@ -105,9 +105,9 @@
 			        			{% else %}
 			        									        				
 		        				{% endifequal %}
-		        				</div>
+		        				
 		        			{% endfor %}
-		        			
+		        			</div>
 		        		{% endfor %}
 		        	
 						<div class="mdl-cell mdl-cell--12-col mdl-textfield--align-right">
