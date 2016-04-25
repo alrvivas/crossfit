@@ -9,7 +9,7 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.auth import logout as auth_logout
 from django.db.models import Count, Avg,Sum
 from django.views.generic.base import View
-from django.forms.models import modelformset_factory,inlineformset_factory 
+from django.forms.models import modelformset_factory,inlineformset_factory,modelform_factory
 from models import *
 from productos.models import *
 from ventas.models import *
@@ -89,7 +89,7 @@ def entregar_orden(request,orden_id):
     orden = get_object_or_404(Orden, id=orden_id)
     o_productos = Orden_Producto.objects.filter(orden=orden).order_by('id')
     estatus_orden = Estatus_Orden.objects.all()
-    ProductoFormSet = inlineformset_factory(Producto,form=stockForm)
+    ProductoFormSet = modelform_factory(Producto,form=stockForm)
     if request.method == 'POST':
         form_orden = entregarodenForm(request.POST,instance=orden)
         formset = ProductoFormSet(request.POST,request.FILES)
