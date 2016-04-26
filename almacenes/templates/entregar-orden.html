@@ -95,7 +95,7 @@
 	        			{{ formset.management_form }}
     					<input type="hidden" name="estatus_orden" id="estatus_orden" value="2" required/>
     					{% for f in formset %}		
-    						{% for p in o_productos  %} 
+    						{% for p in o_productos|slice:":1"  %} 
     							{% if f.id.value == p.producto.id %}
 	    						<div class="productos-entregar">
 		        					<input id='id_form' name='id' type='hidden' value='{{p.producto.id}}' required="required" />
@@ -108,10 +108,7 @@
         							{{ f.id.errors }}
 		        					<input type="number" class="stock" name="stock" value="{{f.stock.value}}" />
         						</div>	
-		        				{% endif %}		        				
-        						
-    							
-        					
+		        				{% endif %}	
 		        			{% endfor %}
 	        			{% endfor %}
 	        			

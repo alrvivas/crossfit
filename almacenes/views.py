@@ -101,7 +101,7 @@ def entregar_orden(request,orden_id):
             return redirect(orden.get_absolute_url())
     else:
         form_orden = entregarodenForm()
-        formset = ProductoFormSet(queryset=Producto.objects.filter(activo = True).order_by('id')[:cant_productos])
+        formset = ProductoFormSet(queryset=Producto.objects.filter(activo = True).order_by('id'))
     args = {}
     args.update(csrf(request))
     template_name = "entregar-orden.html"
