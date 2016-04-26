@@ -96,7 +96,7 @@
     					<input type="hidden" name="estatus_orden" id="estatus_orden" value="2" required/>
     					{% for f in formset %}		
     						{% for p in o_productos|slice:":1"  %} 
-    							{% if f.id.value == p.producto.id %}
+    							{% if p.producto.id == f.id.value %}
 	    						<div class="productos-entregar">
 		        					<input id='id_form' name='id' type='hidden' value='{{p.producto.id}}' required="required" />
 	        						{{ f.id.errors }}
@@ -111,8 +111,6 @@
 		        				{% endif %}	
 		        			{% endfor %}
 	        			{% endfor %}
-	        			
-		        	
 						<div class="mdl-cell mdl-cell--12-col mdl-textfield--align-right">
 							<button type="submit" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" tabindex="4">
 								  Entregar
