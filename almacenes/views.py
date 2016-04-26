@@ -90,7 +90,7 @@ def entregar_orden(request,orden_id):
     clientes = Cliente.objects.all()    
     o_productos = Orden_Producto.objects.filter(orden=orden).order_by('id')
     estatus_orden = Estatus_Orden.objects.all()
-    ProductoFormSet = inlineformset_factory(Producto,form=stockForm, extra=0,max_num=int(cant_productos),validate_max=True)
+    ProductoFormSet = inlineformset_factory(Producto,form=stockForm, extra=0,max_num=int(cant_productos))
     if request.method == 'POST':
         form_orden = entregarodenForm(request.POST,instance=orden)
         formset = ProductoFormSet(request.POST,request.FILES)
