@@ -94,7 +94,7 @@
 		    		<form role="form" action=""  method="post">{% csrf_token %}
 	        			{{ formset.management_form }}
 	        			<input type="hidden" name="estatus_orden" id="estatus_orden" value="2" required/>		{% for f in formset %}
-	        				{{f}}
+	        			
         					{% for p in o_productos %}								        				
 		        				{% ifequal f.id.value p.producto.id %}		        					
 		        					<div class="productos-entregar">
