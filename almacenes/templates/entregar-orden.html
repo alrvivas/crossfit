@@ -112,13 +112,11 @@
 			        					</div>
 			        					{% endif %}
 			        				{% else %}
-			        					{% if p.producto.stock|sub:p.cantidad == f.stock.value %}
 			        						<div class="productos-entregar">
 					        					<input id='id_form' name='id' type='hidden' value='{{f.id.value}}' required="required" />
 				        						{{ f.id.errors }}
 						        				<input type="number" class="stock" name="stock" value="{{f.stock.value}}" />	
 				        					</div>
-			        					{% endif %}
 
 			        				{% endifequal %}
 		        				{% endfor %}		        			
