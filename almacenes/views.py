@@ -85,12 +85,12 @@ def entregar_orden(request,orden_id):
     user = request.user
     categorias = Categoria.objects.all()
     orden = get_object_or_404(Orden, id=orden_id)
-    cant_productos = Orden_Producto.objects.filter(orden=orden).count()
+    cant_productos = Orden_Producto.objects.filter(orden=orden)
     productos = Producto.objects.filter(activo = True).order_by('id')[cant_productos]
     clientes = Cliente.objects.all()    
     o_productos = Orden_Producto.objects.filter(orden=orden).order_by('id')
     estatus_orden = Estatus_Orden.objects.all()
-    ProductoFormSet = modelformset_factory(Producto,form=stockForm, extra=0,max_num=2)
+    ProductoFormSet = modelformset_factory(Producto,form=stockForm, extra=0,max_num=cant_productos.count())
     if request.method == 'POST':
         form_orden = entregarodenForm(request.POST,instance=orden)
         formset = ProductoFormSet(request.POST,request.FILES)
