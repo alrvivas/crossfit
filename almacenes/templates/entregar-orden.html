@@ -100,17 +100,18 @@
 	    						<div class="productos-entregar">
 		        					<input id='id_form' name='id' type='hidden' value='{{p.producto.id}}' required="required" />
 	        						{{ f.id.errors }}
-			        				<input type="number" class="stock" name="stock" value="{{p.producto.stock|sub:p.cantidad}}" />	
+			        				<input type="number" class="stock" name="stock" value="{{p.producto.stock|sub:p.cantidad}}" />				        				
 		        				</div>
-		        				{% endif %}	
-	        				
-        						{% if f.id.value != p.producto.id %}
-    							<div class="productos-entregar">
+		        				{% else %}
+		        				<div class="productos-entregar">
 	        						<input id='id_form' name='id' type='hidden' value='{{f.id.value}}' required="required" />
         							{{ f.id.errors }}
 		        					<input type="number" class="stock" name="stock" value="{{f.stock.value}}" />
         						</div>	
-        						{% endif %}
+		        				{% endif %}		        				
+        						
+    							
+        					
 		        			{% endfor %}
 	        			{% endfor %}
 	        			
