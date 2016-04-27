@@ -102,7 +102,7 @@
         					</div> 	        			
 	        			{% endfor %}
 	        			{% for f in formset %}
-	        				{% if forloop.counter0 < productos__count|sub:cant_productos__count %}
+	        				{% if forloop.counter0 < productos__count %}
 	        					{% for op in o_productos%}	        				
     								{% if op.producto.id != f.id.value %}
     								<div class="productos-entregar">
