@@ -86,7 +86,7 @@ def entregar_orden(request,orden_id):
     categorias = Categoria.objects.all()
     orden = get_object_or_404(Orden, id=orden_id)
     cant_productos = Orden_Producto.objects.filter(orden=orden).count()
-    productos = Producto.objects.filter(activo = True).order_by('id')[cant_productos]
+    productos = Producto.objects.filter(activo = True).order_by('id').count()
     clientes = Cliente.objects.all()    
     o_productos = Orden_Producto.objects.filter(orden=orden).order_by('-id')
     estatus_orden = Estatus_Orden.objects.all()
