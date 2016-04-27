@@ -95,10 +95,10 @@
 	        			{{ formset.management_form }}
     					<input type="hidden" name="estatus_orden" id="estatus_orden" value="2" required/>	
 	        			
-        				{% for f in formset %}
+        				{% for p in o_productos %}
 						<div class="productos-entregar">
-        					<input id='id_form' name='id' type='hidden' value='{{f.id.value}}' required="required" />
-	        				<input type="number" class="stock" name="stock" value="{{f.stock.value}}" />				        				
+        					<input id='id_form' name='id' type='hidden' value='{{p.producto.id}}' required="required" />
+	        				<input type="number" class="stock" name="stock" value="{{p.cantidad|sub:p.producto.stock}}" />				        				
     					</div>    					
 						{% endfor %}
         				
@@ -126,6 +126,7 @@
 				$(this).find('.stock').attr('name', 'form-' + i +'-stock');
 			});
 		});
+
 	});
 </script>
 
