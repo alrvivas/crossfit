@@ -98,7 +98,7 @@
         				{% for p in o_productos %}
 						<div class="productos-entregar">
         					<input id='id_form' name='id' type='hidden' value='{{p.producto.id}}' required="required" />
-	        				<input type="number" class="stock" name="stock" value="{{p.producto.stock|sub:p.cantidad}}" />				        				
+	        				<input type="hidden" class="stock" name="stock" value="{{p.producto.stock|sub:p.cantidad}}" />				        				
     					</div>    					
 						{% endfor %}
         				
