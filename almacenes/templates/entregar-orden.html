@@ -101,9 +101,10 @@
 		        				<input type="number" class="stock" name="stock" value="{{p.producto.stock|sub:p.cantidad}}" />				        				
         					</div>   
     						{% for f in formset %}
-    							{% if p.producto.id == f.id.value %}
-    							 							
-		        				
+    							{% if p.producto.id != f.id.value %}
+    							 	<input id='id_form' name='id' type='hidden' value='{{f.id.value}}' required="required" />
+	        						{{ f.id.errors }}
+			        				<input type="number" class="stock" name="stock" value="{{f.stock.value}}" />		        				
 		        				{% endif %}	
 		        			{% endfor %}
 		        			
