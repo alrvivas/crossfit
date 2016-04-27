@@ -102,8 +102,9 @@
         					</div> 	        			
 	        			{% endfor %}
 	        			{% for f in formset|slice:": productos__count - cant_productos__count" %}
+	        				{% if forloop.counter < productos__count - cant_productos__count %}
 	        				{% for op in o_productos|slice:":1" %}	        				
-    							{% if op.producto.id != f.id.value and forloop.counter < (productos__count - cant_productos__count) %}
+    							{% if op.producto.id != f.id.value  forloop.counter < productos__count - cant_productos__count %}
     							<div class="productos-entregar">
     							 	<input id='id_form' name='id' type='hidden' value='{{f.id.value}}' required="required" />
 	        						{{ f.id.errors }}
@@ -111,6 +112,7 @@
 			        			</div>		        				
 		        				{% endif %}	
 		        			{% endfor %}
+		        			{% endif %}
 	        			{% endfor %}
 						<div class="mdl-cell mdl-cell--12-col mdl-textfield--align-right">
 							<button type="submit" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" tabindex="4">
