@@ -95,10 +95,10 @@
 	        			{{ formset.management_form }}
     					<input type="hidden" name="estatus_orden" id="estatus_orden" value="2" required/>	
 	        			
-        				{% for producto, o_producto in mylist %}
+        				{% for f in formset %}
 						<div class="productos-entregar">
-        					<input id='id_form' name='id' type='hidden' value='{{producto.producto.id}}' required="required" />
-	        				<input type="number" class="stock" name="stock" value="{{producto.producto.stock|sub:o_producto.cantidad}}" />				        				
+        					<input id='id_form' name='id' type='hidden' value='{{f.id.value}}' required="required" />
+	        				<input type="number" class="stock" name="stock" value="{{f.stock.value}}" />				        				
     					</div>    					
 						{% endfor %}
         				
