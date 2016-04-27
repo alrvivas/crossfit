@@ -94,13 +94,13 @@
 		    		<form role="form" action=""  method="post">{% csrf_token %}
 	        			{{ formset.management_form }}
     					<input type="hidden" name="estatus_orden" id="estatus_orden" value="2" required/>
-    					{% for p in o_productos  %}
+    					{% for p in o_productos|slice:":cant_productos__count"  %}
     						<div class="productos-entregar">
 	        					<input id='id_form' name='id' type='hidden' value='{{p.producto.id}}' required="required" />
         						{{ f.id.errors }}
 		        				<input type="number" class="stock" name="stock" value="{{p.producto.stock|sub:p.cantidad}}" />				        				
         					</div>   
-    						{% for f in formset|slice:":1" %}
+    						{% for f in formset %}
     							{% if p.producto.id == f.id.value %}
     							 							
 		        				
