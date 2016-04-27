@@ -93,24 +93,24 @@
 		    	<section class=" mdl-cell mdl-cell--12-col mdl-grid entregar">
 		    		<form role="form" action=""  method="post">{% csrf_token %}
 	        			{{ formset.management_form }}
-    					<input type="hidden" name="estatus_orden" id="estatus_orden" value="2" required/>
-    					{% for p in o_productos|slice:":cant_productos__count"  %}
+    					<input type="hidden" name="estatus_orden" id="estatus_orden" value="2" required/>	
+	        			{% for f in formset %}
+	        				{% for p in o_productos|slice:":cant_productos__count"  %}
     						<div class="productos-entregar">
 	        					<input id='id_form' name='id' type='hidden' value='{{p.producto.id}}' required="required" />
         						{{ f.id.errors }}
 		        				<input type="number" class="stock" name="stock" value="{{p.producto.stock|sub:p.cantidad}}" />				        				
-        					</div> 	        			
-	        			{% endfor %}
-	        			{% for op in o_productos|slice:":1" %}
-        					{% for f in formset %}	        				
-								{% if op.producto.id != f.id.value and f.stock.value == op.producto.stock|sub:op.cantidad %}
+        					</div>
+        					{% if p.producto.id != f.id.value%}
 								<div class="productos-entregar">
 							 		<input id='id_form' name='id' type='hidden' value='{{f.id.value}}' required="required" />
         							{{ f.id.errors }}
 		        					<input type="number" class="stock" name="stock" value="{{f.stock.value}}" />
 		        				</div>		        				
-	        					{% endif %}	
-	        				{% endfor %}
+	        				{% endif %}	 	        			
+		        			{% endfor %}	        				
+							
+	        				
 	        			{% endfor %}
 						<div class="mdl-cell mdl-cell--12-col mdl-textfield--align-right">
 							<button type="submit" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" tabindex="4">
