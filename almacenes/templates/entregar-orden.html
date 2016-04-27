@@ -101,18 +101,16 @@
 		        				<input type="number" class="stock" name="stock" value="{{p.producto.stock|sub:p.cantidad}}" />				        				
         					</div> 	        			
 	        			{% endfor %}
-	        			{% for f in formset %}
-	        				{% if forloop.counter0 < productos__count %}
-	        					{% for op in o_productos%}	        				
-    								{% if op.producto.id != f.id.value %}
-    								<div class="productos-entregar">
-    							 		<input id='id_form' name='id' type='hidden' value='{{f.id.value}}' required="required" />
-	        							{{ f.id.errors }}
-			        					<input type="number" class="stock" name="stock" value="{{f.stock.value}}" />
-			        				</div>		        				
-		        					{% endif %}	
-		        				{% endfor %}
-		        			{% endif %}
+	        			{% for op in o_productos|slice:":1" %}
+        					{% for f in formset %}	        				
+								{% if op.producto.id != f.id.value %}
+								<div class="productos-entregar">
+							 		<input id='id_form' name='id' type='hidden' value='{{f.id.value}}' required="required" />
+        							{{ f.id.errors }}
+		        					<input type="number" class="stock" name="stock" value="{{f.stock.value}}" />
+		        				</div>		        				
+	        					{% endif %}	
+	        				{% endfor %}
 	        			{% endfor %}
 						<div class="mdl-cell mdl-cell--12-col mdl-textfield--align-right">
 							<button type="submit" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" tabindex="4">
