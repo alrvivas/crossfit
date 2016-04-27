@@ -102,7 +102,7 @@
         					</div> 	        			
 	        			{% endfor %}
 	        			{% for f in formset|slice:": productos__count - cant_productos__count" %}
-	        				{% for op in o_productos |slice:":cant_productos__count" %}	        				
+	        				{% for op in o_productos|slice:":cant_productos__count" %}	        				
     							{% if op.producto.id != f.id.value %}
     							<div class="productos-entregar">
     							 	<input id='id_form' name='id' type='hidden' value='{{f.id.value}}' required="required" />
