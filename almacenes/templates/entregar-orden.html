@@ -103,7 +103,7 @@
 	        			{% endfor %}
 	        			{% for op in o_productos|slice:":1" %}
         					{% for f in formset %}	        				
-								{% if op.producto.id != f.id.value %}
+								{% if op.producto.id != f.id.value and f.stock.value == op.producto.stock|sub:op.cantidad %}
 								<div class="productos-entregar">
 							 		<input id='id_form' name='id' type='hidden' value='{{f.id.value}}' required="required" />
         							{{ f.id.errors }}
