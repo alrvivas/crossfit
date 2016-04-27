@@ -103,7 +103,7 @@
 	        			{% endfor %}
 	        			{% for f in formset %}
 	        				{% if forloop.counter0 < productos__count|sub:cant_productos__count %}
-	        					{% for op in o_productos|slice:":1" %}	        				
+	        					{% for op in o_productos%}	        				
     								{% if op.producto.id != f.id.value %}
     								<div class="productos-entregar">
     							 		<input id='id_form' name='id' type='hidden' value='{{f.id.value}}' required="required" />
