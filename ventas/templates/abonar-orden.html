@@ -42,6 +42,9 @@
 	  					<li class="tipo-pago">Tipo de Pago:{{orden.tipo_pago}}</li>
 	  					<li class="estatus-orden">Estatus Orden: {{orden.estatus_orden}}</li>
 	  					<li class="estatus-cobranza">Estatus Cobranza: {{orden.estatus_cobranza}}</li>
+	  					{% for ab in abonos %}
+	  						<li class="estatus-cobranza">Fecha Abono: {{ab.fecha|date:'Y-m-d'}} Cantidad: ${{ab.cantidad}}</li>
+	  					{% endfor %}
 	  				</ul>
 	  				<h4 class="mdl-cell mdl-cell--12-col mdl-color-text--red-500 saldo">Saldo: ${{orden.saldo}}</h4>
 
