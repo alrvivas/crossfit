@@ -44,6 +44,8 @@
 	  					<li class="estatus-cobranza">Estatus Cobranza: {{orden.estatus_cobranza}}</li>
 	  					{% for ab in abonos %}
 	  						<li class="estatus-cobranza">Fecha Abono: {{ab.fecha|date:'Y-m-d'}} Cantidad: ${{ab.cantidad}}</li>
+	  					{% empty %}
+    						<li>Aún no hay abonos.</li>
 	  					{% endfor %}
 	  				</ul>
 	  				<h4 class="mdl-cell mdl-cell--12-col mdl-color-text--red-500 saldo">Saldo: ${{orden.saldo}}</h4>
