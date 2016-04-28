@@ -93,8 +93,7 @@ class Orden_Producto(models.Model):
         return u"%s - %s"% (self.orden, self.producto)
 
 class Abono(models.Model):
-    orden = models.ForeignKey(Orden, null=True, blank=True,verbose_name='Orden Producto')
-    nombre = models.CharField(max_length=140)
+    orden = models.ForeignKey(Orden, null=True, blank=True,verbose_name='Orden')
     cantidad = models.DecimalField(max_digits=10, decimal_places=3, null=True, blank=True)
     fecha = models.DateField(null=True, blank=True)
     fecha_creacion = models.DateTimeField(auto_now_add=True)

@@ -40,31 +40,32 @@
 	  					<li class="fecha-orden">Fecha:{{orden.fecha|date:'Y-m-d'}}</li>
 	  					<li class="tipo-pago">Tipo de Pago:{{orden.tipo_pago}}</li>
 	  					<li class="estatus-orden">Estatus Orden: {{orden.estatus_orden}}</li>
-	  					<li class="estatus-cobranza">Estatus Cobranza{{orden.estatus_cobranza}}</li>
-	  				</ul>		    		 			
+	  					<li class="estatus-cobranza">Estatus Cobranza: {{orden.estatus_cobranza}}</li>
+	  				</ul>
+	  				<h4 class="mdl-cell mdl-cell--12-col mdl-color-text--red-500 saldo">Saldo: {{orden.id}}</h4>
+
 				</section>
 				<section class=" mdl-cell mdl-cell--9-col mdl-cell mdl-cell--3-col mdl-cell--12-col-tablet mdl-cell--12-col-phone mdl-grid ">	
-					<div class="mdl-color--white mdl-shadow--2dp mdl-cell mdl-cell--12-col suminputs venta">
-						
+					<div class="mdl-color--white mdl-shadow--2dp mdl-cell mdl-cell--12-col">
+						<form action=""  method="post" role="form" class="mdl-grid form-add" enctype="multipart/form-data">{% csrf_token %}
+							<input class="mdl-textfield__input" type="number" name="orden" id="orden" value="{{orden.id}}" required/>
+		  					<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell--12-col">
+							    <input class="mdl-textfield__input" type="date" name="fecha" id="fecha" value="" required/>
+							    <label class="mdl-textfield__label" for="fecha">Fecha</label>
+						  	</div>
+					  		<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell--12-col">
+						    	<input class="mdl-textfield__input cantidad" type="number" name="cantidad" id="cantidad" value="" required/>
+						    	<label class="mdl-textfield__label" for="cantidad">Cantidad</label>
+					  		</div>
+					  		<input class="mdl-textfield__input" type="hidden" name="estatus_cobranza" id="estatus_cobranza" value="{{orden.estatus_cobranza.id}}" required/>
+							<input class="mdl-textfield__input saldo-orden" type="hidden" name="saldo" id="saldo" value="{{orden.saldo}}" required/>
+						</form>
 					</div>			    	
-		    	</section>
-		    	<section class="mdl-color--white mdl-shadow--2dp mdl-cell mdl-cell--12-col mdl-cell--12-col-tablet mdl-cell--12-col-phone mdl-grid mdl-textfield--align-right totales">	
-					<div class="mdl-cell mdl-cell--10-col mdl-cell--5-col-tablet mdl-cell--2-col-phone letra">
-						<h4>Sub Total: $</h4>
-						<h4>Total: $</h4>
-					</div>
-					<div class="mdl-cell mdl-cell--2-col mdl-cell--2-col-tablet mdl-cell--2-col-phone cantidad">
-						<h4>{{orden.subtotal}}</h4>
-						<h4>{{orden.total}}</h4>
-					</div>				    	
-		    	</section>
+		    	</section>		    	
 		    	<section class=" mdl-cell mdl-cell--12-col mdl-grid ">	
-					<div class="mdl-cell mdl-cell--12-col mdl-textfield--align-right">
-						<button type="submit" class="print mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" tabindex="4">
-							  Imprimir<i class="material-icons mdl-color-text--white">print</i>
-						</button>
+					<div class="mdl-cell mdl-cell--12-col mdl-textfield--align-right">						
 						<a href="{% url 'punto-venta' %}" class="continuar mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" tabindex="4">
-							  Continuar
+							  Abonar
 						</a>
 					</div>			    	
 		    	</section>
@@ -139,12 +140,31 @@
 {% endblock %}
 {% block adicional-scripts %}
 <script type="text/javascript">
-$(document).ready(function() {
-	$(".print").click(function() {
+	var d = new Date();
+	var month_inicio = d.getMonth()+1;
+	var day_inicio = d.getDate();
 
-		window.print();
-	});
-});
-	
+	var fecha = d.getFullYear()+1 + '-' +
+	    ((''+month_inicio).length<2 ? '0' : '') + month_inicio + '-' +
+	    ((''+day_inicio).length<2 ? '0' : '') + day_inicio;
+
+	$('#fecha').val(fecha);
+	$(".cantidad").bind('keyup mouseup', function () {
+		saldo = $('.saldo-orden').val();
+		abono = $('.cantidad').val();
+		saldo_actual = saldo-abono;
+		$('.saldo-orden').val(saldo_actual);
+		$('.saldo').text('Saldo: '+ saldo_actual);
+		if( $(".saldo-orden").val() == 0 ){
+			$('#estatus_cobranza').val(2);
+			$('.estatus-cobranza').text("Estatus Cobranza: Pagada");
+		}else if($(".cantidad").val() != 0 ){
+			$('#estatus_cobranza').val(3);
+			$('.estatus-cobranza').text("Estatus Cobranza: Abonada");
+		}else{
+			$('#estatus_cobranza').val(1);
+			$('.estatus-cobranza').text("Estatus Cobranza: Pendiente");
+		}
+	});	
 </script>
 {% endblock %}
