@@ -32,7 +32,6 @@ def punto_venta(request):
     orden = Orden.objects.all()
     last_orden = Orden.objects.latest('id')
     tipo_pago = Tipo_Pago.objects.all()
-    tipo_abono = Tipo_Abono.objects.all()
     estatus_orden = Estatus_Orden.objects.all()
     estatus_cobranza = Estatus_Cobranza.objects.all()
     OrdenProductoFormSet = modelformset_factory(Orden_Producto,form=oproductoForm,extra=len(productos))
@@ -126,7 +125,6 @@ def corregir_orden(request,orden_id):
     clientes = Cliente.objects.all()
     orden = get_object_or_404(Orden, id=orden_id)
     tipo_pago = Tipo_Pago.objects.all()
-    tipo_abono = Tipo_Abono.objects.all()
     estatus_orden = Estatus_Orden.objects.all()
     estatus_cobranza = Estatus_Cobranza.objects.all()
     orden_producto = Orden_Producto.objects.filter(orden=orden)
@@ -146,3 +144,30 @@ def corregir_orden(request,orden_id):
     args.update(csrf(request))
     template_name = "corregir-orden.html"
     return render_to_response(template_name, locals(), context_instance=RequestContext(request))
+
+@login_required(login_url='/login/')
+def abonar_orden(request,orden_id):
+    user = request.user
+    orden = get_object_or_404(Orden, id=orden_id)
+    abono = Abono.objects.filter(orden=orden)
+    estatus_orden = Estatus_Orden.objects.all()
+    estatus_cobranza = Estatus_Cobranza.objects.all()
+    tipo_pago = Tipo_Pago.objects.all()
+    clientes = Cliente.objects.all()
+    if request.method == 'POST':
+        form_abano = abonoForm(request.POST)
+        form_orden = osaldoForm(request.POST,request.FILES,instance=orden)
+        if form_orden.is_valid():
+            orden = form_orden.save(commit = False)
+            orden.save()
+            abono = abonoForm.save(commit = False)
+            abono.save()            
+            return redirect(orden.get_absolute_url())
+    else:
+        form_abano = abonoForm()
+        form_orden = editordenForm()
+    args = {}
+    args.update(csrf(request))
+    page_title = "Abonar Orden"  
+    template_name ="abonar-orden.html" 
+    return render_to_response(template_name, locals(),context_instance=RequestContext(request))

@@ -12,13 +12,6 @@ class Tipo_Pago(models.Model):
     def __unicode__(self):
         return unicode(self.nombre)
 
-class Tipo_Abono(models.Model):
-    nombre = models.CharField(max_length=140)
-
-    def __unicode__(self):
-        return unicode(self.nombre)
-
-
 class Estatus_Orden(models.Model):
     nombre = models.CharField(max_length=140)
 
@@ -37,7 +30,6 @@ class Orden(models.Model):
     cliente = models.ForeignKey(Cliente, null=True, blank=True)
     estatus_orden = models.ForeignKey(Estatus_Orden, null=True, blank=True)
     tipo_pago = models.ForeignKey(Tipo_Pago,null=True,blank=True)
-    tipo_abono = models.ForeignKey(Tipo_Abono,null=True,blank=True)
     estatus_cobranza = models.ForeignKey(Estatus_Cobranza, null=True, blank=True)
     fecha = models.DateField(null=True, blank=True)
     fecha_creacion = models.DateTimeField(auto_now_add=True)
@@ -66,6 +58,10 @@ class Orden(models.Model):
         return('entregar-orden', (), { 'orden_id': self.id })
 
     @models.permalink
+    def get_absolute_url_entrega_exitosa(self):
+        return('entrega-orden-exitosa', (), { 'orden_id': self.id })
+
+    @models.permalink
     def get_absolute_url_mandar_revision(self):
         return('mandar-revision-orden', (), { 'orden_id': self.id })
 
@@ -74,8 +70,8 @@ class Orden(models.Model):
         return('corregir-orden', (), { 'orden_id': self.id })
 
     @models.permalink
-    def get_absolute_url_adeudo(self):
-        return('orden-adeudo', (), { 'orden_id': self.id })
+    def get_absolute_url_abonar_orden(self):
+        return('abonar-orden', (), { 'orden_id': self.id })
 
     def __unicode__(self):
         return unicode(self.id)
@@ -95,3 +91,14 @@ class Orden_Producto(models.Model):
 
     def __unicode__(self):
         return u"%s - %s"% (self.orden, self.producto)
+
+class Abono(models.Model):
+    orden = models.ForeignKey(Orden, null=True, blank=True,verbose_name='Orden Producto')
+    nombre = models.CharField(max_length=140)
+    cantidad = models.DecimalField(max_digits=10, decimal_places=3, null=True, blank=True)
+    fecha = models.DateField(null=True, blank=True)
+    fecha_creacion = models.DateTimeField(auto_now_add=True)
+    fehca_modificacion = models.DateTimeField(auto_now=True,verbose_name=('Ultima Modificacion'))
+
+    def __unicode__(self):
+        return unicode(self.nombre)

@@ -1,0 +1,150 @@
+{% extends "base.html" %}
+{% load static from staticfiles %} 
+{% block staticos %}
+	<link rel="stylesheet" type="text/css"  href="{% static "css/print.css" %}">
+	
+{% endblock %}  
+{% block header %}
+	<header class="header mdl-layout__header mdl-layout__header--scroll mdl-color--deep-orange-500">	  			
+    	<div class="mdl-layout--large-screen-only mdl-layout__header-row">	    		
+	    	<div class=" mdl-layout-spacer"></div>
+	    	<div class="mdl-textfield mdl-js-textfield mdl-textfield--expandable mdl-textfield--floating-label mdl-textfield--align-right mdl-textfield--full-width">
+    			
+          	</div>
+		</div>
+    	<div class="mdl-typography--text-center ">
+    		<div class="mdl-layout-title">
+    			<h1 >{{page_title}}</h1>
+    		</div>
+
+    		
+    	</div>
+    	<div class="mdl-layout--large-screen-only mdl-layout__header-row">
+    		<!---->
+    	</div>	
+    	<div class="mdl-layout__tab-bar mdl-js-ripple-effect mdl-color--deep-orange-A400"> 		
+    		<a href="#abonar" class="mdl-layout__tab is-active">Abonar</a>
+          	<a href="#orden" class="mdl-layout__tab is-active">Orden</a>
+    	</div>	
+    </header>
+{% endblock %}
+
+{% block contedor %}	
+  	<main class="mdl-layout__content mdl-color--grey-100">
+  		<div class="mdl-grid demo-content mdl-layout__tab-panel is-active" id="abonar">
+	  		<div class="mdl-grid">	  		
+	  			<section class="demo-cards mdl-color--white mdl-shadow--2dp mdl-cell mdl-cell--3-col mdl-cell--12-col-tablet mdl-cell--12-col-phone mdl-grid mdl-grid--no-spacing datos-venta">
+	  				<h4 class="mdl-cell mdl-cell--12-col orden-id">Orden: {{orden.id}}</h4>
+	  				<h4 class="mdl-cell mdl-cell--12-col cliente-nombre">Cliente: {{orden.cliente.nombre}} {{orden.cliente.apellidos}}</h4>
+	  				<ul class="mdl-textfield--align-left">
+	  					<li class="fecha-orden">Fecha:{{orden.fecha|date:'Y-m-d'}}</li>
+	  					<li class="tipo-pago">Tipo de Pago:{{orden.tipo_pago}}</li>
+	  					<li class="estatus-orden">Estatus Orden: {{orden.estatus_orden}}</li>
+	  					<li class="estatus-cobranza">Estatus Cobranza{{orden.estatus_cobranza}}</li>
+	  				</ul>		    		 			
+				</section>
+				<section class=" mdl-cell mdl-cell--9-col mdl-cell mdl-cell--3-col mdl-cell--12-col-tablet mdl-cell--12-col-phone mdl-grid ">	
+					<div class="mdl-color--white mdl-shadow--2dp mdl-cell mdl-cell--12-col suminputs venta">
+						
+					</div>			    	
+		    	</section>
+		    	<section class="mdl-color--white mdl-shadow--2dp mdl-cell mdl-cell--12-col mdl-cell--12-col-tablet mdl-cell--12-col-phone mdl-grid mdl-textfield--align-right totales">	
+					<div class="mdl-cell mdl-cell--10-col mdl-cell--5-col-tablet mdl-cell--2-col-phone letra">
+						<h4>Sub Total: $</h4>
+						<h4>Total: $</h4>
+					</div>
+					<div class="mdl-cell mdl-cell--2-col mdl-cell--2-col-tablet mdl-cell--2-col-phone cantidad">
+						<h4>{{orden.subtotal}}</h4>
+						<h4>{{orden.total}}</h4>
+					</div>				    	
+		    	</section>
+		    	<section class=" mdl-cell mdl-cell--12-col mdl-grid ">	
+					<div class="mdl-cell mdl-cell--12-col mdl-textfield--align-right">
+						<button type="submit" class="print mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" tabindex="4">
+							  Imprimir<i class="material-icons mdl-color-text--white">print</i>
+						</button>
+						<a href="{% url 'punto-venta' %}" class="continuar mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" tabindex="4">
+							  Continuar
+						</a>
+					</div>			    	
+		    	</section>
+		    	
+	    	</div>
+	  	</div>		  		
+	  	<div class="mdl-grid demo-content mdl-layout__tab-panel is-active" id="orden">
+	  		<div class="mdl-grid">	  		
+	  			<section class="demo-cards mdl-color--white mdl-shadow--2dp mdl-cell mdl-cell--3-col mdl-cell--12-col-tablet mdl-cell--12-col-phone mdl-grid mdl-grid--no-spacing datos-venta">
+	  				<h4 class="mdl-cell mdl-cell--12-col orden-id">Orden: {{orden.id}}</h4>
+	  				<h4 class="mdl-cell mdl-cell--12-col cliente-nombre">Cliente: {{orden.cliente.nombre}} {{orden.cliente.apellidos}}</h4>
+	  				<ul class="mdl-textfield--align-left">
+	  					<li class="fecha-orden">Fecha:{{orden.fecha|date:'Y-m-d'}}</li>
+	  					<li class="tipo-pago">Tipo de Pago:{{orden.tipo_pago}}</li>
+	  					<li class="estatus-orden">Estatus Orden: {{orden.estatus_orden}}</li>
+	  					<li class="estatus-cobranza">Estatus Cobranza{{orden.estatus_cobranza}}</li>
+	  				</ul>		    		 			
+				</section>
+				<section class=" mdl-cell mdl-cell--9-col mdl-cell mdl-cell--3-col mdl-cell--12-col-tablet mdl-cell--12-col-phone mdl-grid ">	
+					<div class="mdl-color--white mdl-shadow--2dp mdl-cell mdl-cell--12-col suminputs venta">
+						<table class="mdl-data-table mdl-js-data-table mdl-data-table--selectable mdl-fullwidth">
+							<thead>
+								<tr>
+								  <th class="mdl-data-table__cell--non-numeric">Producto</th>
+								  <th>Catidad</th>
+								  <th>Precio Unitario</th>
+								  <th>Total</th>
+								</tr>
+							</thead>
+							<tbody class="lista-venta">
+								{% for op in orden_producto %}
+									<tr>
+										<td class='mdl-data-table__cell--non-numeric'>{{op.producto.nombre}}</td>
+										<td>{{op.cantidad}}</td>
+										<td>${{op.precio}}</td>
+										<td>${{op.subtotal_producto}}</td>
+									</tr>
+								{% endfor %}
+							</tbody>
+						</table>
+					</div>			    	
+		    	</section>
+		    	<section class="mdl-color--white mdl-shadow--2dp mdl-cell mdl-cell--12-col mdl-cell--12-col-tablet mdl-cell--12-col-phone mdl-grid mdl-textfield--align-right totales">	
+					<div class="mdl-cell mdl-cell--10-col mdl-cell--5-col-tablet mdl-cell--2-col-phone letra">
+						<h4>Sub Total: $</h4>
+						<h4>Total: $</h4>
+					</div>
+					<div class="mdl-cell mdl-cell--2-col mdl-cell--2-col-tablet mdl-cell--2-col-phone cantidad">
+						<h4>{{orden.subtotal}}</h4>
+						<h4>{{orden.total}}</h4>
+					</div>				    	
+		    	</section>
+		    	<section class=" mdl-cell mdl-cell--12-col mdl-grid ">	
+					<div class="mdl-cell mdl-cell--12-col mdl-textfield--align-right">
+						<button type="submit" class="print mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" tabindex="4">
+							  Imprimir<i class="material-icons mdl-color-text--white">print</i>
+						</button>
+						<a href="{% url 'punto-venta' %}" class="continuar mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" tabindex="4">
+							  Continuar
+						</a>
+					</div>			    	
+		    	</section>
+		    	
+	    	</div>
+	  	</div>
+	  	<section class="tiket">		    		
+    	</section>
+	  	
+   	</main>
+   	
+    
+{% endblock %}
+{% block adicional-scripts %}
+<script type="text/javascript">
+$(document).ready(function() {
+	$(".print").click(function() {
+
+		window.print();
+	});
+});
+	
+</script>
+{% endblock %}

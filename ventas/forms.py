@@ -33,5 +33,5 @@ class oproductoForm(forms.ModelForm):
 class osaldoForm(forms.ModelForm):
     class Meta:
         model = Orden
-        fields = ('saldo',)
+        fields = ('estatus_cobranza','saldo',)
 
