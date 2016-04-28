@@ -162,7 +162,7 @@ def abonar_orden(request,orden_id):
             orden.save()
             abono = abonoForm.save(commit = False)
             abono.save()            
-            return redirect(orden.get_absolute_url())
+            return redirect('credito-cobranza')
     else:
         form_abano = abonoForm()
         form_orden = editordenForm()
