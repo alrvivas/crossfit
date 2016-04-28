@@ -45,31 +45,31 @@
 	  				<h4 class="mdl-cell mdl-cell--12-col mdl-color-text--red-500 saldo">Saldo: ${{orden.saldo}}</h4>
 
 				</section>
+				<form action=""  method="post" role="form" class="mdl-grid form-add" enctype="multipart/form-data">{% csrf_token %}
 				<section class=" mdl-cell mdl-cell--9-col mdl-cell mdl-cell--3-col mdl-cell--12-col-tablet mdl-cell--12-col-phone mdl-grid ">	
-					<div class="mdl-color--white mdl-shadow--2dp mdl-cell mdl-cell--12-col">
-						<form action=""  method="post" role="form" class="mdl-grid form-add" enctype="multipart/form-data">{% csrf_token %}
-							<input class="mdl-textfield__input" type="hidden" name="orden" id="orden" value="{{orden.id}}" required/>
-		  					<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell--12-col">
-							    <input class="mdl-textfield__input" type="date" name="fecha" id="fecha" value="" required/>
-							    <label class="mdl-textfield__label" for="fecha">Fecha De Abono</label>
-						  	</div>
-					  		<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell--12-col">
-						    	<input class="mdl-textfield__input cantidad" type="number" name="cantidad" id="cantidad" value="" required/>
-						    	<label class="mdl-textfield__label" for="cantidad">Cantidad</label>
-					  		</div>
-					  		<input class="mdl-textfield__input" type="hidden" name="estatus_cobranza" id="estatus_cobranza" value="{{orden.estatus_cobranza.id}}" required/>
-							<input class="mdl-textfield__input saldo-orden" type="hidden" name="saldo" id="saldo" value="{{orden.saldo}}" required/>
-						</form>
+					<div class="mdl-color--white mdl-shadow--2dp mdl-cell mdl-cell--12-col">					
+						<input class="mdl-textfield__input" type="hidden" name="orden" id="orden" value="{{orden.id}}" required/>
+	  					<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell--12-col">
+						    <input class="mdl-textfield__input" type="date" name="fecha" id="fecha" value="" required/>
+						    <label class="mdl-textfield__label" for="fecha">Fecha De Abono</label>
+					  	</div>
+				  		<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell--12-col">
+					    	<input class="mdl-textfield__input cantidad" type="number" name="cantidad" id="cantidad" value="" required/>
+					    	<label class="mdl-textfield__label" for="cantidad">Cantidad</label>
+				  		</div>
+				  		<input class="mdl-textfield__input" type="hidden" name="estatus_cobranza" id="estatus_cobranza" value="{{orden.estatus_cobranza.id}}" required/>
+						<input class="mdl-textfield__input saldo-orden" type="hidden" name="saldo" id="saldo" value="{{orden.saldo}}" required/>
+						
 					</div>			    	
 		    	</section>		    	
 		    	<section class=" mdl-cell mdl-cell--12-col mdl-grid ">	
 					<div class="mdl-cell mdl-cell--12-col mdl-textfield--align-right">						
-						<a href="{% url 'punto-venta' %}" class="continuar mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" tabindex="4">
+						<button class="continuar mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" tabindex="4">
 							  Abonar
-						</a>
+						</button>
 					</div>			    	
 		    	</section>
-		    	
+		    	</form>
 	    	</div>
 	  	</div>		  		
 	  	<div class="mdl-grid demo-content mdl-layout__tab-panel is-active" id="orden">
@@ -153,7 +153,7 @@
 	$(".cantidad").bind('keyup mouseup', function () {		
 		abono = $('.cantidad').val();
 		saldo_actual = saldo-abono;
-		$('.saldo-orden').val(saldo_actual.toFixed(3));
+		$('.saldo-orden').val(parseFloat(saldo_actual).toFixed(3));
 		$('.saldo').text('Saldo: '+ saldo_actual);
 		if( $(".saldo-orden").val() == 0 ){
 			$('#estatus_cobranza').val(2);
