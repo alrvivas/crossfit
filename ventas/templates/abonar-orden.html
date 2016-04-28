@@ -51,7 +51,7 @@
 							<input class="mdl-textfield__input" type="hidden" name="orden" id="orden" value="{{orden.id}}" required/>
 		  					<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell--12-col">
 							    <input class="mdl-textfield__input" type="date" name="fecha" id="fecha" value="" required/>
-							    <label class="mdl-textfield__label" for="fecha">Fecha</label>
+							    <label class="mdl-textfield__label" for="fecha">Fecha De Abono</label>
 						  	</div>
 					  		<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell--12-col">
 						    	<input class="mdl-textfield__input cantidad" type="number" name="cantidad" id="cantidad" value="" required/>
@@ -153,7 +153,7 @@
 	$(".cantidad").bind('keyup mouseup', function () {		
 		abono = $('.cantidad').val();
 		saldo_actual = saldo-abono;
-		$('.saldo-orden').val(saldo_actual);
+		$('.saldo-orden').val(saldo_actual.toFixed(3));
 		$('.saldo').text('Saldo: '+ saldo_actual);
 		if( $(".saldo-orden").val() == 0 ){
 			$('#estatus_cobranza').val(2);
