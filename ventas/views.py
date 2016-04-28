@@ -157,11 +157,11 @@ def abonar_orden(request,orden_id):
     clientes = Cliente.objects.all()
     if request.method == 'POST':
         form_abano = abonoForm(request.POST)
-        form_orden = osaldoForm(request.POST,request.FILES,instance=orden)
+        form_orden = osaldoForm(request.POST,instance=orden)
         if form_orden.is_valid():
             orden = form_orden.save(commit = False)
             orden.save()
-            abono = abonoForm.save(commit = False)
+            abono = form_abano.save(commit = False)
             abono.save()            
             return redirect('credito-cobranza')
     else:
