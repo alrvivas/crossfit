@@ -42,13 +42,13 @@
 	  					<li class="estatus-orden">Estatus Orden: {{orden.estatus_orden}}</li>
 	  					<li class="estatus-cobranza">Estatus Cobranza: {{orden.estatus_cobranza}}</li>
 	  				</ul>
-	  				<h4 class="mdl-cell mdl-cell--12-col mdl-color-text--red-500 saldo">Saldo: {{orden.id}}</h4>
+	  				<h4 class="mdl-cell mdl-cell--12-col mdl-color-text--red-500 saldo">Saldo: ${{orden.saldo}}</h4>
 
 				</section>
 				<section class=" mdl-cell mdl-cell--9-col mdl-cell mdl-cell--3-col mdl-cell--12-col-tablet mdl-cell--12-col-phone mdl-grid ">	
 					<div class="mdl-color--white mdl-shadow--2dp mdl-cell mdl-cell--12-col">
 						<form action=""  method="post" role="form" class="mdl-grid form-add" enctype="multipart/form-data">{% csrf_token %}
-							<input class="mdl-textfield__input" type="number" name="orden" id="orden" value="{{orden.id}}" required/>
+							<input class="mdl-textfield__input" type="hidden" name="orden" id="orden" value="{{orden.id}}" required/>
 		  					<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell--12-col">
 							    <input class="mdl-textfield__input" type="date" name="fecha" id="fecha" value="" required/>
 							    <label class="mdl-textfield__label" for="fecha">Fecha</label>
@@ -149,8 +149,8 @@
 	    ((''+day_inicio).length<2 ? '0' : '') + day_inicio;
 
 	$('#fecha').val(fecha);
-	$(".cantidad").bind('keyup mouseup', function () {
-		saldo = $('.saldo-orden').val();
+	var saldo = $('.saldo-orden').val();
+	$(".cantidad").bind('keyup mouseup', function () {		
 		abono = $('.cantidad').val();
 		saldo_actual = saldo-abono;
 		$('.saldo-orden').val(saldo_actual);
