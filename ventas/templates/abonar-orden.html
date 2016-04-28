@@ -45,7 +45,7 @@
 	  				<h4 class="mdl-cell mdl-cell--12-col mdl-color-text--red-500 saldo">Saldo: ${{orden.saldo}}</h4>
 
 				</section>
-				<form action=""  method="post" role="form" class="mdl-grid form-add" enctype="multipart/form-data">{% csrf_token %}
+				<form action=""  method="post" role="form" enctype="multipart/form-data">{% csrf_token %}
 				<section class=" mdl-cell mdl-cell--9-col mdl-cell mdl-cell--3-col mdl-cell--12-col-tablet mdl-cell--12-col-phone mdl-grid ">	
 					<div class="mdl-color--white mdl-shadow--2dp mdl-cell mdl-cell--12-col">					
 						<input class="mdl-textfield__input" type="hidden" name="orden" id="orden" value="{{orden.id}}" required/>
