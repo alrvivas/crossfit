@@ -35,3 +35,8 @@ class osaldoForm(forms.ModelForm):
         model = Orden
         fields = ('estatus_cobranza','saldo',)
 
+class abonoForm(forms.ModelForm):
+    class Meta:
+        model = Abono
+        fields = '__all__'
+
