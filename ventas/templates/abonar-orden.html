@@ -45,9 +45,9 @@
 	  				<h4 class="mdl-cell mdl-cell--12-col mdl-color-text--red-500 saldo">Saldo: ${{orden.saldo}}</h4>
 
 				</section>
-				
-				<section class=" mdl-cell mdl-color--white mdl-shadow--2dp mdl-cell--9-col mdl-cell mdl-cell--3-col mdl-cell--12-col-tablet mdl-cell--12-col-phone mdl-grid ">
-					<form action=""  method="post" role="form" class="mdl-grid form-add" enctype="multipart/form-data">{% csrf_token %}								
+				<form action=""  method="post" role="form">{% csrf_token %}	
+					<section class=" mdl-cell mdl-color--white mdl-shadow--2dp mdl-cell--9-col mdl-cell mdl-cell--3-col mdl-cell--12-col-tablet mdl-cell--12-col-phone mdl-grid ">
+												
 						<input class="mdl-textfield__input" type="hidden" name="orden" id="orden" value="{{orden.id}}" required/>
 	  					<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell--12-col">
 						    <input class="mdl-textfield__input" type="date" name="fecha" id="fecha" value="" required/>
@@ -64,8 +64,16 @@
 								  Abonar
 							</button>
 						</div>	  				
-	  				</form>									    	
-		    	</section>		    	
+	  													    	
+		    		</section>	
+		    		<section class=" mdl-cell mdl-cell--12-col mdl-grid ">	
+						<div class="mdl-cell mdl-cell--12-col mdl-textfield--align-right">
+							<button type="submit" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" tabindex="4">
+								  Continuar
+							</button>
+						</div>			    	
+			    	</section>
+	    		</form>	    	
 		    	
 	    	</div>
 	  	</div>		  		
