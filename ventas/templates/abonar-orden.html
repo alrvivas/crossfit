@@ -31,6 +31,7 @@
 
 {% block contedor %}	
   	<main class="mdl-layout__content mdl-color--grey-100">
+  		<form action=""  method="post" role="form">{% csrf_token %}	
   		<div class="mdl-grid demo-content mdl-layout__tab-panel is-active" id="abonar">
 	  		<div class="mdl-grid">	  		
 	  			<section class="demo-cards mdl-color--white mdl-shadow--2dp mdl-cell mdl-cell--3-col mdl-cell--12-col-tablet mdl-cell--12-col-phone mdl-grid mdl-grid--no-spacing datos-venta">
@@ -45,30 +46,30 @@
 	  				<h4 class="mdl-cell mdl-cell--12-col mdl-color-text--red-500 saldo">Saldo: ${{orden.saldo}}</h4>
 
 				</section>
-				<form action=""  method="post" role="form">{% csrf_token %}	
-					<section class=" mdl-cell mdl-color--white mdl-shadow--2dp mdl-cell--9-col mdl-cell mdl-cell--3-col mdl-cell--12-col-tablet mdl-cell--12-col-phone mdl-grid ">
-												
-						<input class="mdl-textfield__input" type="hidden" name="orden" id="orden" value="{{orden.id}}" required/>
-	  					<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell--12-col">
-						    <input class="mdl-textfield__input" type="date" name="fecha" id="fecha" value="" required/>
-						    <label class="mdl-textfield__label" for="fecha">Fecha De Abono</label>
-					  	</div>
-				  		<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell--12-col">
-					    	<input class="mdl-textfield__input cantidad" type="number" name="cantidad" id="cantidad" value="" required/>
-					    	<label class="mdl-textfield__label" for="cantidad">Cantidad</label>
-				  		</div>
-				  		<input class="mdl-textfield__input" type="hidden" name="estatus_cobranza" id="estatus_cobranza" value="{{orden.estatus_cobranza.id}}" required/>
-						<input class="mdl-textfield__input saldo-orden" type="hidden" name="saldo" id="saldo" value="{{orden.saldo}}" required/>
-												    	
-		    		</section>	
-		    		<section class=" mdl-cell mdl-cell--12-col mdl-grid ">	
-						<div class="mdl-cell mdl-cell--12-col mdl-textfield--align-right">
-							<button type="submit" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" tabindex="4">
-								  Abonar
-							</button>
-						</div>			    	
-			    	</section>
-	    		</form>	    	
+				
+				<section class=" mdl-cell mdl-color--white mdl-shadow--2dp mdl-cell--9-col mdl-cell mdl-cell--3-col mdl-cell--12-col-tablet mdl-cell--12-col-phone mdl-grid ">
+											
+					<input class="mdl-textfield__input" type="hidden" name="orden" id="orden" value="{{orden.id}}" required/>
+  					<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell--12-col">
+					    <input class="mdl-textfield__input" type="date" name="fecha" id="fecha" value="" required/>
+					    <label class="mdl-textfield__label" for="fecha">Fecha De Abono</label>
+				  	</div>
+			  		<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell--12-col">
+				    	<input class="mdl-textfield__input cantidad" type="number" name="cantidad" id="cantidad" value="" required/>
+				    	<label class="mdl-textfield__label" for="cantidad">Cantidad</label>
+			  		</div>
+			  		<input class="mdl-textfield__input" type="hidden" name="estatus_cobranza" id="estatus_cobranza" value="{{orden.estatus_cobranza.id}}" required/>
+					<input class="mdl-textfield__input saldo-orden" type="hidden" name="saldo" id="saldo" value="{{orden.saldo}}" required/>
+											    	
+	    		</section>	
+	    		<section class=" mdl-cell mdl-cell--12-col mdl-grid ">	
+					<div class="mdl-cell mdl-cell--12-col mdl-textfield--align-right">
+						<button type="submit" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" tabindex="4">
+							  Abonar
+						</button>
+					</div>			    	
+		    	</section>
+    		</form>	    	
 		    	
 	    	</div>
 	  	</div>		  		
