@@ -46,9 +46,8 @@
 
 				</section>
 				
-				<section class=" mdl-cell mdl-cell--9-col mdl-cell mdl-cell--3-col mdl-cell--12-col-tablet mdl-cell--12-col-phone mdl-grid ">
-				<form action=""  method="post" role="form" enctype="multipart/form-data">{% csrf_token %}	
-					<div class="mdl-color--white mdl-shadow--2dp mdl-cell mdl-cell--12-col">					
+				<section class=" mdl-cell mdl-color--white mdl-shadow--2dp mdl-cell--9-col mdl-cell mdl-cell--3-col mdl-cell--12-col-tablet mdl-cell--12-col-phone mdl-grid ">
+					<form action=""  method="post" role="form" class="mdl-grid form-add" enctype="multipart/form-data">{% csrf_token %}								
 						<input class="mdl-textfield__input" type="hidden" name="orden" id="orden" value="{{orden.id}}" required/>
 	  					<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell--12-col">
 						    <input class="mdl-textfield__input" type="date" name="fecha" id="fecha" value="" required/>
@@ -60,19 +59,13 @@
 				  		</div>
 				  		<input class="mdl-textfield__input" type="hidden" name="estatus_cobranza" id="estatus_cobranza" value="{{orden.estatus_cobranza.id}}" required/>
 						<input class="mdl-textfield__input saldo-orden" type="hidden" name="saldo" id="saldo" value="{{orden.saldo}}" required/>
-						
-					</div>
-					<div class="mdl-cell mdl-cell--12-col mdl-textfield--align-right">						
-						<button class="continuar mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" tabindex="4">
-							  Abonar
-						</button>
-					</div>
-				</form>			    	
+						<div class="mdl-cell mdl-cell--12-col mdl-textfield--align-right">						
+							<button class="continuar mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" tabindex="4">
+								  Abonar
+							</button>
+						</div>	  				
+	  				</form>									    	
 		    	</section>		    	
-		    	<section class=" mdl-cell mdl-cell--12-col mdl-grid ">	
-					
-								    	
-		    	</section>
 		    	
 	    	</div>
 	  	</div>		  		
