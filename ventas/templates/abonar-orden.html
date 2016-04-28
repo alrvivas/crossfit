@@ -43,7 +43,7 @@
 	  					<li class="estatus-orden">Estatus Orden: {{orden.estatus_orden}}</li>
 	  					<li class="estatus-cobranza">Estatus Cobranza: {{orden.estatus_cobranza}}</li>
 	  					{% for ab in abonos %}
-	  						<li class="estatus-cobranza">Fecha Abono: {{ab.fecha|date:'Y-m-d'}} Cantidad: ${{ab.cantidad}}</li>
+	  						<li class="abono">Fecha Abono: {{ab.fecha|date:'Y-m-d'}}<br />Cantidad: ${{ab.cantidad}}</li>
 	  					{% empty %}
     						<li>Aún no hay abonos.</li>
 	  					{% endfor %}
