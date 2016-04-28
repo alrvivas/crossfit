@@ -149,7 +149,8 @@ def corregir_orden(request,orden_id):
 def abonar_orden(request,orden_id):
     user = request.user
     orden = get_object_or_404(Orden, id=orden_id)
-    abono = Abono.objects.filter(orden=orden)
+    abono = Abono.objects.all()
+    abonos = Abono.objects.filter(orden=orden)
     estatus_orden = Estatus_Orden.objects.all()
     estatus_cobranza = Estatus_Cobranza.objects.all()
     tipo_pago = Tipo_Pago.objects.all()
