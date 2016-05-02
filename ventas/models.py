@@ -118,7 +118,7 @@ class Devoluvcion(models.Model):
         return('devoluvcion', (), { 'devolucion_id': self.id })
 
     @models.permalink
-    def get_absolute_url_capturar(self):
+    def get_absolute_url_crear(self):
         return('crear-devolucion', (), { 'devolucion_id': self.id })
 
     @models.permalink
