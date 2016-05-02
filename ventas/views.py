@@ -203,7 +203,7 @@ def capturar_devolucion(request,devolucion_id):
     orden = Orden.objects.filter(id__in=mylist)
     estatus_orden = Estatus_Orden.objects.all()
     estatus_cobranza = Estatus_Cobranza.objects.all()
-    DevolucionProductoFormSet = modelformset_factory(Devolucion_Producto,form=oproductoForm,extra=len(productos))
+    DevolucionProductoFormSet = modelformset_factory(Devolucion_Producto,form=dproductoForm,extra=len(productos))
     if request.method == 'POST':
         form_devolucion = devolucionForm(request.POST,instance=devolucion)
         form_orden = osaldoForm(request.POST)

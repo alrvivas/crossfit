@@ -49,3 +49,8 @@ class caprurardevolucionForm(ModelForm):
     class Meta:
         model = Devolucion
         fields = ('subtotal','total','total_peso',)
+
+class dproductoForm(forms.ModelForm):
+    class Meta:
+        model = Devolucion_Producto
+        fields = ('devolucion','producto','precio','cantidad','subtotal_producto','subtotal_peso',) 
