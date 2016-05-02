@@ -41,24 +41,23 @@
 	  			<section class="demo-cards dl-color--white mdl-shadow--2dp mdl-cell mdl-cell--3-col mdl-grid mdl-grid--no-spacing datos-venta">
 	  				<div class="datos-venta mdl-cell--12-col">
 	  					<h4>Devolución: {{devolucion.id}}</h4>
-	  					<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell--12-col">
-						   	<input class="mdl-textfield__input" type="date" name="fecha" id="fecha" value="{{devolucion.fecha|date:'Y-m-d'}}" required/>
-						    <label class="mdl-textfield__label" for="fecha">Fecha</label>
-					  	</div>
+	  					<ul class="mdl-typography--text-left">
+	  						<li>Fecha Devolución: {{devolucion.fecha|date:'Y-m-d'}}</li>
+	  					</ul>
 					  	<h4>Orden: {{devolucion.orden.id}}</h4>						  	
-	  					<ul>
+	  					<ul class="mdl-typography--text-left">
 	  						<li>Fecha Orden: {{devolucion.orden.fecha|date:'Y-m-d'}}</li>
 	  						<li>Cliente: {{devolucion.orden.cliente.nombre}} {{devolucion.orden.cliente.apellidos}}</li>
 	  						<li>Total Orden: ${{devolucion.orden.total}}</li>
 	  					</ul>
-					  	<h4>Saldo: ${{devolucion.orden.saldo}}</h4>
+					  	<h4 class="mdl-color-text--red-500 saldo">Saldo: ${{devolucion.orden.saldo}}</h4>
 	  				</div>	
 				  	<input class="mdl-textfield__input" type="hidden" name="estatus_orden" id="estatus_orden" value="1" required/>
 				  	<input class="mdl-textfield__input" type="hidden" name="estatus_cobranza" id="estatus_cobranza" value="1" required/>
 				  	<input type="hidden" class="subtotal-orden"name="subtotal" value="" required="required" />	
 				  	<input type="hidden" class="total-orden" name="total" value="" required="required" />
 		    		<input type="hidden" class="total-peso" name="total_peso" value="0.0" required="required" />
-		    		<input type="hidden" class="saldo-orden" name="saldo" value="{{devolucion.orden.saldo}}" required="required" />	
+		    		<input type="hidden" class="saldo-orden" name="saldo" value="{{orden.saldo}}" required="required" />	
 		  				  			
 				</section>
 				<section class=" mdl-cell mdl-cell--9-col mdl-grid ">	
