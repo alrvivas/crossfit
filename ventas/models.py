@@ -137,7 +137,6 @@ class Devolucion(models.Model):
         verbose_name_plural = ('Devoluciones')
 
 
-
 class Devolucion_Producto(models.Model):
     devolucion = models.ForeignKey(Devolucion, null=True, blank=True,verbose_name='Orden Producto')
     producto = models.ForeignKey(Producto, null=True, blank=True)

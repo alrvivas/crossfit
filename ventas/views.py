@@ -178,7 +178,7 @@ def crear_devolucion(request):
     page_title = "Asignar Devolución A Orden"
     user = request.user
     clientes = Cliente.objects.filter(devolucion=True)
-    ordenes = Orden.objects.filter(cliente=clientes)
+    ordenes = Orden.objects.filter(cliente=clientes).exclude(estatus_cobranza=2).order_by('-id')
     devolucion = Devolucion.objects.all()
     if request.method == 'POST':
         form_devolucion = devolucionForm(request.POST)
@@ -203,7 +203,7 @@ def capturar_devolucion(request,devolucion_id):
     orden = Orden.objects.filter(orden=mylist)
     estatus_orden = Estatus_Orden.objects.all()
     estatus_cobranza = Estatus_Cobranza.objects.all()
-    DevolucionProductoFormSet = modelformset_factory(Devoluvcion_Producto,form=oproductoForm,extra=len(productos))
+    DevolucionProductoFormSet = modelformset_factory(Devolucion_Producto,form=oproductoForm,extra=len(productos))
     if request.method == 'POST':
         form_devolucion = devolucionForm(request.POST,instance=devolucion)
         form_orden = osaldoForm(request.POST)
@@ -219,7 +219,7 @@ def capturar_devolucion(request,devolucion_id):
     else:
         form_devolucion = devolucionForm()
         form_orden = osaldoForm()
-        formset = DevolucionProductoFormSet(queryset=Devoluvcion_Producto.objects.none())
+        formset = DevolucionProductoFormSet(queryset=Devolucion_Producto.objects.none())
     args = {}
     args.update(csrf(request))
     template_name = "punto-venta.html"
@@ -229,7 +229,7 @@ def capturar_devolucion(request,devolucion_id):
 def devolucion_exitosa(request,devolucion_id):
     user = request.user
     devolucion = get_object_or_404(Devolucion, id=devolucion_id)
-    devolucion_producto = Devoluvcion_Producto.objects.filter(devolucion=devolucion)
+    devolucion_producto = Devolucion_Producto.objects.filter(devolucion=devolucion)
     page_title = "¡Devolución Exitosa!"    
     template_name ="devolucion-exitosa.html" 
     return render_to_response(template_name, locals(),context_instance=RequestContext(request))
