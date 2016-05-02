@@ -1,0 +1,153 @@
+{% extends "base.html" %}
+{% load static from staticfiles %} 
+{% block staticos %}
+	<link rel="stylesheet" type="text/css"  href="{% static "css/print.css" %}">
+	
+{% endblock %}  
+{% block header %}
+	<header class="header mdl-layout__header mdl-layout__header--scroll mdl-color--green-500">	  			
+    	<div class="mdl-layout--large-screen-only mdl-layout__header-row">	    		
+	    	<div class=" mdl-layout-spacer"></div>
+	    	<div class="mdl-textfield mdl-js-textfield mdl-textfield--expandable mdl-textfield--floating-label mdl-textfield--align-right mdl-textfield--full-width">
+    			
+          	</div>
+		</div>
+    	<div class="mdl-typography--text-center ">
+    		<div class="mdl-layout-title">
+    			<h1 >{{page_title}}</h1>
+    		</div>
+
+    		
+    	</div>
+    	<div class="mdl-layout--large-screen-only mdl-layout__header-row">
+    		<!---->
+    	</div>	
+    	<div class="mdl-layout__tab-bar mdl-js-ripple-effect mdl-color--green-A400"> 		
+    		<a href="#orden" class="mdl-layout__tab is-active">Devolción</a>
+          	
+    	</div>	
+    </header>
+{% endblock %}
+
+{% block contedor %}	
+  	<main class="mdl-layout__content mdl-color--grey-100">  		  		
+	  	<div class="mdl-grid demo-content mdl-layout__tab-panel is-active" id="orden">
+	  		<div class="mdl-grid">	  		
+	  			<section class="demo-cards mdl-color--white mdl-shadow--2dp mdl-cell mdl-cell--3-col mdl-cell--12-col-tablet mdl-cell--12-col-phone mdl-grid mdl-grid--no-spacing datos-venta">
+	  				<h4 class="mdl-cell mdl-cell--12-col orden-id">Devolucion: {{devolucion.id}}</h4>
+	  				<h4 class="mdl-cell mdl-cell--12-col cliente-nombre">Cliente: {{devolucion.orden.cliente.nombre}} {{devolucion.orden.cliente.apellidos}}</h4>
+	  				<ul class="mdl-textfield--align-left">
+	  					<li class="fecha-orden">Fecha:{{devolucion.fecha|date:'Y-m-d'}}</li>
+	  					<li class="tipo-pago">Tipo de Pago:{{devolucion.orden.tipo_pago}}</li>
+	  					<li class="estatus-orden">Estatus Orden: {{devolucion.orden.estatus_orden}}</li>
+	  					<li class="estatus-cobranza">Estatus Cobranza{{devolucion.orden.estatus_cobranza}}</li>
+	  				</ul>		    		 			
+				</section>
+				<section class=" mdl-cell mdl-cell--9-col mdl-cell mdl-cell--3-col mdl-cell--12-col-tablet mdl-cell--12-col-phone mdl-grid ">	
+					<div class="mdl-color--white mdl-shadow--2dp mdl-cell mdl-cell--12-col suminputs venta">
+						<table class="mdl-data-table mdl-js-data-table mdl-data-table--selectable mdl-fullwidth">
+							<thead>
+								<tr>
+								  <th class="mdl-data-table__cell--non-numeric">Producto</th>
+								  <th>Catidad</th>
+								  <th>Precio Unitario</th>
+								  <th>Total</th>
+								</tr>
+							</thead>
+							<tbody class="lista-venta">
+								{% for dev in devolucion %}
+									<tr>
+										<td class='mdl-data-table__cell--non-numeric'>{{dev.producto.nombre}}</td>
+										<td>{{dev.cantidad}}</td>
+										<td>${{dev.precio}}</td>
+										<td>${{dev.subtotal_producto}}</td>
+									</tr>
+								{% endfor %}
+							</tbody>
+						</table>
+					</div>			    	
+		    	</section>
+		    	<section class="mdl-color--white mdl-shadow--2dp mdl-cell mdl-cell--12-col mdl-cell--12-col-tablet mdl-cell--12-col-phone mdl-grid mdl-textfield--align-right totales">	
+					<div class="mdl-cell mdl-cell--10-col mdl-cell--5-col-tablet mdl-cell--2-col-phone letra">
+						<h4>Sub Total: $</h4>
+						<h4>Total: $</h4>
+					</div>
+					<div class="mdl-cell mdl-cell--2-col mdl-cell--2-col-tablet mdl-cell--2-col-phone cantidad">
+						<h4>{{devolucion.subtotal}}</h4>
+						<h4>{{devolucion.total}}</h4>
+					</div>				    	
+		    	</section>
+		    	<section class=" mdl-cell mdl-cell--12-col mdl-grid ">	
+					<div class="mdl-cell mdl-cell--12-col mdl-textfield--align-right">
+						<button type="submit" class="print mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" tabindex="4">
+							  Imprimir<i class="material-icons mdl-color-text--white">print</i>
+						</button>
+						<a href="{% url 'punto-venta' %}" class="continuar mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" tabindex="4">
+							  Continuar
+						</a>
+					</div>			    	
+		    	</section>
+		    	
+	    	</div>
+	  	</div>
+	  	<section class="tiket">
+		    		<div class="t-fecha">FECHA:{{devolucion.fecha|date:'Y-m-d'}}</div>
+		    		<div class="t-empresa">Campo Alegre Alimentos S.A. de C.V.</div><div class="t-orden">ORDEN: {{devolucion.id}}</div>
+		    		<div class="t-cliente">CLIENTE: {{devolucion.orden.cliente.nombre}} {{devolucion.orden.cliente.apellidos}}</div>
+		    		<table>
+		    			<thead>
+		    				<tr>
+						  		<th>Producto</th>
+						  		<th>Catidad</th>
+						  		<th>Precio Unitario</th>
+						  		<th>Total</th>
+							</tr>
+		    			</thead>
+		    			<tbody>
+		    				{% for dev in devolucion %}
+								<tr>
+									<td class="producto">{{dev.producto.nombre}}</td>
+									<td>{{dev.cantidad}}</td>
+									<td>${{dev.precio}}</td>
+									<td>${{dev.subtotal_producto}}</td>
+								</tr>
+							{% endfor %}
+		    			</tbody>
+		    			<tfoot>
+		    				<tr>
+								<td></td>
+								<td></td>
+								<td>Subtotal</td>
+								<td>${{devolucion.subtotal}}</td>
+							</tr>
+							<tr>
+								<td></td>
+								<td></td>
+								<td>Desc. vta. Leche</td>
+								<td>$</td>
+							</tr>
+							<tr>
+								<td></td>
+								<td></td>
+								<td>Total</td>
+								<td>${{devolucion.total}}</td>
+							</tr>
+		    			</tfoot>
+		    		</table>
+		    	</section>
+	  	
+   	</main>
+   	
+    
+{% endblock %}
+{% block adicional-scripts %}
+<script type="text/javascript">
+$(document).ready(function() {
+	$(".print").click(function() {
+
+		window.print();
+	});
+});
+	
+</script>
+{% endblock %}

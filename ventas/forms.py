@@ -40,3 +40,12 @@ class abonoForm(forms.ModelForm):
         model = Abono
         fields = '__all__'
 
+class devolucionForm(ModelForm):
+    class Meta:
+        model = Orden
+        fields = ('fecha','orden',)
+
+class caprurardevolucionForm(ModelForm):
+    class Meta:
+        model = Orden
+        fields = ('subtotal','total','total_peso',)

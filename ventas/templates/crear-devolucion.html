@@ -1,0 +1,88 @@
+{% extends "base.html" %}
+{% load static from staticfiles %} 
+{% block staticos %}
+	<link rel="stylesheet" type="text/css"  href="{% static "css/print.css" %}">
+	
+{% endblock %}  
+{% block header %}
+	<header class="header mdl-layout__header mdl-layout__header--scroll mdl-color--green-500">	  			
+    	<div class="mdl-layout--large-screen-only mdl-layout__header-row">	    		
+	    	<div class=" mdl-layout-spacer"></div>
+	    	<div class="mdl-textfield mdl-js-textfield mdl-textfield--expandable mdl-textfield--floating-label mdl-textfield--align-right mdl-textfield--full-width">
+    			
+          	</div>
+		</div>
+    	<div class="mdl-typography--text-center ">
+    		<div class="mdl-layout-title">
+    			<h1 >{{page_title}} - {{orden.id}}</h1>
+    		</div>
+
+    		
+    	</div>
+    	<div class="mdl-layout--large-screen-only mdl-layout__header-row">
+    		<!---->
+    	</div>	
+    	<div class="mdl-layout__tab-bar mdl-js-ripple-effect mdl-color--green-A400"> 		
+    		<a href="#orden" class="mdl-layout__tab is-active">Venta</a>    		            	
+    	</div>
+    	
+    </header>
+{% endblock %}
+
+{% block contedor %}	
+  	<main class="mdl-layout__content mdl-color--grey-100">  		  		
+	  	<div class="mdl-grid demo-content mdl-layout__tab-panel is-active" id="orden">
+	  		<div class="mdl-grid">	  		
+	  			<section class="demo-cards mdl-color--white mdl-shadow--2dp mdl-cell mdl-cell--12-col mdl-cell--12-col-tablet mdl-cell--12-col-phone mdl-grid mdl-grid--no-spacing">
+	  				<form action=""  method="post" role="form" class="mdl-grid form-add" enctype="multipart/form-data">{% csrf_token %}
+	  					<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell--12-col">
+						    <input class="mdl-textfield__input" type="date" name="fecha" id="fecha" value="" required/>
+						    <label class="mdl-textfield__label" for="fecha">Fecha</label>
+					  	</div>
+	  					<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell--12-col">
+					  		<select class="mdl-textfield__input" type="text" name="cliente" id="cliente" required>
+					  			<option  value="" selected>Seleccione una...</option>
+					  			{% for o in ordenes %}
+					  				<option value="{{o.id}}">{{o.id}} {{o.cliente.nombre}} {{o.cliente.apellidos}}</option>
+					  			{% endfor %}
+					  		</select>      
+						    <label class="mdl-textfield__label" for="cliente">Orden</label>
+					  	</div>
+					   	<div class="mdl-cell--12-col mdl-textfield--align-right">
+						   	<a class="mdl-button mdl-js-button mdl-js-ripple-effect">
+							  	CANCELAR
+							</a>				   		
+					  		<button class="mdl-button mdl-js-button  mdl-js-ripple-effect mdl-button--primary">
+							  	ENVIAR
+							</button>
+				    	</div>	  				
+	  				</form>		    		 			
+				</section>
+				<div id="demo-snackbar-example" class="mdl-js-snackbar mdl-snackbar">
+			  		<div class="mdl-snackbar__text"></div>
+			  		<button class="mdl-snackbar__action" type="button"></button>
+				</div>
+				
+		    	
+	    	</div>
+	  	</div>
+	  	
+	  	
+   	</main>
+   	
+    
+{% endblock %}
+{% block adicional-scripts %}
+<script type="text/javascript">
+	var d = new Date();
+	var month_inicio = d.getMonth()+1;
+	var day_inicio = d.getDate();
+
+	var fecha = d.getFullYear() + '-' +
+	    ((''+month_inicio).length<2 ? '0' : '') + month_inicio + '-' +
+	    ((''+day_inicio).length<2 ? '0' : '') + day_inicio;
+
+	$('#fecha').val(fecha);	
+</script>
+
+{% endblock %}

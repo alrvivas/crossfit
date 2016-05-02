@@ -101,3 +101,54 @@ class Abono(models.Model):
 
     def __unicode__(self):
         return unicode(self.nombre)
+
+
+class Devoluvcion(models.Model):
+    orden = models.ForeignKey(Orden, null=True, blank=True,verbose_name='Orden')    
+    fecha = models.DateField(null=True, blank=True)
+    fecha_creacion = models.DateTimeField(auto_now_add=True)
+    fehca_modificacion = models.DateTimeField(auto_now=True,verbose_name=('Ultima Modificacion'))
+    subtotal = models.DecimalField(max_digits=10, decimal_places=4, null=True)
+    total = models.DecimalField(max_digits=10, decimal_places=4, null=True)
+    total_peso = models.DecimalField(max_digits=10, decimal_places=4, null=True)
+    observacion = models.TextField(null=True,blank=True)
+
+    @models.permalink
+    def get_absolute_url(self):
+        return('devoluvcion', (), { 'devolucion_id': self.id })
+
+    @models.permalink
+    def get_absolute_url_capturar(self):
+        return('crear-devolucion', (), { 'devolucion_id': self.id })
+
+    @models.permalink
+    def get_absolute_url_capturar(self):
+        return('capturar-devolucion', (), { 'devolucion_id': self.id })
+
+    @models.permalink
+    def get_absolute_urle(self):
+        return('devolucion-exitosa', (), { 'devolucion_id': self.id })
+
+    @models.permalink
+    def get_absolute_url_editar(self):
+        return('editar-devolucion', (), { 'devolucion_id': self.id })
+
+    def __unicode__(self):
+        return unicode(self.id)
+
+    class Meta(object):
+        verbose_name = ('Devolucion')
+        verbose_name_plural = ('Devoluciones')
+
+
+
+class Devoluvcion_Producto(models.Model):
+    devoluvcion = models.ForeignKey(Devoluvcion, null=True, blank=True,verbose_name='Orden Producto')
+    producto = models.ForeignKey(Producto, null=True, blank=True)
+    precio = models.DecimalField(max_digits=10, decimal_places=3, null=True, blank=True)
+    cantidad = models.IntegerField(null=True, blank=True)
+    subtotal_producto = models.DecimalField(max_digits=10, decimal_places=3, null=True, blank=True)
+    subtotal_peso = models.DecimalField(max_digits=30, decimal_places=3, null=True, blank=True)
+
+    def __unicode__(self):
+        return u"%s - %s"% (self.orden, self.producto)

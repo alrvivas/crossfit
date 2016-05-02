@@ -9,7 +9,8 @@ class Cliente(models.Model):
 	apellidos = models.CharField(max_length=140,null=True)
 	celular	= models.CharField(max_length=15,null=True)
 	telefono = models.CharField(max_length=15,null=True)
-	dias_credito = models.PositiveIntegerField(null=True)	
+	dias_credito = models.PositiveIntegerField(null=True)
+	devolucion = models.BooleanField(default=False, verbose_name=('Acepta devolucion'))	
 	imagen = models.ImageField("Imagen Cliente", upload_to="images/clientes", blank=True, null=True,default='images/clientes/default-01.jpg')
 	
 	@models.permalink
