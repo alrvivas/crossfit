@@ -9,6 +9,6 @@ urlpatterns = patterns('',
 	url(r'^corregir-orden/(?P<orden_id>[-\w]+)$', 'ventas.views.corregir_orden', name='corregir-orden'),
 	url(r'^abonar-orden/(?P<orden_id>[-\w]+)$', 'ventas.views.abonar_orden', name='abonar-orden'),	
 	url(r'^crear-devolucion/$', 'ventas.views.crear_devolucion', name='crear-devolucion'),
-	url(r'^capturar-devolucion/(?P<devolucion_id>[-\w]+)$', 'ventas.views.capturar_devolucion', name='capturar-devolucion'),
+	url(r'^devolucion-exitosa/(?P<devolucion_id>[-\w]+)$', 'ventas.views.devolucion_exitosa', name='devolucion-exitosa'),
 	
 )

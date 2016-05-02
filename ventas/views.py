@@ -194,31 +194,28 @@ def crear_devolucion(request):
     return render_to_response(template_name, locals(), context_instance=RequestContext(request))
 
 @login_required(login_url='/login/')
-def capturar_devolucion(request,devolucion_id):
+def crear_devolucion(request):
     page_title = "Capturar Devolución"
     user = request.user
+    last_devolucion = Devolucion.objects.latest('id')
+    clientes = Cliente.objects.filter(devolucion=True)
+    ordenes = Orden.objects.filter(cliente=clientes).exclude(estatus_cobranza=2).order_by('-id')
     devolucion = get_object_or_404(Devolucion, id=devolucion_id)
     productos = Producto.objects.filter(activo = True)
-    mylist = Devolucion.objects.values_list('orden_id',flat=True).filter(id=devolucion_id)
-    orden = Orden.objects.filter(id=mylist)
     estatus_orden = Estatus_Orden.objects.all()
     estatus_cobranza = Estatus_Cobranza.objects.all()
     DevolucionProductoFormSet = modelformset_factory(Devolucion_Producto,form=dproductoForm,extra=len(productos))
     if request.method == 'POST':
         form_devolucion = devolucionForm(request.POST,instance=devolucion)
-        form_orden = osaldoForm(request.POST)
         formset = DevolucionProductoFormSet(request.POST,request.FILES)
-        if form_orden.is_valid() and form_devolucion.is_valid():
-            orden = form_orden.save(commit=False)            
-            orden.save()
+        if form_devolucion.is_valid():
             devolucion = form_devolucion.save(commit=False)
             devolucion.save()
             if formset.is_valid():                
                 formset.save()            
-                return redirect(orden.get_absolute_urle())
+                return redirect(devolucion.orden.get_absolute_url_asiganar_dev())
     else:
         form_devolucion = devolucionForm()
-        form_orden = osaldoForm()
         formset = DevolucionProductoFormSet(queryset=Devolucion_Producto.objects.none())
     args = {}
     args.update(csrf(request))
