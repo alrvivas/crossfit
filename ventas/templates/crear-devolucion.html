@@ -43,7 +43,7 @@
 					  		<select class="mdl-textfield__input" type="text" name="cliente" id="cliente" required>
 					  			<option  value="" selected>Seleccione una orden...</option>
 					  			{% for o in ordenes %}
-					  				<option value="{{o.id}}">{{o.id}} {{o.cliente.nombre}} {{o.cliente.apellidos}}</option>
+					  				<option value="{{o.id}}">{{o.id}} {{o.cliente.nombre}} {{o.cliente.apellidos}} <b class="mdl-color-text--red-500">${{o.saldo}}</b></option>
 					  			{% endfor %}
 					  		</select>      
 						    <label class="mdl-textfield__label" for="cliente">Orden</label>
