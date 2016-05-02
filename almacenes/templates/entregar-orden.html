@@ -90,19 +90,19 @@
 						<h4>{{orden.total}}</h4>
 					</div>				    	
 		    	</section>
-		    	
-		    	<section class=" mdl-cell mdl-cell--12-col mdl-grid entregar">
+
+		    	<section class=" mdl-cell mdl-cell--12-col mdl-grid ">
 		    		<form role="form" action=""  method="post">{% csrf_token %}
 	        			{{ formset.management_form }}
     					<input type="hidden" name="estatus_orden" id="estatus_orden" value="2" required/>	
-	        			
+	        			<div class="entregar">
         				{% for p in o_productos %}
 						<div class="productos-entregar">
         					<input id='id_form' name='id' type='hidden' value='{{p.producto.id}}' required="required" />
 	        				<input type="hidden" class="stock" name="stock" value="{{p.producto.stock|sub:p.cantidad}}" />				        				
     					</div>    					
 						{% endfor %}
-        				
+        				</div>        				
 						<div class="mdl-cell mdl-cell--12-col mdl-textfield--align-right">
 							<button type="submit" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" tabindex="4">
 								  Entregar
@@ -121,7 +121,7 @@
 {% block adicional-scripts %}
 <script type="text/javascript">
 	$(document).ready(function() {
-		$('section.entregar').each(function(){
+		$('div.entregar').each(function(){
 			$(this).find('.productos-entregar').each(function(i){
 				$(this).find('#id_form').attr('name', 'form-' + i +'-id');
 				$(this).find('.stock').attr('name', 'form-' + i +'-stock');
