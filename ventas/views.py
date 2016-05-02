@@ -222,7 +222,7 @@ def capturar_devolucion(request,devolucion_id):
         formset = DevolucionProductoFormSet(queryset=Devolucion_Producto.objects.none())
     args = {}
     args.update(csrf(request))
-    template_name = "punto-venta.html"
+    template_name = "capturar-devolucion.html"
     return render_to_response(template_name, locals(), context_instance=RequestContext(request))
 
 @login_required(login_url='/login/')
