@@ -196,17 +196,17 @@ def crear_devolucion(request):
 @login_required(login_url='/login/')
 def crear_devolucion(request):
     page_title = "Capturar Devolución"
-    user = request.user
-    last_devolucion = Devolucion.objects.latest('id')
+    user = request.user    
     clientes = Cliente.objects.filter(devolucion=True)
     ordenes = Orden.objects.filter(cliente=clientes).exclude(estatus_cobranza=2).order_by('-id')
-    devolucion = get_object_or_404(Devolucion, id=devolucion_id)
+    devolucion = Devolucion.objects.all()
+    last_devolucion = Devolucion.objects.latest('id')
     productos = Producto.objects.filter(activo = True)
     estatus_orden = Estatus_Orden.objects.all()
     estatus_cobranza = Estatus_Cobranza.objects.all()
     DevolucionProductoFormSet = modelformset_factory(Devolucion_Producto,form=dproductoForm,extra=len(productos))
     if request.method == 'POST':
-        form_devolucion = devolucionForm(request.POST,instance=devolucion)
+        form_devolucion = devolucionForm(request.POST)
         formset = DevolucionProductoFormSet(request.POST,request.FILES)
         if form_devolucion.is_valid():
             devolucion = form_devolucion.save(commit=False)
