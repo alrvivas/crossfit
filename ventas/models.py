@@ -103,7 +103,7 @@ class Abono(models.Model):
         return unicode(self.nombre)
 
 
-class Devoluvcion(models.Model):
+class Devolucion(models.Model):
     orden = models.ForeignKey(Orden, null=True, blank=True,verbose_name='Orden')    
     fecha = models.DateField(null=True, blank=True)
     fecha_creacion = models.DateTimeField(auto_now_add=True)
@@ -116,11 +116,7 @@ class Devoluvcion(models.Model):
     @models.permalink
     def get_absolute_url(self):
         return('devoluvcion', (), { 'devolucion_id': self.id })
-
-    @models.permalink
-    def get_absolute_url_crear(self):
-        return('crear-devolucion', (), { 'devolucion_id': self.id })
-
+    
     @models.permalink
     def get_absolute_url_capturar(self):
         return('capturar-devolucion', (), { 'devolucion_id': self.id })
@@ -142,8 +138,8 @@ class Devoluvcion(models.Model):
 
 
 
-class Devoluvcion_Producto(models.Model):
-    devoluvcion = models.ForeignKey(Devoluvcion, null=True, blank=True,verbose_name='Orden Producto')
+class Devolucion_Producto(models.Model):
+    devolucion = models.ForeignKey(Devolucion, null=True, blank=True,verbose_name='Orden Producto')
     producto = models.ForeignKey(Producto, null=True, blank=True)
     precio = models.DecimalField(max_digits=10, decimal_places=3, null=True, blank=True)
     cantidad = models.IntegerField(null=True, blank=True)
