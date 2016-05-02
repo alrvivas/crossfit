@@ -43,7 +43,7 @@ class abonoForm(forms.ModelForm):
 class devolucionForm(ModelForm):
     class Meta:
         model = Devolucion
-        fields = ('fecha','orden',)
+        fields = ('fecha','orden','subtotal','total','total_peso',)
 
 class caprurardevolucionForm(ModelForm):
     class Meta:

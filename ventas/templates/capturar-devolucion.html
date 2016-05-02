@@ -252,7 +252,7 @@ function renombrar(){
 	$('table tr:has(td):not(:last)').each(function(i){
 		$(this).find('td').each(function(){
 			$(this).find('#id_form').attr('name', 'form-' + i +'-id');
-			$(this).find('.orden').attr('name', 'form-' + i +'-orden');
+			$(this).find('.devolucion').attr('name', 'form-' + i +'-devolucion');
 	   		$(this).find('.cantidad').attr('name', 'form-' + i +'-cantidad');
 		  	$(this).find('.producto').attr('name', 'form-' + i +'-producto');
 		  	$(this).find('.precio').attr('name', 'form-' + i +'-precio');
