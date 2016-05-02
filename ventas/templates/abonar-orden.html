@@ -160,7 +160,7 @@
 		abono = $('.cantidad').val();
 		saldo_actual = saldo-abono;
 		$('.saldo-orden').val(parseFloat(saldo_actual).toFixed(3));
-		$('.saldo').text('Saldo: '+ parseFloat(saldo_actual).toFixed(3));
+		$('.saldo').text('Saldo: $'+parseFloat(saldo_actual).toFixed(3));
 		if( $(".saldo-orden").val() == 0 ){
 			$('#estatus_cobranza').val(2);
 			$('.estatus-cobranza').text("Estatus Cobranza: Pagada");
