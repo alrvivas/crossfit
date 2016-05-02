@@ -199,8 +199,8 @@ def capturar_devolucion(request,devolucion_id):
     user = request.user
     devolucion = get_object_or_404(Devolucion, id=devolucion_id)
     productos = Producto.objects.filter(activo = True)
-    mylist =  list(Devolucion.objects.values_list('orden_id',flat=True))
-    orden = Orden.objects.filter(id=devolucion__orden_id)
+    mylist = Devolucion.objects.values_list('orden_id',flat=True).filter(id=devolucion_id)
+    orden = Orden.objects.filter(id=mylist)
     estatus_orden = Estatus_Orden.objects.all()
     estatus_cobranza = Estatus_Cobranza.objects.all()
     DevolucionProductoFormSet = modelformset_factory(Devolucion_Producto,form=dproductoForm,extra=len(productos))
