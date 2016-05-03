@@ -103,7 +103,75 @@
 		    	
 	    	</div>
 	  	</div>
-	  	<div class="mdl-grid demo-content mdl-layout__tab-panel is-active" id="credito"></div>
+	  	<div class="mdl-grid demo-content mdl-layout__tab-panel is-active" id="credito">
+	  		<div class="mdl-grid">	  		
+	  			<section class="demo-cards mdl-color--white mdl-shadow--2dp mdl-cell mdl-cell--3-col mdl-cell--12-col-tablet mdl-cell--12-col-phone mdl-grid mdl-grid--no-spacing datos-venta">
+	  				<h4 class="mdl-cell mdl-cell--12-col orden-id">Orden: {{orden.id}}</h4>
+	  				<h4 class="mdl-cell mdl-cell--12-col cliente-nombre">Cliente: <a href="{{orden.cliente.get_absolute_url}}">{{orden.cliente.nombre}} {{orden.cliente.apellidos}}</a></h4>
+	  				<ul class="mdl-textfield--align-left">
+	  					<li class="fecha-orden">Fecha:{{orden.fecha|date:'Y-m-d'}}</li>
+	  					<li class="tipo-pago">Tipo de Pago:{{orden.tipo_pago}}</li>
+	  					<li class="estatus-orden">Estatus Orden: {{orden.estatus_orden}}</li>
+	  					<li class="estatus-cobranza">Estatus Cobranza{{orden.estatus_cobranza}}</li>
+	  					<li>{{orden.observacion}}</li>
+	  				</ul>		    		 			
+				</section>
+				<section class=" mdl-cell mdl-cell--9-col mdl-cell mdl-cell--3-col mdl-cell--12-col-tablet mdl-cell--12-col-phone mdl-grid ">	
+					<div class="mdl-color--white mdl-shadow--2dp mdl-cell mdl-cell--12-col">
+						<h4>Abonos</h4>
+						<table class="mdl-data-table mdl-js-data-table mdl-data-table--selectable mdl-fullwidth">
+							<thead>
+								<tr>
+								  <th class="mdl-data-table__cell--non-numeric">Abono</th>
+								  <th>Fecha</th>
+								  <th>Cantidad</th>
+								</tr>
+							</thead>
+							<tbody class="lista-venta">
+								{% for ab in abonos %}
+									<tr>
+										<td class='mdl-data-table__cell--non-numeric'>{{ab.id}}</td>
+										<td>{{ab.fecha}}</td>
+										<td>${{ab.cantidad}}</td>
+									</tr>
+								{% empty %}
+								<tr>
+										<td class='mdl-data-table__cell--non-numeric'>Aun no hay abonos</td>
+										<td></td>
+										<td></td>
+									</tr>
+								{% endfor %}
+							</tbody>
+						</table>
+						<h4>Devoluciones</h4>
+						<table class="mdl-data-table mdl-js-data-table mdl-data-table--selectable mdl-fullwidth">
+							<thead>
+								<tr>
+								  <th class="mdl-data-table__cell--non-numeric">Devolución</th>
+								  <th>Fecha</th>
+								  <th>total</th>
+								</tr>
+							</thead>
+							<tbody class="lista-venta">
+								{% for dev in devoluciones %}
+									<tr>
+										<td class='mdl-data-table__cell--non-numeric'>{{dev.id}}</td>
+										<td>{{dev.fecha}}</td>
+										<td>${{dev.cantidad}}</td>
+									</tr>
+								{% empty %}
+								<tr>
+										<td class='mdl-data-table__cell--non-numeric'>No tiene devoluciones</td>
+										<td></td>
+										<td></td>
+									</tr>
+								{% endfor %}
+							</tbody>
+						</table>
+					</div>			    	
+		    	</section>	    	
+	    	</div>
+	  	</div>
 	  	<section class="tiket">
 		    		<div class="t-fecha">FECHA:{{orden.fecha|date:'Y-m-d'}}</div>
 		    		<div class="t-empresa">Campo Alegre Alimentos S.A. de C.V.</div><div class="t-orden">ORDEN: {{orden.id}}</div>

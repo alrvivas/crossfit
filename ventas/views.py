@@ -65,6 +65,8 @@ def orden(request,orden_id):
     user = request.user
     orden = get_object_or_404(Orden, id=orden_id)
     orden_producto = Orden_Producto.objects.filter(orden=orden)
+    abonos = Abono.objects.filter(orden=orden)
+    devoluciones = Devolucion.objects.filter(orden=orden)
     page_title = "Orden"    
     template_name ="orden.html" 
     return render_to_response(template_name, locals(),context_instance=RequestContext(request))
@@ -242,6 +244,6 @@ def devolucion(request,devolucion_id):
     user = request.user
     devolucion = get_object_or_404(Devolucion, id=devolucion_id)
     devolucion_producto = Devolucion_Producto.objects.filter(devolucion=devolucion)
-    page_title = "¡Devolución!"    
+    page_title = "Devolución"    
     template_name ="devolucion.html" 
     return render_to_response(template_name, locals(),context_instance=RequestContext(request))
