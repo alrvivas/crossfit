@@ -105,21 +105,27 @@
 	  	</div>
 	  	<div class="mdl-grid demo-content mdl-layout__tab-panel" id="credito">
 	  		<div class="mdl-grid">
-	  			<div class="demo-cards mdl-color--white mdl-shadow--2dp mdl-cell mdl-cell--3-col mdl-cell--12-col-tablet mdl-cell--12-col-phone mdl-grid mdl-grid--no-spacing">	
-	  			
-	  				<h4 class="mdl-cell mdl-cell--12-col orden-id">Orden: {{orden.id}}</h4>
-	  				<h4 class="mdl-cell mdl-cell--12-col cliente-nombre">Cliente: <a href="{{orden.cliente.get_absolute_url}}">{{orden.cliente.nombre}} {{orden.cliente.apellidos}}</a></h4>
-	  				<ul class="mdl-textfield--align-left">
-	  					<li class="fecha-orden">Fecha:{{orden.fecha|date:'Y-m-d'}}</li>
-	  					<li class="tipo-pago">Tipo de Pago:{{orden.tipo_pago}}</li>
-	  					<li class="estatus-orden">Estatus Orden: {{orden.estatus_orden}}</li>
-	  					<li class="estatus-cobranza">Estatus Cobranza{{orden.estatus_cobranza}}</li>
-	  					<li>{{orden.observacion}}</li>
-	  				</ul>		    		 			
+	  			<div class="mdl-cell mdl-cell--3-col mdl-cell--12-col-tablet mdl-cell--12-col-phone mdl-grid mdl-grid--no-spacing">	
+	  				<section class="section--center mdl-grid mdl-grid--no-spacing mdl-cell mdl-cell--12-col-desktop mdl-cell--12-col-tablet mdl-cell--12-col-phone mdl-shadow--2dp">
+		    			<div class="mdl-card__supporting-text mdl-grid mdl-grid--no-spacing">
+			  				<h4 class="mdl-cell mdl-cell--12-col orden-id">Orden: {{orden.id}}</h4>
+			  				<h4 class="mdl-cell mdl-cell--12-col cliente-nombre">Cliente: <a href="{{orden.cliente.get_absolute_url}}">{{orden.cliente.nombre}} {{orden.cliente.apellidos}}</a></h4>
+			  				<div class="section__text mdl-cell mdl-cell--12-col-desktop mdl-cell--12-col-tablet mdl-cell--12-col-phone">
+				  				<ul class="mdl-textfield--align-left">
+				  					<li class="fecha-orden">Fecha:{{orden.fecha|date:'Y-m-d'}}</li>
+				  					<li class="tipo-pago">Tipo de Pago:{{orden.tipo_pago}}</li>
+				  					<li class="estatus-orden">Estatus Orden: {{orden.estatus_orden}}</li>
+				  					<li class="estatus-cobranza">Estatus Cobranza{{orden.estatus_cobranza}}</li>
+				  					<li>{{orden.observacion}}</li>
+				  				</ul>
+				  			</div>
+			  			</div>
+			  		</section>		    		 			
 				</div>
 				<div class="demo-cards mdl-cell mdl-cell--9-col mdl-grid mdl-grid--no-spacing">	
-					<section class=" mdl-cell mdl-cell--9-col mdl-cell mdl-cell--3-col mdl-cell--12-col-tablet mdl-cell--12-col-phone mdl-grid ">	
-						<div class="mdl-color--white mdl-shadow--2dp mdl-cell mdl-cell--12-col">
+					<section class=" mdl-cell mdl-cell--9-col mdl-cell mdl-cell--3-col mdl-cell--12-col-tablet mdl-cell--12-col-phone mdl-grid ">
+						
+						<div class="mdl-card__supporting-text mdl-grid mdl-grid--no-spacing mdl-color--white mdl-shadow--2dp mdl-cell mdl-cell--12-col">
 							<h4>Abonos</h4>
 							<table class="mdl-data-table mdl-js-data-table mdl-data-table--selectable mdl-fullwidth">
 								<thead>
@@ -148,7 +154,7 @@
 						</div>			    	
 			    	</section>
 			    	<section class=" mdl-cell mdl-cell--9-col mdl-cell mdl-cell--3-col mdl-cell--12-col-tablet mdl-cell--12-col-phone mdl-grid ">	
-						<div class="mdl-color--white mdl-shadow--2dp mdl-cell mdl-cell--12-col">	
+						<div class="mdl-card__supporting-text mdl-grid mdl-grid--no-spacing mdl-color--white mdl-shadow--2dp mdl-cell mdl-cell--12-col">	
 			    			<h4>Devoluciones</h4>
 							<table class="mdl-data-table mdl-js-data-table mdl-data-table--selectable mdl-fullwidth">
 								<thead>
