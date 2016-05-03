@@ -46,15 +46,19 @@
 	  	<div class="mdl-grid demo-content mdl-layout__tab-panel is-active" id="orden">
 	  		<div class="mdl-grid">	  		
 	  			<section class="demo-cards mdl-color--white mdl-shadow--2dp mdl-cell mdl-cell--3-col mdl-cell--12-col-tablet mdl-cell--12-col-phone mdl-grid mdl-grid--no-spacing datos-venta">
-	  				<h4 class="mdl-cell mdl-cell--12-col orden-id">Orden: {{orden.id}}</h4>
-	  				<h4 class="mdl-cell mdl-cell--12-col cliente-nombre">Cliente: <a href="{{orden.cliente.get_absolute_url}}">{{orden.cliente.nombre}} {{orden.cliente.apellidos}}</a></h4>
-	  				<ul class="mdl-textfield--align-left">
-	  					<li class="fecha-orden">Fecha:{{orden.fecha|date:'Y-m-d'}}</li>
-	  					<li class="tipo-pago">Tipo de Pago:{{orden.tipo_pago}}</li>
-	  					<li class="estatus-orden">Estatus Orden: {{orden.estatus_orden}}</li>
-	  					<li class="estatus-cobranza">Estatus Cobranza{{orden.estatus_cobranza}}</li>
-	  					<li>{{orden.observacion}}</li>
-	  				</ul>		    		 			
+	  				<div class="mdl-card__supporting-text mdl-grid mdl-grid--no-spacing">
+		  				<h4 class="mdl-cell mdl-cell--12-col orden-id">Orden: {{orden.id}}</h4>
+		  				<div class="section__text mdl-cell mdl-cell--12-col-desktop mdl-cell--12-col-tablet mdl-cell--12-col-phone">
+			  				<h4 class="mdl-cell mdl-cell--12-col cliente-nombre">Cliente: <a href="{{orden.cliente.get_absolute_url}}">{{orden.cliente.nombre}} {{orden.cliente.apellidos}}</a></h4>
+			  				<ul class="mdl-textfield--align-left">
+			  					<li class="fecha-orden">Fecha:{{orden.fecha|date:'Y-m-d'}}</li>
+			  					<li class="tipo-pago">Tipo de Pago:{{orden.tipo_pago}}</li>
+			  					<li class="estatus-orden">Estatus Orden: {{orden.estatus_orden}}</li>
+			  					<li class="estatus-cobranza">Estatus Cobranza{{orden.estatus_cobranza}}</li>
+			  					<li>{{orden.observacion}}</li>
+			  				</ul>
+			  			</div>
+		  			</div>		    		 			
 				</section>
 				<section class=" mdl-cell mdl-cell--9-col mdl-cell mdl-cell--3-col mdl-cell--12-col-tablet mdl-cell--12-col-phone mdl-grid ">	
 					<div class="mdl-color--white mdl-shadow--2dp mdl-cell mdl-cell--12-col suminputs venta">
