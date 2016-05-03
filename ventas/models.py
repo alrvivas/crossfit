@@ -120,7 +120,7 @@ class Devolucion(models.Model):
 
     @models.permalink
     def get_absolute_url(self):
-        return('devoluvcion', (), { 'devolucion_id': self.id })
+        return('devolucion', (), { 'devolucion_id': self.id })
     
     @models.permalink
     def get_absolute_url_capturar(self):
