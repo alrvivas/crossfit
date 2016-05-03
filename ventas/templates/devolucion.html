@@ -9,19 +9,12 @@
     	<div class="mdl-layout--large-screen-only mdl-layout__header-row">	    		
 	    	<div class=" mdl-layout-spacer"></div>
 	    	<div class="mdl-textfield mdl-js-textfield mdl-textfield--expandable mdl-textfield--floating-label mdl-textfield--align-right mdl-textfield--full-width">
-    			<form>
-		            <label class="mdl-button mdl-js-button mdl-button--icon" for="search-field">
-		              	<i class="material-icons">search</i>
-		            </label>
-		            <div class="mdl-textfield__expandable-holder">
-		              	<input class="mdl-textfield__input" type="text" id="search-field">
-		            </div>
-	            </form>
+    			
           	</div>
 		</div>
     	<div class="mdl-typography--text-center ">
     		<div class="mdl-layout-title">
-    			<h1 >{{page_title}} - {{orden.id}}</h1>
+    			<h1 >{{page_title}}-{{devolucion.id}}</h1>
     		</div>
 
     		
@@ -30,14 +23,9 @@
     		<!---->
     	</div>	
     	<div class="mdl-layout__tab-bar mdl-js-ripple-effect mdl-color--blue-A400"> 		
-    		<a href="#orden" class="mdl-layout__tab is-active">Venta</a>  
-    		<a href="#credito" class="mdl-layout__tab">Credito y Cobranza</a>
-    		<a href="#" class="mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect mdl-color--blue-A200 mdl-shadow--4dp" id="add">
-	            <i class="material-icons mdl-color-text--white" role="presentation">mode_edit</i>	            
-	      	</a> 
-    		{% include "menu-credito-cobranza.html" %}             	
-    	</div>
-    	
+    		<a href="#orden" class="mdl-layout__tab is-active">Devolción</a>
+          	
+    	</div>	
     </header>
 {% endblock %}
 
@@ -46,14 +34,15 @@
 	  	<div class="mdl-grid demo-content mdl-layout__tab-panel is-active" id="orden">
 	  		<div class="mdl-grid">	  		
 	  			<section class="demo-cards mdl-color--white mdl-shadow--2dp mdl-cell mdl-cell--3-col mdl-cell--12-col-tablet mdl-cell--12-col-phone mdl-grid mdl-grid--no-spacing datos-venta">
-	  				<h4 class="mdl-cell mdl-cell--12-col orden-id">Orden: {{orden.id}}</h4>
-	  				<h4 class="mdl-cell mdl-cell--12-col cliente-nombre">Cliente: <a href="{{orden.cliente.get_absolute_url}}">{{orden.cliente.nombre}} {{orden.cliente.apellidos}}</a></h4>
+	  				<h4 class="mdl-cell mdl-cell--12-col orden-id">Devolucion: {{devolucion.id}}</h4>
+	  				<h4 class="mdl-cell mdl-cell--12-col cliente-nombre">Cliente: {{devolucion.orden.cliente.nombre}} {{devolucion.orden.cliente.apellidos}}</h4>
 	  				<ul class="mdl-textfield--align-left">
-	  					<li class="fecha-orden">Fecha:{{orden.fecha|date:'Y-m-d'}}</li>
-	  					<li class="tipo-pago">Tipo de Pago:{{orden.tipo_pago}}</li>
-	  					<li class="estatus-orden">Estatus Orden: {{orden.estatus_orden}}</li>
-	  					<li class="estatus-cobranza">Estatus Cobranza{{orden.estatus_cobranza}}</li>
-	  					<li>{{orden.observacion}}</li>
+	  					<li class="fecha-orden">Fecha:{{devolucion.fecha|date:'Y-m-d'}}</li>
+	  					<li>Orden: {{devolucion.orden.id}}</li>
+	  					<li>Fecha Orden: {{devolucion.orden.fecha|date:'Y-m-d'}}</li>
+	  					<li class="tipo-pago">Tipo de Pago:{{devolucion.orden.tipo_pago}}</li>
+	  					<li class="estatus-orden">Estatus Orden: {{devolucion.orden.estatus_orden}}</li>
+	  					<li class="estatus-cobranza">Estatus Cobranza{{devolucion.orden.estatus_cobranza}}</li>
 	  				</ul>		    		 			
 				</section>
 				<section class=" mdl-cell mdl-cell--9-col mdl-cell mdl-cell--3-col mdl-cell--12-col-tablet mdl-cell--12-col-phone mdl-grid ">	
@@ -68,12 +57,12 @@
 								</tr>
 							</thead>
 							<tbody class="lista-venta">
-								{% for op in orden_producto %}
+								{% for dev in devolucion_producto %}
 									<tr>
-										<td class='mdl-data-table__cell--non-numeric'>{{op.producto.nombre}}</td>
-										<td>{{op.cantidad}}</td>
-										<td>${{op.precio}}</td>
-										<td>${{op.subtotal_producto}}</td>
+										<td class='mdl-data-table__cell--non-numeric'>{{dev.producto.nombre}}</td>
+										<td>{{dev.cantidad}}</td>
+										<td>${{dev.precio}}</td>
+										<td>${{dev.subtotal_producto}}</td>
 									</tr>
 								{% endfor %}
 							</tbody>
@@ -86,8 +75,8 @@
 						<h4>Total: $</h4>
 					</div>
 					<div class="mdl-cell mdl-cell--2-col mdl-cell--2-col-tablet mdl-cell--2-col-phone cantidad">
-						<h4>{{orden.subtotal}}</h4>
-						<h4>{{orden.total}}</h4>
+						<h4>{{devolucion.subtotal}}</h4>
+						<h4>{{devolucion.total}}</h4>
 					</div>				    	
 		    	</section>
 		    	<section class=" mdl-cell mdl-cell--12-col mdl-grid ">	
@@ -103,11 +92,10 @@
 		    	
 	    	</div>
 	  	</div>
-	  	<div class="mdl-grid demo-content mdl-layout__tab-panel is-active" id="credito"></div>
 	  	<section class="tiket">
-		    		<div class="t-fecha">FECHA:{{orden.fecha|date:'Y-m-d'}}</div>
-		    		<div class="t-empresa">Campo Alegre Alimentos S.A. de C.V.</div><div class="t-orden">ORDEN: {{orden.id}}</div>
-		    		<div class="t-cliente">CLIENTE: {{orden.cliente.nombre}} {{orden.cliente.apellidos}}</div>
+		    		<div class="t-fecha">FECHA:{{devolucion.fecha|date:'Y-m-d'}}</div>
+		    		<div class="t-empresa">Campo Alegre Alimentos S.A. de C.V.</div><div class="t-orden">DEVOLUCIÓN: {{devolucion.id}}</div>
+		    		<div class="t-cliente">CLIENTE: {{devolucion.orden.cliente.nombre}} {{devolucion.orden.cliente.apellidos}}</div>
 		    		<table>
 		    			<thead>
 		    				<tr>
@@ -118,12 +106,12 @@
 							</tr>
 		    			</thead>
 		    			<tbody>
-		    				{% for op in orden_producto %}
+		    				{% for dev in devolucion_producto %}
 								<tr>
-									<td class="producto">{{op.producto.nombre}}</td>
-									<td>{{op.cantidad}}</td>
-									<td>${{op.precio}}</td>
-									<td>${{op.subtotal_producto}}</td>
+									<td class="producto">{{dev.producto.nombre}}</td>
+									<td>{{dev.cantidad}}</td>
+									<td>${{dev.precio}}</td>
+									<td>${{dev.subtotal_producto}}</td>
 								</tr>
 							{% endfor %}
 		    			</tbody>
@@ -132,7 +120,7 @@
 								<td></td>
 								<td></td>
 								<td>Subtotal</td>
-								<td>${{orden.subtotal}}</td>
+								<td>${{devolucion.subtotal}}</td>
 							</tr>
 							<tr>
 								<td></td>
@@ -144,11 +132,11 @@
 								<td></td>
 								<td></td>
 								<td>Total</td>
-								<td>${{orden.total}}</td>
+								<td>${{devolucion.total}}</td>
 							</tr>
 		    			</tfoot>
 		    		</table>
-    	</section>
+		    	</section>
 	  	
    	</main>
    	
