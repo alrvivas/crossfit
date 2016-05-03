@@ -94,7 +94,7 @@
 	  	</div>
 	  	<section class="tiket">
 		    		<div class="t-fecha">FECHA:{{devolucion.fecha|date:'Y-m-d'}}</div>
-		    		<div class="t-empresa">Campo Alegre Alimentos S.A. de C.V.</div><div class="t-orden">ORDEN: {{devolucion.id}}</div>
+		    		<div class="t-empresa">Campo Alegre Alimentos S.A. de C.V.</div><div class="t-orden">DEVOLUCIÓN: {{devolucion.id}}</div>
 		    		<div class="t-cliente">CLIENTE: {{devolucion.orden.cliente.nombre}} {{devolucion.orden.cliente.apellidos}}</div>
 		    		<table>
 		    			<thead>
@@ -106,7 +106,7 @@
 							</tr>
 		    			</thead>
 		    			<tbody>
-		    				{% for dev in devolucion %}
+		    				{% for dev in devolucion_producto %}
 								<tr>
 									<td class="producto">{{dev.producto.nombre}}</td>
 									<td>{{dev.cantidad}}</td>
