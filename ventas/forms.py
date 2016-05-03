@@ -44,6 +44,10 @@ class devolucionForm(ModelForm):
     class Meta:
         model = Devolucion
         fields = ('fecha','orden','subtotal','total','total_peso',)
+class asignadevolucionForm(ModelForm):
+    class Meta:
+        model = Devolucion
+        fields = ('asignada',)
 
 class caprurardevolucionForm(ModelForm):
     class Meta:

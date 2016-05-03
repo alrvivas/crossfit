@@ -211,12 +211,16 @@ def asignar_devolucion(request,orden_id):
     devolucion = Devolucion.objects.get(orden=orden)
     if request.method == 'POST':
         form_orden = osaldoForm(request.POST,instance=orden)
-        if form_orden.is_valid():
+        form_devolucion = asignadevolucionForm(request.POST,instance=devolucion)
+        if form_orden.is_valid() and form_devolucion.is_valid():
             orden = form_orden.save(commit=False)
             orden.save()
+            devolucion = form_devolucion.save(commit=False)
+            devolucion.save()
             return redirect(devolucion.get_absolute_urle())
     else:
         form_orden = osaldoForm()
+        form_devolucion = asignadevolucionForm()
     args = {}
     args.update(csrf(request))
     template_name = "asignar-devolucion.html"
