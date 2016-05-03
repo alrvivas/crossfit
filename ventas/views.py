@@ -98,6 +98,8 @@ def credito_cobranza(request):
     orden_pagadas = Orden.objects.filter(estatus_cobranza=2).order_by('-id')
     orden_abonada = Orden.objects.filter(estatus_cobranza=3).order_by('-id')
     ordenes_revision = Orden.objects.filter(estatus_orden=4).order_by('-id')
+    devoluciones_asignadas = Devolucion.objects.filter(asignada=True).order_by('-id')
+    devoluciones_sin_asignadar = Devolucion.objects.filter(asignada=False).order_by('-id')
     page_title = "Credito y Cobranza"
     query = request.GET.get('q', '')
     if query:

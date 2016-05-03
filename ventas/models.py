@@ -116,6 +116,7 @@ class Devolucion(models.Model):
     total = models.DecimalField(max_digits=10, decimal_places=4, null=True)
     total_peso = models.DecimalField(max_digits=10, decimal_places=4, null=True)
     observacion = models.TextField(null=True,blank=True)
+    asignada = models.BooleanField(default=False, verbose_name=('Devolución Asignada'))
 
     @models.permalink
     def get_absolute_url(self):
@@ -148,8 +149,7 @@ class Devolucion_Producto(models.Model):
     precio = models.DecimalField(max_digits=10, decimal_places=3, null=True, blank=True)
     cantidad = models.IntegerField(null=True, blank=True)
     subtotal_producto = models.DecimalField(max_digits=10, decimal_places=3, null=True, blank=True)
-    subtotal_peso = models.DecimalField(max_digits=30, decimal_places=3, null=True, blank=True)
-    asignada = models.BooleanField(default=False, verbose_name=('Devolución Asignada')) 
+    subtotal_peso = models.DecimalField(max_digits=30, decimal_places=3, null=True, blank=True)     
 
     def __unicode__(self):
         return u"%s - %s"% (self.orden, self.producto)
