@@ -149,6 +149,7 @@ class Devolucion_Producto(models.Model):
     cantidad = models.IntegerField(null=True, blank=True)
     subtotal_producto = models.DecimalField(max_digits=10, decimal_places=3, null=True, blank=True)
     subtotal_peso = models.DecimalField(max_digits=30, decimal_places=3, null=True, blank=True)
+    asignada = models.BooleanField(default=False, verbose_name=('Devolución Asignada')) 
 
     def __unicode__(self):
         return u"%s - %s"% (self.orden, self.producto)
