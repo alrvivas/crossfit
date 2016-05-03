@@ -106,11 +106,11 @@
 	  	<div class="mdl-grid demo-content mdl-layout__tab-panel" id="credito">
 	  		<div class="mdl-grid">
 	  			<div class="mdl-cell mdl-cell--3-col mdl-cell--12-col-tablet mdl-cell--12-col-phone mdl-grid mdl-grid--no-spacing">	
-	  				<section class="section--center mdl-grid mdl-grid--no-spacing mdl-cell mdl-cell--12-col-desktop mdl-cell--12-col-tablet mdl-cell--12-col-phone mdl-shadow--2dp">
+	  				<section class="mdl-color--white mdl-shadow--2dp  mdl-cell mdl-cell--12-col mdl-cell--12-col-tablet mdl-cell--12-col-phone mdl-grid">
 		    			<div class="mdl-card__supporting-text mdl-grid mdl-grid--no-spacing">
-			  				<h4 class="mdl-cell mdl-cell--12-col orden-id">Orden: {{orden.id}}</h4>			
+			  				<h4 class="orden-id">Orden: {{orden.id}}</h4>			
 			  				<div class="section__text mdl-cell mdl-cell--12-col-desktop mdl-cell--12-col-tablet mdl-cell--12-col-phone">
-			  					<h4 class="mdl-cell mdl-cell--12-col cliente-nombre">Cliente: <a href="{{orden.cliente.get_absolute_url}}">{{orden.cliente.nombre}} {{orden.cliente.apellidos}}</a></h4>
+			  					<h4 class=" cliente-nombre">Cliente: <a href="{{orden.cliente.get_absolute_url}}">{{orden.cliente.nombre}} {{orden.cliente.apellidos}}</a></h4>
 				  				<ul class="mdl-textfield--align-left">
 				  					<li class="fecha-orden">Fecha:{{orden.fecha|date:'Y-m-d'}}</li>
 				  					<li class="tipo-pago">Tipo de Pago:{{orden.tipo_pago}}</li>
@@ -160,7 +160,7 @@
 									<tr>
 									  <th class="mdl-data-table__cell--non-numeric">Devolución</th>
 									  <th>Fecha</th>
-									  <th>total</th>
+									  <th>Total</th>
 									</tr>
 								</thead>
 								<tbody class="lista-venta">
