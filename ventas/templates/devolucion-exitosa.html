@@ -38,6 +38,8 @@
 	  				<h4 class="mdl-cell mdl-cell--12-col cliente-nombre">Cliente: {{devolucion.orden.cliente.nombre}} {{devolucion.orden.cliente.apellidos}}</h4>
 	  				<ul class="mdl-textfield--align-left">
 	  					<li class="fecha-orden">Fecha:{{devolucion.fecha|date:'Y-m-d'}}</li>
+	  					<li>Orden: {{devolucion.orden.id}}</li>
+	  					<li>Fecha Orden: {{devolucion.orden.fecha|date:'Y-m-d'}}</li>
 	  					<li class="tipo-pago">Tipo de Pago:{{devolucion.orden.tipo_pago}}</li>
 	  					<li class="estatus-orden">Estatus Orden: {{devolucion.orden.estatus_orden}}</li>
 	  					<li class="estatus-cobranza">Estatus Cobranza{{devolucion.orden.estatus_cobranza}}</li>
@@ -55,7 +57,7 @@
 								</tr>
 							</thead>
 							<tbody class="lista-venta">
-								{% for dev in devolucion %}
+								{% for dev in devolucion_producto %}
 									<tr>
 										<td class='mdl-data-table__cell--non-numeric'>{{dev.producto.nombre}}</td>
 										<td>{{dev.cantidad}}</td>
