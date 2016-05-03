@@ -44,57 +44,60 @@
 {% block contedor %}	
   	<main class="mdl-layout__content mdl-color--grey-100">  		  		
 	  	<div class="mdl-grid demo-content mdl-layout__tab-panel is-active" id="orden">
-	  		<div class="mdl-grid">	  		
-	  			<section class="demo-cards mdl-color--white mdl-shadow--2dp mdl-cell mdl-cell--3-col mdl-cell--12-col-tablet mdl-cell--12-col-phone mdl-grid mdl-grid--no-spacing datos-venta">
-	  				<div class="mdl-card__supporting-text mdl-grid mdl-grid--no-spacing">
-		  				<h4 class="mdl-cell mdl-cell--12-col orden-id">Orden: {{orden.id}}</h4>
-		  				<div class="section__text mdl-cell mdl-cell--12-col-desktop mdl-cell--12-col-tablet mdl-cell--12-col-phone">
-			  				<h4 class="mdl-cell mdl-cell--12-col cliente-nombre">Cliente: <a href="{{orden.cliente.get_absolute_url}}">{{orden.cliente.nombre}} {{orden.cliente.apellidos}}</a></h4>
-			  				<ul class="mdl-textfield--align-left">
-			  					<li class="fecha-orden">Fecha:{{orden.fecha|date:'Y-m-d'}}</li>
-			  					<li class="tipo-pago">Tipo de Pago:{{orden.tipo_pago}}</li>
-			  					<li class="estatus-orden">Estatus Orden: {{orden.estatus_orden}}</li>
-			  					<li class="estatus-cobranza">Estatus Cobranza{{orden.estatus_cobranza}}</li>
-			  					<li>{{orden.observacion}}</li>
-			  				</ul>
-			  			</div>
-		  			</div>		    		 			
-				</section>
-				<section class=" mdl-cell mdl-cell--9-col mdl-cell mdl-cell--3-col mdl-cell--12-col-tablet mdl-cell--12-col-phone mdl-grid ">	
-					<div class="mdl-color--white mdl-shadow--2dp mdl-cell mdl-cell--12-col suminputs venta">
-						<table class="mdl-data-table mdl-js-data-table mdl-data-table--selectable mdl-fullwidth">
-							<thead>
-								<tr>
-								  <th class="mdl-data-table__cell--non-numeric">Producto</th>
-								  <th>Catidad</th>
-								  <th>Precio Unitario</th>
-								  <th>Total</th>
-								</tr>
-							</thead>
-							<tbody class="lista-venta">
-								{% for op in orden_producto %}
+	  		<div class="mdl-grid">
+	  			<div class="mdl-cell mdl-cell--3-col mdl-cell--12-col-tablet mdl-cell--12-col-phone mdl-grid mdl-grid--no-spacing">		  		
+		  			<section class="mdl-color--white mdl-shadow--2dp  mdl-cell mdl-cell--12-col mdl-cell--12-col-tablet mdl-cell--12-col-phone mdl-grid datos-venta">
+		  				<div class="mdl-card__supporting-text mdl-grid mdl-grid--no-spacing">
+			  				<h4 class="mdl-cell mdl-cell--12-col orden-id">Orden: {{orden.id}}</h4>
+			  				<div class="section__text mdl-cell mdl-cell--12-col-desktop mdl-cell--12-col-tablet mdl-cell--12-col-phone">
+				  				<h4 class="mdl-cell mdl-cell--12-col cliente-nombre">Cliente: <a href="{{orden.cliente.get_absolute_url}}">{{orden.cliente.nombre}} {{orden.cliente.apellidos}}</a></h4>
+				  				<ul class="mdl-textfield--align-left">
+				  					<li class="fecha-orden">Fecha:{{orden.fecha|date:'Y-m-d'}}</li>
+				  					<li class="tipo-pago">Tipo de Pago:{{orden.tipo_pago}}</li>
+				  					<li class="estatus-orden">Estatus Orden: {{orden.estatus_orden}}</li>
+				  					<li class="estatus-cobranza">Estatus Cobranza{{orden.estatus_cobranza}}</li>
+				  					<li>{{orden.observacion}}</li>
+				  				</ul>
+				  			</div>
+			  			</div>		    		 			
+					</section>
+				</div>
+				<div class="demo-cards mdl-cell mdl-cell--9-col mdl-cell--12-col-tablet mdl-cell--12-col-phone mdl-grid mdl-grid--no-spacing">
+					<section class=" mdl-cell mdl-cell--9-col mdl-cell mdl-cell--3-col mdl-cell--12-col-tablet mdl-cell--12-col-phone mdl-grid ">	
+						<div class="mdl-color--white mdl-shadow--2dp mdl-cell mdl-cell--12-col suminputs venta">
+							<table class="mdl-data-table mdl-js-data-table mdl-data-table--selectable mdl-fullwidth">
+								<thead>
 									<tr>
-										<td class='mdl-data-table__cell--non-numeric'>{{op.producto.nombre}}</td>
-										<td>{{op.cantidad}}</td>
-										<td>${{op.precio}}</td>
-										<td>${{op.subtotal_producto}}</td>
+									  <th class="mdl-data-table__cell--non-numeric">Producto</th>
+									  <th>Catidad</th>
+									  <th>Precio Unitario</th>
+									  <th>Total</th>
 									</tr>
-								{% endfor %}
-							</tbody>
-						</table>
-					</div>			    	
-		    	</section>
-		    	<section class="mdl-color--white mdl-shadow--2dp mdl-cell mdl-cell--12-col mdl-cell--12-col-tablet mdl-cell--12-col-phone mdl-grid mdl-textfield--align-right totales">	
-					<div class="mdl-cell mdl-cell--10-col mdl-cell--5-col-tablet mdl-cell--2-col-phone letra">
-						<h4>Sub Total: $</h4>
-						<h4>Total: $</h4>
-					</div>
-					<div class="mdl-cell mdl-cell--2-col mdl-cell--2-col-tablet mdl-cell--2-col-phone cantidad">
-						<h4>{{orden.subtotal}}</h4>
-						<h4>{{orden.total}}</h4>
-					</div>				    	
-		    	</section>
-		    	<section class=" mdl-cell mdl-cell--12-col mdl-grid ">	
+								</thead>
+								<tbody class="lista-venta">
+									{% for op in orden_producto %}
+										<tr>
+											<td class='mdl-data-table__cell--non-numeric'>{{op.producto.nombre}}</td>
+											<td>{{op.cantidad}}</td>
+											<td>${{op.precio}}</td>
+											<td>${{op.subtotal_producto}}</td>
+										</tr>
+									{% endfor %}
+								</tbody>
+							</table>
+						</div>			    	
+			    	</section>
+			    	<section class="mdl-color--white mdl-shadow--2dp mdl-cell mdl-cell--12-col mdl-cell--12-col-tablet mdl-cell--12-col-phone mdl-grid mdl-textfield--align-right totales">	
+						<div class="mdl-cell mdl-cell--10-col mdl-cell--5-col-tablet mdl-cell--2-col-phone letra">
+							<h4>Sub Total: $</h4>
+							<h4>Total: $</h4>
+						</div>
+						<div class="mdl-cell mdl-cell--2-col mdl-cell--2-col-tablet mdl-cell--2-col-phone cantidad">
+							<h4>{{orden.subtotal}}</h4>
+							<h4>{{orden.total}}</h4>
+						</div>				    	
+			    	</section>
+			    	<section class=" mdl-cell mdl-cell--12-col mdl-grid ">	
 					<div class="mdl-cell mdl-cell--12-col mdl-textfield--align-right">
 						<button type="submit" class="print mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" tabindex="4">
 							  Imprimir<i class="material-icons mdl-color-text--white">print</i>
@@ -103,8 +106,8 @@
 							  Continuar
 						</a>
 					</div>			    	
-		    	</section>
-		    	
+		    		</section>
+		    	</div>
 	    	</div>
 	  	</div>
 	  	<div class="mdl-grid demo-content mdl-layout__tab-panel" id="credito">
