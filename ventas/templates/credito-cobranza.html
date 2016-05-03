@@ -199,35 +199,35 @@
 		    	</div>
 	  	</div>
 	  	<div class="mdl-grid demo-content mdl-layout__tab-panel" id="sin_asignar">		  		
-		    	<div class="mdl-color--white mdl-shadow--2dp mdl-cell mdl-cell--12-col mdl-grid ">
-		    		<table class="mdl-data-table mdl-js-data-table mdl-data-table--selectable mdl-fullwidth">
-					  <thead>
-					    <tr>
-					      	<th class="mdl-data-table__cell--non-numeric mdl-fullwidth ">Devolucion</th>
-					      	<th>Orden</th>
-					      	<th>Cliente</th>
-					      	<th>Subtotal</th>
-					      	<th>Total</th>					      	
-					    </tr>
-					  	</thead>
-					  	<tbody>
-					  	{% for dsa in devoluciones_sin_asignadar %}
-					    	<tr>
-					      		<td class="mdl-data-table__cell--non-numeric">
-					      			<a href="">
-					      				{{dsa.id}}
-					      			</a>
-					      		</td>
-					      		<td>{{dsa.orden}}</td>
-					      		<td>{{dsa.orden.cliente.nombre}} {{dsa.orden.cliente.apellidos}}</td>	      	
-					      		<td>${{dsa.subtotal}}</td>
-					      		<td>${{dsa.total}}</td>					      		
-					    	</tr>
-					    {% endfor %}
-					    
-					  </tbody>
-					</table>
-		    	</div>
+	    	<div class="mdl-color--white mdl-shadow--2dp mdl-cell mdl-cell--12-col mdl-grid ">
+	    		<table class="mdl-data-table mdl-js-data-table mdl-data-table--selectable mdl-fullwidth">
+				  <thead>
+				    <tr>
+				      	<th class="mdl-data-table__cell--non-numeric mdl-fullwidth ">Devolucion</th>
+				      	<th>Orden</th>
+				      	<th>Cliente</th>
+				      	<th>Subtotal</th>
+				      	<th>Total</th>					      	
+				    </tr>
+				  	</thead>
+				  	<tbody>
+				  	{% for dsa in devoluciones_sin_asignadar %}
+				    	<tr>
+				      		<td class="mdl-data-table__cell--non-numeric">
+				      			<a href="{{dsa.orden.get_absolute_url_asiganar_dev}}">
+				      				{{dsa.id}}
+				      			</a>
+				      		</td>
+				      		<td>{{dsa.orden}}</td>
+				      		<td>{{dsa.orden.cliente.nombre}} {{dsa.orden.cliente.apellidos}}</td>	      	
+				      		<td>${{dsa.subtotal}}</td>
+				      		<td>${{dsa.total}}</td>					      		
+				    	</tr>
+				    {% endfor %}
+				    
+				  </tbody>
+				</table>
+	    	</div>
 	  	</div>	
    	</main>
 {% endblock %}
