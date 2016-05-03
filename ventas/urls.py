@@ -10,5 +10,6 @@ urlpatterns = patterns('',
 	url(r'^abonar-orden/(?P<orden_id>[-\w]+)$', 'ventas.views.abonar_orden', name='abonar-orden'),	
 	url(r'^crear-devolucion/$', 'ventas.views.crear_devolucion', name='crear-devolucion'),
 	url(r'^devolucion-exitosa/(?P<devolucion_id>[-\w]+)$', 'ventas.views.devolucion_exitosa', name='devolucion-exitosa'),
+	url(r'^asignar-devolucion/(?P<orden_id>[-\w]+)$', 'ventas.views.asignar_devolucion', name='asignar-devolucion'),
 	
 )

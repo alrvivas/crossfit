@@ -175,26 +175,6 @@ def abonar_orden(request,orden_id):
 
 @login_required(login_url='/login/')
 def crear_devolucion(request):
-    page_title = "Asignar Devolución A Orden"
-    user = request.user
-    clientes = Cliente.objects.filter(devolucion=True)
-    ordenes = Orden.objects.filter(cliente=clientes).exclude(estatus_cobranza=2).order_by('-id')
-    devolucion = Devolucion.objects.all()
-    if request.method == 'POST':
-        form_devolucion = devolucionForm(request.POST)
-        if form_devolucion.is_valid():
-            devolucion = form_devolucion.save(commit=False)
-            devolucion.save()
-            return redirect(devolucion.get_absolute_url_capturar())
-    else:
-        form_devolucion = devolucionForm()
-    args = {}
-    args.update(csrf(request))
-    template_name = "crear-devolucion.html"
-    return render_to_response(template_name, locals(), context_instance=RequestContext(request))
-
-@login_required(login_url='/login/')
-def crear_devolucion(request):
     page_title = "Capturar Devolución"
     user = request.user    
     clientes = Cliente.objects.filter(devolucion=True)
@@ -220,6 +200,25 @@ def crear_devolucion(request):
     args = {}
     args.update(csrf(request))
     template_name = "capturar-devolucion.html"
+    return render_to_response(template_name, locals(), context_instance=RequestContext(request))
+
+@login_required(login_url='/login/')
+def asignar_devolucion(request,orden_id):
+    page_title = "Asignar Devolución A Orden"
+    user = request.user
+    orden = get_object_or_404(Orden, id=orden_id)
+    devolucion = Devolucion.objects.filter(orden=orden)
+    if request.method == 'POST':
+        form_orden = osaldoForm(request.POST,instance=orden)
+        if form_orden.is_valid():
+            orden = form_orden.save(commit=False)
+            orden.save()
+            return redirect(devolucion.get_absolute_urle())
+    else:
+        form_orden = osaldoForm()
+    args = {}
+    args.update(csrf(request))
+    template_name = "asignar-devolucion.html"
     return render_to_response(template_name, locals(), context_instance=RequestContext(request))
 
 @login_required(login_url='/login/')

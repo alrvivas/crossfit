@@ -73,6 +73,10 @@ class Orden(models.Model):
     def get_absolute_url_abonar_orden(self):
         return('abonar-orden', (), { 'orden_id': self.id })
 
+    @models.permalink
+    def get_absolute_url_asiganar_dev(self):
+        return('asignar-devolucion', (), { 'devolucion_id': self.id })
+
     def __unicode__(self):
         return unicode(self.id)
 
@@ -128,6 +132,7 @@ class Devolucion(models.Model):
     @models.permalink
     def get_absolute_url_editar(self):
         return('editar-devolucion', (), { 'devolucion_id': self.id })
+
 
     def __unicode__(self):
         return unicode(self.id)
