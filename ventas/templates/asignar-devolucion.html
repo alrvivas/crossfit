@@ -35,19 +35,29 @@
 	  		<div class="mdl-grid">	  		
 	  			<section class="demo-cards mdl-color--white mdl-shadow--2dp mdl-cell mdl-cell--12-col mdl-cell--12-col-tablet mdl-cell--12-col-phone mdl-grid mdl-grid--no-spacing">
 	  				<form action=""  method="post" role="form" class="mdl-grid form-add" enctype="multipart/form-data">{% csrf_token %}
-	  					<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell--12-col">
-						    <input class="mdl-textfield__input" type="date" name="fecha" id="fecha" value="" required/>
-						    <label class="mdl-textfield__label" for="fecha">Fecha</label>
-					  	</div>
-	  					<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell--12-col">
-					  		<select class="mdl-textfield__input" type="text" name="orden" id="orden" required>
-					  			<option  value="" selected>Seleccione una orden...</option>
-					  			{% for o in ordenes %}
-					  				<option value="{{o.id}}">{{o.id}} {{o.cliente.nombre}} {{o.cliente.apellidos}} <b class="mdl-color-text--red-500">${{o.saldo}}</b></option>
-					  			{% endfor %}
-					  		</select>      
-						    <label class="mdl-textfield__label" for="orden">Orden</label>
-					  	</div>
+	  					<h4>Devolucion {{devolucion.id}}</h4>
+	  					<ul class="mdl-textfield--align-left">
+	  						<li>Fecha:{{devolucion.fecha|date:'Y-m-d'}}</li>
+	  						<li>Total: ${{devolucion.total}}</li>
+	  					</ul>
+	  					<h4>Orden {{orden.id}}</h4>
+	  					<ul class="mdl-textfield--align-left">
+	  						<li class="fecha-orden">Fecha:{{orden.fecha|date:'Y-m-d'}}</li>
+	  						<li>Cliente: {{orden.cliente.nombre}} {{orden.cliente.apellidos}}</li>
+	  						<li class="tipo-pago">Tipo de Pago:{{orden.tipo_pago}}</li>
+	  						<li class="estatus-orden">Estatus Orden: {{orden.estatus_orden}}</li>
+	  						<li>Estatus Cobranza Actual: {{orden.estatus_cobranza}}</li>
+	  						<li class="estatus-cobranza">Estatus Cobranza Despues De La Asignación: {{orden.estatus_cobranza}}</li>
+	  						{% for ab in abonos %}
+	  							<li class="abono">Fecha Abono: {{ab.fecha|date:'Y-m-d'}}<br />Cantidad: ${{ab.cantidad}}</li>
+	  						{% empty %}
+    							<li>Aún no hay abonos.</li>
+	  						{% endfor %}
+  							<li>Total: ${{orden.total}}</li>
+	  					</ul>
+	  					<h4 class="mdl-cell mdl-cell--12-col mdl-color-text--red-500 saldo">Saldo: $ </h4>
+	  					<input class="mdl-textfield__input" type="hidden" name="estatus_cobranza" id="estatus_cobranza" value="{{orden.estatus_cobranza.id}}" required/>
+						<input class="mdl-textfield__input saldo-orden" type="hidden" name="saldo" id="saldo" value="{{orden.saldo|sub:devolucion.total}}" required/>
 					   	<div class="mdl-cell--12-col mdl-textfield--align-right">
 						   	<a class="mdl-button mdl-js-button mdl-js-ripple-effect">
 							  	CANCELAR
@@ -74,15 +84,17 @@
 {% endblock %}
 {% block adicional-scripts %}
 <script type="text/javascript">
-	var d = new Date();
-	var month_inicio = d.getMonth()+1;
-	var day_inicio = d.getDate();
-
-	var fecha = d.getFullYear() + '-' +
-	    ((''+month_inicio).length<2 ? '0' : '') + month_inicio + '-' +
-	    ((''+day_inicio).length<2 ? '0' : '') + day_inicio;
-
-	$('#fecha').val(fecha);	
+	var saldo = $('.saldo-orden').val();
+	if( $(".saldo-orden").val() == 0 ){
+		$('#estatus_cobranza').val(2);
+		$('.estatus-cobranza').text("Estatus Cobranza Despues De La Asignación: Pagada");
+	}else if($(".cantidad").val() != 0 ){
+		$('#estatus_cobranza').val(3);
+		$('.estatus-cobranza').text("Estatus Cobranza Despues De La Asignación: Abonada");
+	}else{
+		$('#estatus_cobranza').val(1);
+		$('.estatus-cobranza').text("Estatus Cobranza Despues De La Asignación: Pendiente");
+	}
 </script>
 
 {% endblock %}

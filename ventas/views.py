@@ -207,6 +207,7 @@ def asignar_devolucion(request,orden_id):
     page_title = "Asignar Devolución A Orden"
     user = request.user
     orden = get_object_or_404(Orden, id=orden_id)
+    abonos = Abono.objects.filter(orden=orden)
     devolucion = Devolucion.objects.filter(orden=orden)
     if request.method == 'POST':
         form_orden = osaldoForm(request.POST,instance=orden)
