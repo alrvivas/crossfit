@@ -237,3 +237,11 @@ def devolucion_exitosa(request,devolucion_id):
     template_name ="devolucion-exitosa.html" 
     return render_to_response(template_name, locals(),context_instance=RequestContext(request))
 
+@login_required(login_url='/login/')
+def devolucion(request,devolucion_id):
+    user = request.user
+    devolucion = get_object_or_404(Devolucion, id=devolucion_id)
+    devolucion_producto = Devolucion_Producto.objects.filter(devolucion=devolucion)
+    page_title = "¡Devolución!"    
+    template_name ="devolucion.html" 
+    return render_to_response(template_name, locals(),context_instance=RequestContext(request))
