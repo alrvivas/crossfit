@@ -52,9 +52,9 @@
 	  						{% endfor %}
   							<li>Total: ${{orden.total}}</li>
 	  					</ul>
-	  					<h4 class="mdl-cell mdl-cell--12-col mdl-color-text--red-500 saldo">Saldo: $ </h4>
+	  					<h4 class="mdl-cell mdl-cell--12-col mdl-color-text--red-500 saldo">Saldo: ${{orden.saldo|sub:devolucion.total}}</h4>
 	  					<input class="mdl-textfield__input" type="hidden" name="estatus_cobranza" id="estatus_cobranza" value="{{orden.estatus_cobranza.id}}" required/>
-						<input class="mdl-textfield__input saldo-orden" type="hidden" name="saldo" id="saldo" value="{{orden.saldo}}" required/>
+						<input class="mdl-textfield__input saldo-orden" type="hidden" name="saldo" id="saldo" value="{{orden.saldo|sub:devolucion.total}}" required/>
 					   	<div class="mdl-cell--12-col mdl-textfield--align-right">
 						   	<a class="mdl-button mdl-js-button mdl-js-ripple-effect">
 							  	CANCELAR
