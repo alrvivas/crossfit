@@ -75,7 +75,7 @@ class Orden(models.Model):
 
     @models.permalink
     def get_absolute_url_asiganar_dev(self):
-        return('asignar-devolucion', (), { 'devolucion_id': self.id })
+        return('asignar-devolucion', (), { 'orden_id': self.id })
 
     def __unicode__(self):
         return unicode(self.id)
