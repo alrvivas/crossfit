@@ -45,12 +45,12 @@
   	<main class="mdl-layout__content mdl-color--grey-100">  		  		
 	  	<div class="mdl-grid demo-content mdl-layout__tab-panel is-active" id="orden">
 	  		<div class="mdl-grid">
-	  			<div class="mdl-cell mdl-cell--3-col mdl-cell--12-col-tablet mdl-cell--12-col-phone mdl-grid mdl-grid--no-spacing datos-venta">		  		
-		  			<section class="mdl-color--white mdl-shadow--2dp  mdl-cell mdl-cell--12-col mdl-cell--12-col-tablet mdl-cell--12-col-phone mdl-grid ">
-		  				<div class="mdl-card__supporting-text mdl-grid mdl-grid--no-spacing">
-			  				<h4 class="mdl-cell mdl-cell--12-col orden-id">Orden: {{orden.id}}</h4>
+	  			<div class="mdl-cell mdl-cell--3-col mdl-cell--12-col-tablet mdl-cell--12-col-phone mdl-grid mdl-grid--no-spacing">	
+	  				<section class="mdl-color--white mdl-shadow--2dp  mdl-cell mdl-cell--12-col mdl-cell--12-col-tablet mdl-cell--12-col-phone mdl-grid datos-venta">
+		    			<div class="mdl-card__supporting-text mdl-grid mdl-grid--no-spacing">
+			  				<h4 class="orden-id">Orden: {{orden.id}}</h4>			
 			  				<div class="section__text mdl-cell mdl-cell--12-col-desktop mdl-cell--12-col-tablet mdl-cell--12-col-phone">
-				  				<h4 class="mdl-cell mdl-cell--12-col cliente-nombre">Cliente: <a href="{{orden.cliente.get_absolute_url}}">{{orden.cliente.nombre}} {{orden.cliente.apellidos}}</a></h4>
+			  					<h4 class=" cliente-nombre">Cliente: <a href="{{orden.cliente.get_absolute_url}}">{{orden.cliente.nombre}} {{orden.cliente.apellidos}}</a></h4>
 				  				<ul class="mdl-textfield--align-left">
 				  					<li class="fecha-orden">Fecha:{{orden.fecha|date:'Y-m-d'}}</li>
 				  					<li class="tipo-pago">Tipo de Pago:{{orden.tipo_pago}}</li>
@@ -59,11 +59,11 @@
 				  					<li>{{orden.observacion}}</li>
 				  				</ul>
 				  			</div>
-			  			</div>		    		 			
-					</section>
+			  			</div>
+			  		</section>		    		 			
 				</div>
 				<div class="demo-cards mdl-cell mdl-cell--9-col mdl-cell--12-col-tablet mdl-cell--12-col-phone mdl-grid mdl-grid--no-spacing">
-					<section class=" mdl-cell mdl-cell--9-col mdl-cell mdl-cell--3-col mdl-cell--12-col-tablet mdl-cell--12-col-phone mdl-grid ">	
+					<section class=" mdl-cell mdl-cell--12-col mdl-cell mdl-cell--3-col mdl-cell--12-col-tablet mdl-cell--12-col-phone mdl-grid ">	
 						<div class="mdl-color--white mdl-shadow--2dp mdl-cell mdl-cell--12-col suminputs venta">
 							<table class="mdl-data-table mdl-js-data-table mdl-data-table--selectable mdl-fullwidth">
 								<thead>
@@ -89,7 +89,7 @@
 			    	</section>			    	
 		    	</div>
 		    	<div class="demo-cards mdl-cell mdl-cell--12-col mdl-cell--12-col-tablet mdl-cell--12-col-phone mdl-grid mdl-grid--no-spacing">
-		    	<section class="mdl-color--white mdl-shadow--2dp mdl-cell mdl-cell--12-col mdl-cell--12-col-tablet mdl-cell--12-col-phone mdl-grid mdl-textfield--align-right totales">	
+		    		<section class="mdl-color--white mdl-shadow--2dp mdl-cell mdl-cell--12-col mdl-cell--12-col-tablet mdl-cell--12-col-phone mdl-grid mdl-textfield--align-right totales">	
 						<div class="mdl-cell mdl-cell--10-col mdl-cell--5-col-tablet mdl-cell--2-col-phone letra">
 							<h4>Sub Total: $</h4>
 							<h4>Total: $</h4>
@@ -109,7 +109,7 @@
 						</a>
 					</div>			    	
 		    		</section>
-		    		</div>
+	    		</div>
 	    	</div>
 	  	</div>
 	  	<div class="mdl-grid demo-content mdl-layout__tab-panel" id="credito">
